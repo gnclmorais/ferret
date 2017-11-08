@@ -1,0 +1,21 @@
+// Place all the styles related to the Maps controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#map {
+  position: absolute;
+  top: 0;
+  //left: 66%;
+  right: 0;
+  bottom: 0;
+  width: 33%;
+}
+
+#map-info {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 66%;
+  overflow: auto;
+}

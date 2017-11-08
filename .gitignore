@@ -20,3 +20,6 @@
 /public/packs
 /public/packs-test
 /node_modules
+
+# macOS specific
+.DS_Store

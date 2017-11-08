@@ -1,0 +1,55 @@
+class MapsController < ApplicationController
+  def index
+    @maps = Map.all
+  end
+
+  def show
+    @map = Map.find(params[:id])
+
+    @map_key = ENV['GOOGLE_MAPS_API_KEY']
+  end
+
+  def new
+    @map = Map.new
+  end
+
+  def edit
+    @map = Map.find(params[:id])
+
+    @map_key = ENV['GOOGLE_MAPS_API_KEY']
+    js places: @map.places.to_json
+  end
+
+  def create
+    @map = Map.new(map_params)
+
+    if @map.save
+      redirect_to @map
+    else
+      render 'new'
+    end
+  end
+
+  def update
+    @map = Map.find(params[:id])
+
+    if @map.update(map_params)
+      redirect_to @map
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @map = Map.find(params[:id])
+    @map.destroy
+
+    redirect_to maps_path
+  end
+
+  private
+
+  def map_params
+    params.require(:map).permit(:name, :description)
+  end
+end

@@ -1,0 +1,5 @@
+%template
+  %table{ v_if: "places.length" }
+    %tbody
+      %tr{ v_for: "place in places" }
+  %p{ v_else: "No places :(" }

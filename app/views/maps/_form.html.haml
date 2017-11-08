@@ -1,0 +1,22 @@
+= form_with model: map, local: true do |form|
+  - if map.errors.any?
+    .row
+      .twelve.columns#error-explanation
+        %h2
+          = pluralize(map.errors.count, "error")
+          prohibited this map from being saved:
+        %ul
+          = list_of map.errors.full_messages do |msg|
+            = msg
+
+  .row
+    .twelve.columns
+      = form.label :name
+      = form.text_field :name, autofocus: true, class: "u-full-width"
+    .twelve.columns
+      = form.label :description
+      = form.text_area :description, class: "u-full-width"
+
+  .row
+    .twelve.columns
+      = form.submit "Save map"

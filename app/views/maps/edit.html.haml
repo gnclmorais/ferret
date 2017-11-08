@@ -1,0 +1,29 @@
+.row
+  .eight.columns#map-info
+    %h1
+    = link_to "<", maps_path
+    |
+    Edit ‘#{@map.name}’ map
+
+    %hr
+
+    .row.v-interactive
+      .six.columns
+        = render "form", map: @map
+        %hr
+        Currently on the map:
+        %places-list{ map: @map.id }
+
+      .six.columns
+        = render "search_place", map_id: @map.id
+  .four.columns#map
+    :javascript
+      function initMap() {
+        // Create a map object and specify the DOM element for display.
+        // var map = new google.maps.Map(document.getElementById('map'), {
+        //   center: {lat: -34.397, lng: 150.644},
+        //   zoom: 8
+        // });
+      }
+    -#%script(src="https://maps.googleapis.com/maps/api/js?key=#{@map_key}&libraries=places&callback=initMap")
+    %script(src="https://maps.googleapis.com/maps/api/js?key=#{@map_key}&libraries=places")
