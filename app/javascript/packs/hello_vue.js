@@ -5,15 +5,23 @@
 // like app/views/layouts/application.html.erb.
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
-import Vue from 'vue'
-import App from '../app.vue'
+// import Vue from 'vue';
+// import * as VueGoogleMaps from 'vue2-google-maps';
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.appendChild(document.createElement('hello'))
-  const app = new Vue(App).$mount('hello')
+// import App from '../app.vue';
+// import Map from '../components/app.vue';
 
-  console.log(app)
-})
+// Vue.use(VueGoogleMaps, {
+//   load: {
+//     key: process.env.GOOGLE_MAPS_API_KEY,
+//     libraries: 'places',
+//   }
+// });
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   document.body.appendChild(document.createElement('hello'));
+//   const app = new Vue(App).$mount('hello');
+// });
 
 
 // The above code uses Vue without the compiler, which means you cannot
@@ -30,15 +38,21 @@ document.addEventListener('DOMContentLoaded', () => {
 // </div>
 
 
-// import Vue from 'vue/dist/vue.esm'
-// import App from './app.vue'
-//
-// document.addEventListener('DOMContentLoaded', () => {
-//   const app = new Vue({
-//     el: '#hello',
-//     data: {
-//       message: "Can you say hello?"
-//     },
-//     components: { App }
-//   })
-// })
+import Vue from 'vue'
+import App from '../app.vue'
+
+import Map from '../components/map.vue'
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const app = new Vue({
+    el: '#edit-map',
+    data: {
+      message: 'Can you say hello?'
+    },
+    components: {
+      //App,
+      'v-map': Map,
+    },
+  })
+})

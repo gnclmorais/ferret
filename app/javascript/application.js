@@ -14,7 +14,6 @@
 //=# require jquery_ujs
 //=# require lodash
 //=# require turbolinks
-//=# require paloma
 //=# require vue
 //=# require vue-resource
 //=# require_tree .

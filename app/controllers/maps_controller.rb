@@ -17,7 +17,7 @@ class MapsController < ApplicationController
     @map = Map.find(params[:id])
 
     @map_key = ENV['GOOGLE_MAPS_API_KEY']
-    js places: @map.places.to_json
+    #js places: @map.places.to_json
   end
 
   def create

@@ -7,10 +7,11 @@
     = include_gon
 
     = javascript_pack_tag "application"
-    =# stylesheet_pack_tag "application"
-    = javascript_pack_tag "hello_vue"
-    = stylesheet_pack_tag "hello_vue"
+    = stylesheet_pack_tag "application"
+
+    -# Moved to edit.html.haml
+    =# javascript_pack_tag "hello_vue"
+    =# stylesheet_pack_tag "hello_vue"
 
   %body
     = yield
-    = insert_paloma_hook
