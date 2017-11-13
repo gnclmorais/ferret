@@ -37,12 +37,14 @@
 //   <app></app>
 // </div>
 
-
 import Vue from 'vue'
-import App from '../app.vue'
+import VueResource from 'vue-resource'
 
+import List from '../components/places-list.vue'
 import Map from '../components/map.vue'
+import Search from '../components/panel-search.vue'
 
+Vue.use(VueResource)
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
@@ -51,7 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
       message: 'Can you say hello?'
     },
     components: {
-      //App,
+      'v-places-list': List,
+      'v-search-panel': Search,
       'v-map': Map,
     },
   })

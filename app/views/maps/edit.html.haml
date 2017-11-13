@@ -5,28 +5,13 @@
         %h1.title= @map.name
         %h2.subtitle= @map.description
   .columns.u-fullheight
-    -#
-      .column.is-one-third
-        %h1
-        = link_to "<", maps_path
-        |
-        Edit ‘#{@map.name}’ map
-
-        %hr
-
-        .row.v-interactive
-          .six.columns
-            = render "form", map: @map
-            %hr
-            Currently on the map:
-            %places-list{ map: @map.id }
-
-          .six.columns
-            = render "search_place", map_id: @map.id
     .column.is-one-third
-      content
+      = render "form", map: @map
+      %hr
+      Currently on the map:
+      %v-places-list{ ":map": @map.id, ":places": @map.places.to_json }
     .column.is-one-third
-      content
+      %v-search-panel{ ":map": @map.id }
     .column.is-one-third.map-column.u-fullheight
       %v-map
 

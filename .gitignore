@@ -21,5 +21,8 @@
 /public/packs-test
 /node_modules
 
+# Project config
+.env
+
 # macOS specific
 .DS_Store

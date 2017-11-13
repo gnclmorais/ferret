@@ -29,9 +29,6 @@ default: &default
     - .jpeg
     - .jpg
 
-  alias:
-    vue$: vue/dist/vue.esm.js
-
 development:
   <<: *default
   compile: true
