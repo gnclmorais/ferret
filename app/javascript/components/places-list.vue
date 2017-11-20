@@ -1,9 +1,9 @@
 <template>
 <table v-if="localPlaces.length">
   <tbody>
-    <places-list-item v-for="place in localPlaces" :key="place.id"
+    <places-list-item v-for="(place, index) in localPlaces" :key="place.id"
                       :place="place" :map="map"
-                      v-on:remove="remove(place)">
+                      v-on:removePlace="remove(index)">
     </places-list-item>
   </tbody>
 </table>
@@ -23,9 +23,8 @@ export default {
     }
   },
   methods: {
-    remove: function (place) {
-      // TODO
-      //store.removePlace(place);
+    remove: function (index) {
+      this.localPlaces.splice(index, 1)
     },
   },
   components: {
