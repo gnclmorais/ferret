@@ -1,5 +1,5 @@
 !!!
-%html{ lang: "en", class: "has-navbar-fixed-top" }
+%html.has-navbar-fixed-top{ lang: "en" }
   %head
     %title Ferret
     = csrf_meta_tags
@@ -11,4 +11,6 @@
 
   %body
     = render "components/navbar"
-    = yield
+    .body
+      = yield
+    = render "components/footer"

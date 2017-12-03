@@ -1,5 +1,7 @@
 - content_for :title, "Maps"
 
+- content_for :breadcrumbs, breadcrumbs([["Maps", maps_path]])
+
 .section
   .content
     = link_to "New map >", new_map_path
