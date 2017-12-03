@@ -4,16 +4,18 @@
       .container
         %h1.title= @map.name
         %h2.subtitle= @map.description
-  .columns.u-fullheight
-    .column
-      = render "form", map: @map
-      %hr
-      Currently on the map:
-      %v-places-list{ ":map": @map.id, ":places": @map.places.to_json }
-    .column
-      %v-search-panel{ ":map": @map.id }
-    .column.map-column
-      %v-map
+  .section
+    .content
+      .columns.u-fullheight
+        .column
+          .box
+            = render "form", map: @map
+            %hr
+            %v-places-list{ ":map": @map.id, ":places": @map.places.to_json }
+        .column
+          %v-search-panel{ ":map": @map.id }
+        .column.map-column
+          %v-map
 
 = javascript_pack_tag "hello_vue"
 = stylesheet_pack_tag "hello_vue"
