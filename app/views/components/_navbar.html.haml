@@ -13,3 +13,11 @@
           = content_for(:title)
       - else
         %h1.title Ferret
+
+- if content_for(:breadcrumbs)
+  %nav.navbar
+    .navbar-item
+      %nav.breadcrumb{ "aria-label": "breadcrumbs" }
+        %ul
+          %li= link_to "Home", "/"
+          = content_for(:breadcrumbs)
