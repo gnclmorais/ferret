@@ -1,24 +1,26 @@
-= form_with model: map, local: true do |form|
-  - if map.errors.any?
-    .content
-      .twelve.columns#error-explanation
-        %h2
-          = pluralize(map.errors.count, "error")
-          prohibited this map from being saved:
-        %ul
-          = list_of map.errors.full_messages do |msg|
-            = msg
+.section
+  .container
+    = form_with model: map, local: true do |form|
+      - if map.errors.any?
+        .content
+          .twelve.columns#error-explanation
+            %h2
+              = pluralize(map.errors.count, "error")
+              prohibited this map from being saved:
+            %ul
+              = list_of map.errors.full_messages do |msg|
+                = msg
 
-  .field
-    = form.label :name, class: "label"
-    .control
-      = form.text_field :name, autofocus: true, class: "input"
+      .field
+        = form.label :name, class: "label"
+        .control
+          = form.text_field :name, autofocus: true, class: "input"
 
-  .field
-    = form.label :description, class: "label"
-    .control
-      = form.text_area :description, class: "textarea"
+      .field
+        = form.label :description, class: "label"
+        .control
+          = form.text_area :description, class: "textarea"
 
-  .field
-    .control
-      = form.submit "Save map", class: "button is-link"
+      .field
+        .control
+          = form.submit "Save map", class: "button is-link"
