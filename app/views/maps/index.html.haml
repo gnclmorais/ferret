@@ -1,19 +1,27 @@
-%h1 Maps#index
+- content_for :title, "Maps"
 
-= link_to "New map >", new_map_path
+.section
+  .content
+    = link_to "New map >", new_map_path
 
 %hr
 
-- @maps.each do |map|
-  %p
-    = map.name
-    %br
-    = map.description
-    %br
-    = link_to "Show >", map_path(map)
-    = link_to "Edit >", edit_map_path(map)
-    = link_to "Destroy!", map_path(map), method: :delete,
-      data: { confirm: "Are you sure?" }
-
 - if @maps.empty?
   No maps available!
+- else
+  .section
+    .content
+      %h2.title Current maps
+
+      - @maps.each do |map|
+        %p
+          %strong= map.name
+          %br
+          = map.description
+          %br
+          = link_to "Show >", map_path(map)
+          |
+          = link_to "Edit >", edit_map_path(map)
+          |
+          = link_to "Destroy >", map_path(map),
+            method: :delete, data: { confirm: "Are you sure?" }

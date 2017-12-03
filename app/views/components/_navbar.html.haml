@@ -1,5 +1,15 @@
-%nav.navbar.is-fixed-top.is-primary{ "aria-label": "main navigation",
-                                     role: "navigation" }
+:ruby
+  attributes = {
+    "aria-label": "main navigation",
+    role: "navigation"
+  }
+
+%nav.navbar.is-fixed-top.is-primary{ attributes }
   .navbar-brand
-    %a.navbar-item{ href: "/" }
-      %h1.title Ferret
+    = link_to "/", class: "navbar-item" do
+      - if content_for(:title)
+        %h1.title
+          Ferret >
+          = content_for(:title)
+      - else
+        %h1.title Ferret
