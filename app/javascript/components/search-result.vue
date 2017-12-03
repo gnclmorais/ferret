@@ -1,13 +1,17 @@
 <template>
-<tr>
-  <td :data-id="place.id" :data-place-id="place.place_id">
+<div class="media">
+  <div class="media-left">
+    <button title="Add place" class="button" v-on:click="addToList(place)">
+      +
+    </button>
+  </div>
+  <div class="media-content" :data-id="place.id" :data-place-id="place.place_id">
     <strong>{{ place.name }}</strong>
     <br>
     {{ place.formatted_address }}
     <br>
-    <button v-on:click="addToList(place)">+ add</button>
-  </td>
-</tr>
+  </div>
+</div>
 </template>
 
 <script>

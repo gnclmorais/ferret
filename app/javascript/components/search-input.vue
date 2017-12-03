@@ -1,8 +1,15 @@
 <template>
-<input type="text"
-       placeholder="Search by name or address"
-       v-model="query"
-       v-on:input="debounceInput" />
+<div class="field">
+  <label for="search-input" class="label">Search</label>
+  <div class="control">
+    <input type="input"
+           name="search-input"
+           class="input"
+           placeholder="e.g. Happy Bones nyc"
+           v-model="query"
+           v-on:input="debounceInput" />
+  </div>
+</div>
 </template>
 
 <script>

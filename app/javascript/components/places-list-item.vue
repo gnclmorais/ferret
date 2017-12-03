@@ -1,17 +1,18 @@
 <template>
-<tr>
-  <td :data-id="place.id" :data-place-id="place.place_id">
-    <div class="row">
-      <div class="nine columns">
-        <div><strong>{{ place.name }}</strong></div>
-        <div>{{ place.address }}</div>
-      </div>
-      <div class="two columns">
-        <button v-on:click="remove(place)">Remove</button>
-      </div>
+<div class="media" :data-id="place.id" :data-place-id="place.place_id">
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong>{{ place.name }}</strong>
+        <br>
+        {{ place.address }}
+      </p>
     </div>
-  </td>
-</tr>
+  </div>
+  <div class="media-right">
+    <button class="button" v-on:click="remove(place)">Remove</button>
+  </div>
+</div>
 </template>
 
 <script>
