@@ -5,14 +5,14 @@
         %h1.title= @map.name
         %h2.subtitle= @map.description
   .columns.u-fullheight
-    .column.is-one-third
+    .column
       = render "form", map: @map
       %hr
       Currently on the map:
       %v-places-list{ ":map": @map.id, ":places": @map.places.to_json }
-    .column.is-one-third
+    .column
       %v-search-panel{ ":map": @map.id }
-    .column.is-one-third.map-column.u-fullheight
+    .column.map-column
       %v-map
 
 = javascript_pack_tag "hello_vue"

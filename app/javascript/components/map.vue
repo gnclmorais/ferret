@@ -297,6 +297,8 @@ export default {
         zoom: 8,
       });
 
+      window.map = map;
+
       console.log('Key:', process.env.GOOGLE_MAPS_API_KEY);
     })
     .catch(function (err) {

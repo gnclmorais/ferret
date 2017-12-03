@@ -1,12 +1,10 @@
 <template>
-<table v-if="localPlaces.length">
-  <tbody>
-    <places-list-item v-for="(place, index) in localPlaces" :key="place.id"
-                      :place="place" :map="map"
-                      v-on:removePlace="remove(index)">
-    </places-list-item>
-  </tbody>
-</table>
+<div class="content" v-if="localPlaces.length">
+  <places-list-item v-for="(place, index) in localPlaces" :key="place.id"
+                    :place="place" :map="map"
+                    v-on:removePlace="remove(index)">
+  </places-list-item>
+</div>
 <p v-else>No places :(</p>
 </template>
 

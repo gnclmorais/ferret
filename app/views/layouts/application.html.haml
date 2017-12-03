@@ -1,5 +1,5 @@
 !!!
-%html{ lang: "en" }
+%html{ lang: "en", class: "has-navbar-fixed-top" }
   %head
     %title Ferret
     = csrf_meta_tags
@@ -14,4 +14,5 @@
     =# stylesheet_pack_tag "hello_vue"
 
   %body
+    = render "components/navbar"
     = yield
