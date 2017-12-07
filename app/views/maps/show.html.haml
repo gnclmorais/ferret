@@ -1,24 +1,16 @@
-= link_to "< Back to map list", maps_path
+- content_for :title, @map.name
 
-%hr
+- content_for :breadcrumbs,
+  breadcrumbs([["Maps", maps_path], [@map.name, map_path(@map)]])
 
-.row
-  .five.columns
-    %p
-      %strong Name:
-      = @map.name
+%section.hero.is-primary
+  .hero-body
+    .container
+      %h2.subtitle= @map.description
+      %h2.subtitle
+        = link_to edit_map_path(@map) do
+          %strong Edit >
 
-    %p
-      %strong Description:
-      = @map.description
-  .seven.columns
-    #map
-    :javascript
-      function initMap() {
-        // Create a map object and specify the DOM element for display.
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
-      }
-    -#%script(src="https://maps.googleapis.com/maps/api/js?key=#{@map_key}&callback=initMap")
+%section
+  .container
+    TODO: Show list of places and map

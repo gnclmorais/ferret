@@ -1,7 +1,8 @@
 - content_for :title, "New map"
 
-= render "form", map: @map
+- content_for :breadcrumbs,
+  breadcrumbs([["Maps", maps_path], ["New map", new_map_path]])
 
-%hr
-
-= link_to "< Back to map list", maps_path
+.section
+  .container
+    = render "form", map: @map
