@@ -2,17 +2,17 @@
 
 - content_for :breadcrumbs, breadcrumbs([["Maps", maps_path]])
 
-.section
-  .content
-    = link_to "New map >", new_map_path
-
-%hr
+%section.hero.is-primary
+  .hero-body
+    .container
+      = link_to new_map_path do
+        %h1.title New map >
 
 - if @maps.empty?
   No maps available!
 - else
   .section
-    .content
+    .container
       %h2.title Current maps
 
       - @maps.each do |map|

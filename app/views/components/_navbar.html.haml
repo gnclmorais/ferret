@@ -1,23 +1,15 @@
-:ruby
-  attributes = {
-    "aria-label": "main navigation",
-    role: "navigation"
-  }
+- attributes = { "aria-label": "main navigation", role: "navigation" }
 
-%nav.navbar.is-fixed-top.is-primary{ attributes }
-  .navbar-brand
-    = link_to "/", class: "navbar-item" do
-      - if content_for(:title)
-        %h1.title
-          Ferret >
-          = content_for(:title)
-      - else
-        %h1.title Ferret
-
-- if content_for(:breadcrumbs)
-  %nav.navbar
-    .navbar-item
-      %nav.breadcrumb{ "aria-label": "breadcrumbs" }
-        %ul
-          %li= link_to "Home", "/"
-          = content_for(:breadcrumbs)
+%section.hero.is-info{ attributes }
+  .hero-body
+    .container
+      %h1.title
+        = content_for?(:title) ? content_for(:title) : "Ferret"
+      %h2.subtitle
+        - if content_for?(:breadcrumbs)
+          %nav.breadcrumb{ "aria-label": "breadcrumbs" }
+            %ul
+              %li= link_to "Home", "/"
+              = content_for(:breadcrumbs)
+        - else
+          All the places in a single place.
