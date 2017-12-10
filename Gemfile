@@ -43,7 +43,6 @@ group :development, :test do
   # Env config
   gem 'dotenv-rails'
 end
-gem 'gon' # TODO: Maybe pass this to development...?
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
