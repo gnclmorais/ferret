@@ -1,11 +1,6 @@
 const Dotenv = require('dotenv-webpack')
 
 module.exports = {
-  resolve: {
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js',
-    }
-  },
   module: {
     loaders: [{
       test: /\.js$/,
