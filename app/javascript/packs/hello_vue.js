@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     data: {
       message: 'Can you say hello?'
     },
+    template: '#template-edit-map',
     components: {
       'v-places-list': List,
       'v-search-panel': Search,
