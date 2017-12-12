@@ -1,7 +1,7 @@
 <template>
 <table v-if="results.length">
   <tbody>
-    <search-result v-for="place in results" :place="place" :map="map" >
+    <search-result v-for="place in results" :place="place" :map="map" :key="place.id">
     </search-result>
   </tbody>
 </table>

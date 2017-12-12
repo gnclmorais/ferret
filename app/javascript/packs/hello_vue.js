@@ -47,8 +47,12 @@ import Search from '../components/panel-search.vue'
 Vue.use(VueResource)
 
 document.addEventListener('DOMContentLoaded', () => {
+  // TODO: Remove when solved
+  Vue.config.devtools = true;
+
   const app = new Vue({
     el: '#edit-map',
+    template: '#template-edit-map',
     data: {
       message: 'Can you say hello?'
     },
