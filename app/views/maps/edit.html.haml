@@ -3,19 +3,22 @@
 - content_for :breadcrumbs,
   breadcrumbs([["Maps", maps_path], [@map.name, edit_map_path(@map)]])
 
-#edit-map.u-fullheight
-  .section
-    .content
-      .columns.u-fullheight
-        .column
-          .box
-            = render "form", map: @map
-            %hr
-            %v-places-list{ ":map": @map.id, ":places": @map.places.to_json }
-        .column
-          %v-search-panel{ ":map": @map.id }
-        .column.map-column
-          %v-map
+#edit-map
+
+%script{ type: "x-template", id: "template-edit-map" }
+  .u-fullheight
+    .section
+      .content
+        .columns.u-fullheight
+          .column
+            .box
+              = render "form", map: @map
+              %hr
+              %v-places-list{ ":map": @map.id, ":places": @map.places.to_json }
+          .column
+            %v-search-panel{ ":map": @map.id }
+          .column.map-column
+            %v-map
 
 = javascript_pack_tag "hello_vue"
 = stylesheet_pack_tag "hello_vue"
