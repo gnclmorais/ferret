@@ -52,12 +52,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   new Vue({
     el: '#places-list',
-    render: h => h(List),
+    render(h) {
+      return h(List, {
+        props: {
+          'map': JSON.parse(this.$el.attributes[":map"].value),
+          'places': JSON.parse(this.$el.attributes[":places"].value),
+        },
+      });
+    },
   })
 
   new Vue({
     el: '#search-panel',
-    render: h => h(Search),
+    render(h) {
+      return h(Search, {
+        props: {
+          'map': JSON.parse(this.$el.attributes[":map"].value),
+        },
+      });
+    },
   })
 
   new Vue({
