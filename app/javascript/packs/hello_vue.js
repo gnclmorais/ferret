@@ -52,23 +52,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   new Vue({
     el: '#places-list',
-    components: {
-      'v-places-list': List
-    },
+    render: h => h(List),
   })
 
   new Vue({
     el: '#search-panel',
-    components: {
-      'v-search-panel': Search,
-    },
+    render: h => h(Search),
   })
 
   new Vue({
     el: '#map',
-    components: {
-      'v-map': Map,
-    },
+    render: h => h(Map),
   })
 
   // const app = new Vue({

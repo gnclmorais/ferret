@@ -14,15 +14,12 @@
             .box
               = render "form", map: @map
               %hr
-              #places-list
-                %v-places-list{ ":map": @map.id, ":places": @map.places.to_json }
+              #places-list{ ":map": @map.id, ":places": @map.places.to_json }
           .column
-            #search-panel
-              %v-search-panel{ ":map": @map.id }
+            #search-panel{ ":map": @map.id }
           .column
             .map-column
               #map
-                %v-map
 
 = javascript_pack_tag "hello_vue"
 = stylesheet_pack_tag "hello_vue"
