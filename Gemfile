@@ -39,7 +39,10 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
+  gem 'chromedriver-helper'
   gem 'selenium-webdriver'
+  # Helpers & utils
+  gem 'factory_bot_rails'
   # Env config
   gem 'dotenv-rails'
 end

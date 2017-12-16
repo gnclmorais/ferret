@@ -6,6 +6,10 @@ class PinTest < ActiveSupport::TestCase
     @place = Place.new(name: 'Dao', description: 'Coffee!', address: 'The Mall')
   end
 
+  test 'has a valid factory' do
+    assert_valid? build(:pin)
+  end
+
   test 'pin requires a place' do
     pin = Pin.new(map: @map)
     refute pin.valid?
