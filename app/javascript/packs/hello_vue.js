@@ -50,17 +50,38 @@ document.addEventListener('DOMContentLoaded', () => {
   // TODO: Remove when solved
   Vue.config.devtools = true;
 
-  const app = new Vue({
-    el: '#edit-map',
-    template: '#template-edit-map',
-    data: {
-      message: 'Can you say hello?'
-    },
-    template: '#template-edit-map',
+  new Vue({
+    el: '#places-list',
     components: {
-      'v-places-list': List,
+      'v-places-list': List
+    },
+  })
+
+  new Vue({
+    el: '#search-panel',
+    components: {
       'v-search-panel': Search,
+    },
+  })
+
+  new Vue({
+    el: '#map',
+    components: {
       'v-map': Map,
     },
   })
+
+  // const app = new Vue({
+  //   el: '#edit-map',
+  //   template: '#template-edit-map',
+  //   data: {
+  //     message: 'Can you say hello?'
+  //   },
+  //   template: '#template-edit-map',
+  //   components: {
+  //     'v-places-list': List,
+  //     'v-search-panel': Search,
+  //     'v-map': Map,
+  //   },
+  // })
 })
