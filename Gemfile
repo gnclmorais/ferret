@@ -45,6 +45,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   # Env config
   gem 'dotenv-rails'
+  # Testing setup
+  gem 'minitest-reporters'
 end
 
 group :development do
