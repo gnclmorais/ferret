@@ -3,7 +3,7 @@
   <label for="search-input" class="label">Search</label>
   <div class="control">
     <input type="input"
-           name="search-input"
+           id="search-input"
            class="input"
            placeholder="e.g. Happy Bones nyc"
            v-model="query"

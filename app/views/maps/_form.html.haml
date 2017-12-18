@@ -12,12 +12,12 @@
   .field
     = form.label :name, class: "label"
     .control
-      = form.text_field :name, autofocus: true, class: "input"
+      = form.text_field :name, id: :map_name, autofocus: true, class: "input"
 
   .field
     = form.label :description, class: "label"
     .control
-      = form.text_area :description, class: "textarea"
+      = form.text_area :description, id: :map_description, class: "textarea"
 
   .field
     .control

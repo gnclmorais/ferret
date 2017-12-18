@@ -8,5 +8,6 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import 'bulma/bulma.sass';
-
 import '../../stylesheets/general.css';
+
+import 'jquery-ujs';
