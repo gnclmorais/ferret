@@ -2,19 +2,19 @@
 
 - content_for :breadcrumbs, breadcrumbs([["Maps", maps_path]])
 
-%section.hero.is-primary
-  .hero-body
-    .container
+.columns.is-gapless
+  .column
+    %section.hero.is-success
       = link_to new_map_path do
-        %h1.title New map >
-
-- if @maps.empty?
-  No maps available!
-- else
-  .section
-    .container
-      %h2.title Current maps
-
+        .hero-body
+          %h1.title New map >
+  .column
+    %section.hero.is-primary
+      .hero-body
+        %h1.title Your maps
+    .section
+      - if @maps.empty?
+        You haven’t created a map yet
       - @maps.each do |map|
         %p
           %strong= map.name
