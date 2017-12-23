@@ -3,7 +3,6 @@
 - content_for :breadcrumbs,
   breadcrumbs([["Maps", maps_path], [@map.name, edit_map_path(@map)]])
 
-
 -#%script{ type: "x-template", id: "template-edit-map" }
 #edit-map
   .u-fullheight
@@ -13,6 +12,7 @@
           .column#map-details
             .box
               = render "form", map: @map
+              = link_to "Preview >", map_path(@map)
               %hr
               #places-list{ ":map": @map.id, ":places": @map.places.to_json }
           .column
