@@ -17,8 +17,12 @@
   .field
     = form.label :description, class: "label"
     .control
-      = form.text_area :description, id: :map_description, class: "textarea"
+      = form.text_area :description, id: :map_description,
+        rows: "2", class: "textarea"
 
   .field
     .control
       = form.submit "Save map", class: "button is-link"
+      - if map.persisted?
+        = link_to "Preview", map_path(map), class: "button", target: "_blank"
+

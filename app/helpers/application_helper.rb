@@ -1,4 +1,5 @@
 module ApplicationHelper
+  # TODO: Change pages into *pages
   def breadcrumbs(pages)
     klass = ->(total, index) { 'is-active' if total == index }
 

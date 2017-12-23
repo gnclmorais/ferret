@@ -9,11 +9,6 @@ body {
   min-height: 100%;
 }
 
-/**
- * Map
- */
-.map-column {
-  position: relative;
-  width: 100%;
+.u-fullheight {
   height: 100%;
 }

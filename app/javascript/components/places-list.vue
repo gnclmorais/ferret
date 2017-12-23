@@ -6,7 +6,9 @@
                     v-on:removePlace="remove(index)">
   </places-list-item>
 </div>
-<p v-else class="has-text-centered">No places in the map</p>
+<p v-else class="has-text-centered">
+  No places in the map yet
+</p>
 </template>
 
 <script>
