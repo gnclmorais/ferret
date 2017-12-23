@@ -5,7 +5,6 @@
     </search-result>
   </tbody>
 </table>
-<p v-else>No places :(</p>
 </template>
 
 <script>
