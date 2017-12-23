@@ -7,7 +7,7 @@
     = stylesheet_pack_tag "application"
 
   %body
-    = render "components/navbar"
-    .body
+    .min-height
+      = render "components/navbar"
       = yield
     = render "components/footer"
