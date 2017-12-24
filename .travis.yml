@@ -3,3 +3,5 @@ cache:
   - yarn
 before_script:
   - psql -c 'create database ferret_test;' -U postgres
+script:
+  - bin/rails assets:precompile
