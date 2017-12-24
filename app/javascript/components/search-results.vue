@@ -1,10 +1,8 @@
 <template>
-<table v-if="results.length">
-  <tbody>
-    <search-result v-for="place in results" :place="place" :map="map" :key="place.id">
-    </search-result>
-  </tbody>
-</table>
+<div class="box is-paddingless is-clipped" v-if="results.length">
+  <search-result v-for="place in results" :place="place" :map="map" :key="place.id">
+  </search-result>
+</div>
 </template>
 
 <script>
@@ -18,6 +16,5 @@ export default {
 };
 </script>
 
-<style>
-
+<style lang="scss">
 </style>

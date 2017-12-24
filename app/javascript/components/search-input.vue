@@ -1,16 +1,18 @@
 <template>
-<div class="field has-addons">
-  <label for="search-input" class="label is-hidden">Search</label>
-  <div class="control is-expanded">
-    <input type="input"
-           id="search-input"
-           class="input"
-           placeholder="e.g. Happy Bones nyc"
-           v-model="query"
-           v-on:input="debounceInput" />
-  </div>
-  <div class="control">
-    <button class="button is-link" v-on:click="debounceInput">Search</button>
+<div class="box is-paddingless is-clipped">
+  <div class="field has-addons">
+    <label for="search-input" class="label is-hidden">Search</label>
+    <div class="control is-expanded">
+      <input type="input"
+             id="search-input"
+             class="input"
+             placeholder="e.g. Happy Bones nyc"
+             v-model="query"
+             v-on:input="debounceInput" />
+    </div>
+    <div class="control">
+      <button class="button is-link" v-on:click="debounceInput">Search</button>
+    </div>
   </div>
 </div>
 </template>
