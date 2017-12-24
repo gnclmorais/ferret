@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="panel-search">
     <search-input v-on:search="search"></search-input>
     <search-list :map="map" :results="places"></search-list>
   </div>
@@ -43,5 +43,9 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+.panel-search {
+  position: relative;
+  z-index: 1;
+}
 </style>

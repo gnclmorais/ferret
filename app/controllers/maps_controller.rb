@@ -13,6 +13,8 @@ class MapsController < ApplicationController
 
   def edit
     @map = Map.find(params[:id])
+
+    render layout: "application_without_navbar"
   end
 
   def create

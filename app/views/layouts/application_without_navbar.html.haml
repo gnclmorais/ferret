@@ -1,0 +1,12 @@
+!!!
+%html{ lang: "en" }
+  %head
+    %title Ferret
+    = csrf_meta_tags
+    = javascript_pack_tag "application"
+    = stylesheet_pack_tag "application"
+
+  %body
+    .min-height
+      = yield
+    = render "components/footer"
