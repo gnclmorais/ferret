@@ -41,8 +41,8 @@ import Vue from 'vue'
 import VueResource from 'vue-resource'
 
 import List from '../components/places-list.vue'
-import Map from '../components/map.vue'
 import Search from '../components/panel-search.vue'
+import Map from '../components/map.vue'
 
 Vue.use(VueResource)
 
@@ -76,19 +76,5 @@ document.addEventListener('DOMContentLoaded', () => {
   new Vue({
     el: '#map',
     render: h => h(Map),
-  })
-
-  // const app = new Vue({
-  //   el: '#edit-map',
-  //   template: '#template-edit-map',
-  //   data: {
-  //     message: 'Can you say hello?'
-  //   },
-  //   template: '#template-edit-map',
-  //   components: {
-  //     'v-places-list': List,
-  //     'v-search-panel': Search,
-  //     'v-map': Map,
-  //   },
-  // })
+  });
 })

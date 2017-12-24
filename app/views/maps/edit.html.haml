@@ -4,19 +4,18 @@
   breadcrumbs([["Maps", maps_path], [@map.name, edit_map_path(@map)]])
 
 #edit-map
-  .section
-    .content
-      .columns
-        .column#map-details
-          .box
-            = render "form", map: @map
-            %hr
-            #places-list{ ":map": @map.id, ":places": @map.places.to_json }
-        .column
-          #search-panel{ ":map": @map.id }
-        .column
-          .map-column
-            #map
+  .columns.is-variable.is-2
+    .column
+      #places-panel
+        .box
+          = render "form", map: @map
+          %hr
+          #places-list{ ":map": @map.id, ":places": @map.places.to_json }
+    .column
+      #search-panel{ ":map": @map.id }
+    .column
+      #map-panel
+        #map
 
 = javascript_pack_tag "hello_vue"
 = stylesheet_pack_tag "hello_vue"

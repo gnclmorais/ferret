@@ -1,6 +1,5 @@
 <template>
 <div class="content" v-if="localPlaces.length">
-  <h3>Currently on the map:</h3>
   <places-list-item v-for="(place, index) in localPlaces" :key="place.id"
                     :place="place" :map="map"
                     v-on:removePlace="remove(index)">
@@ -41,6 +40,9 @@ export default {
 };
 </script>
 
-<style>
-
+<style lang="scss">
+.panel-places {
+  position: relative;
+  z-index: 1;
+}
 </style>

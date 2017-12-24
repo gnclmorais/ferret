@@ -1,7 +1,7 @@
 <template>
-<div class="field is-horizontal">
+<div class="field has-addons">
   <label for="search-input" class="label is-hidden">Search</label>
-  <div class="control">
+  <div class="control is-expanded">
     <input type="input"
            id="search-input"
            class="input"
@@ -10,7 +10,7 @@
            v-on:input="debounceInput" />
   </div>
   <div class="control">
-    <button class="button" v-on:click="debounceInput">Search</button>
+    <button class="button is-link" v-on:click="debounceInput">Search</button>
   </div>
 </div>
 </template>

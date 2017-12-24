@@ -16,6 +16,12 @@ export default {
       var map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: -34.397, lng: 150.644 },
         zoom: 8,
+        mapTypeControl: true,
+        mapTypeControlOptions: {
+          style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+          position: google.maps.ControlPosition.BOTTOM_CENTER
+        },
+        fullscreenControl: false,
       });
 
       window.map = map;
@@ -40,7 +46,6 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -1;
   background-color: lightblue; // TODO: Remove this
 }
 </style>

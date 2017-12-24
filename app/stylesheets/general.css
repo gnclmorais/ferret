@@ -12,3 +12,14 @@ body {
 .u-fullheight {
   height: 100%;
 }
+
+/* Overlay important panels over map */
+#places-panel,
+#search-panel {
+  position: relative;
+  z-index: 1;
+}
+
+#edit-map {
+  margin: 15px;
+}
