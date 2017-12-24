@@ -1,5 +1,5 @@
 <template>
-<div class="media">
+<div class="media search-result">
   <div class="media-left">
     <button title="Add place" class="button" v-on:click="addToList(place)">
       +
@@ -41,6 +41,17 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+.search-result {
+  padding: 10px;
+}
+.search-result:nth-child(even) { background-color: #ffffff; }
+.search-result:nth-child(odd)  { background-color: #f8f8f8; }
 
+// // // // // // // // // // // // // // // // // // // // // // // // // // //
+// Overrides
+//
+.media + .media {
+  margin: 0;
+}
 </style>
