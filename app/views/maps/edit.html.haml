@@ -10,7 +10,7 @@
         .box
           = render "form", map: @map
           %hr
-          #places-list{ ":map": @map.id, ":places": @map.places.to_json }
+          #places-list{ ":map": @map.id, ":places": @map.pins.to_json }
     .column
       #search-panel{ ":map": @map.id }
     .column
