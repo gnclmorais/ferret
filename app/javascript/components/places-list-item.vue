@@ -3,9 +3,9 @@
   <div class="media-content">
     <div class="content">
       <p>
-        <strong>{{ place.name }}</strong>
+        <strong>{{ place.place.name }}</strong>
         <br>
-        {{ place.address }}
+        {{ place.place.address }}
       </p>
     </div>
   </div>
