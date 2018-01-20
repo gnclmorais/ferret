@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20171010082745) do
     t.string "google_place_id"
     t.text "address", null: false
     t.string "name", null: false
-    t.text "description", null: false
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
