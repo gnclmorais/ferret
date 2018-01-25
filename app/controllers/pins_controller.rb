@@ -17,19 +17,15 @@ class PinsController < ApplicationController
   end
 
   def destroy
-    id = params.fetch(:id, nil)
-    pin = Pin.find(id)
+    pin = pin_from_params
     place = pin.place
 
     respond_to do |format|
-      if pin.delete
-        # TODO Send response
-        format.json { head :no_content }
-
-        place.delete if place.pins.empty?
-      else
-        # TODO Send response
-        format.json do
+      format.json do
+        if pin.delete
+          place.delete if place.pins.empty?
+          head :no_content
+        else
           render json: { message: pin.errors }, status: :unprocessable_entity
         end
       end
@@ -43,18 +39,25 @@ class PinsController < ApplicationController
       map_id, place_details = pin_params.values_at(:map, :place)
 
       map = Map.find(map_id)
+      return if map.blank?
+
       place = Place.find_or_create_by(attributes(place_details))
 
       Pin.create(map: map, place: place)
     end
+    # TODO: Try with invalid inputs
   end
 
   def attributes(place)
     {
-      google_place_id: place[:place_id],
       name: place[:name],
-      address: place[:address]
+      address: place[:address],
+      google_place_id: place[:place_id]
     }
+  end
+
+  def pin_from_params
+    Pin.find(params.fetch(:id, nil))
   end
 
   def pin_params
