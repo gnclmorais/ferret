@@ -9,9 +9,9 @@ class PinsControllerTest < ActionDispatch::IntegrationTest
       assert_no_difference 'Place.count' do
         post pins_path, params: {
           map: map.id, place: {
-            id: place.id,
             name: place.name,
-            address: place.address
+            address: place.address,
+            place_id: place.google_place_id
           },
           format: :json
         }
@@ -28,14 +28,50 @@ class PinsControllerTest < ActionDispatch::IntegrationTest
       assert_difference 'Place.count' do
         post pins_path, params: {
           map: map.id, place: {
-            id: 123,
-            lace_id: 'random_place_id',
             name: attributes_for(:place)[:name],
-            address: attributes_for(:place)[:address]
+            address: attributes_for(:place)[:address],
+            place_id: 'random_place_id'
           },
           format: :json
         }
       end
+    end
+
+    assert_response :success
+  end
+
+  test 'no map' do
+    assert_no_difference ['Pin.count', 'Place.count'] do
+      post pins_path, params: {
+        map: 123,
+        place: {
+          name: attributes_for(:place)[:name],
+          address: attributes_for(:place)[:address],
+          place_id: 'random_place_id'
+        },
+        format: :json
+      }
+    end
+
+    assert_response :not_found
+  end
+
+  test '#destroy removes a pin' do
+    pin = create(:pin)
+
+    assert_difference 'Pin.count', -1 do
+      delete pin_path(pin.id), params: { format: :json }
+    end
+
+    assert_response :success
+  end
+
+  test '#destroy removes a pin and its place if no other pin exists for it' do
+    pin = create(:pin)
+
+    assert_equal 1, Place.count
+    assert_difference 'Place.count', -1 do
+      delete pin_path(pin.id), params: { format: :json }
     end
 
     assert_response :success
