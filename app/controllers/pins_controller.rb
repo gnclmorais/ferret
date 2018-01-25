@@ -1,29 +1,19 @@
 class PinsController < ApplicationController
-  # TODO Fix this
+  # TODO: Fix this
   skip_before_action :verify_authenticity_token
 
   def create
     respond_to do |format|
-      pin = create_pin
+      pin = ensure_pin
 
-      # TODO Improve this condition
-      if pin.is_a?(ActiveRecord::Base) && pin.valid?
-        format.json { render json: { pin: pin, place: pin.place }, status: 200 }
-      else
-        format.json do
-          render json: { message: pin }, status: :unprocessable_entity
+      format.json do
+        if pin.valid?
+          render json: pin.to_json, status: 200
+        else
+          render json: { errors: pin.errors }, status: :conflict
         end
       end
     end
-
-    # TODO: Make sure we have the required data:
-    #       > map ID
-    #       > place details (Place ID, address, etc)
-    #       Look for the place using it's place ID
-    #       > If found, create only a Pin
-    #       > Else, create a Place first, followed by a Pin
-    #       Think about to add details to the recently created pins
-    #       > Check how Fourquare does it
   end
 
   def destroy
@@ -48,37 +38,28 @@ class PinsController < ApplicationController
 
   private
 
-  def create_pin
+  def ensure_pin
     ActiveRecord::Base.transaction do
       map_id, place_details = pin_params.values_at(:map, :place)
 
       map = Map.find(map_id)
+      place = Place.find_or_create_by(attributes(place_details))
 
-      formatted = format(place_details)
-
-      place = Place.find_by(google_place_id: formatted[:google_place_id]) ||
-              Place.create!(formatted)
-
-      Pin.create!(map: map, place: place)
-      #Pin.new(map: map, place: place)
+      Pin.create(map: map, place: place)
     end
-  rescue => e
-    e.message
   end
 
-  def format(place)
+  def attributes(place)
     {
       google_place_id: place[:place_id],
       name: place[:name],
-      address: place[:formatted_address],
-      # TODO: Check if description is really necessary
-      description: place[:types].join(', ')
+      address: place[:address]
     }
   end
 
   def pin_params
     params.require(:map)
-    params.require(:place)
+    params.require(:place).permit(:id, :place_id, :name, :address)
     params
   end
 end
