@@ -17,6 +17,7 @@
 <script>
 import { PlacesBus } from '../buses.js'
 import MapUtils from '../utils/maps'
+import * as _ from 'lodash'
 
 export default {
   props: ['map', 'place'],
@@ -52,19 +53,28 @@ export default {
     },
     addToList: function (place, event) {
       console.log('Map:', this.map);
-      console.log('Place:', this.place);
+      console.log('Place:', place);
+
+      const placeAttributes = _.pick(place, [
+        'id', 'place_id', 'name', 'formatted_address'
+      ]);
 
       this.$http.post('/pins', {
-        // TODO pin details
         map: this.map,
-        place: place,
+        place: placeAttributes,
       }).then(success => {
-        const data = success.body
-
-        PlacesBus.$emit('addPlace', data.place);
+        PlacesBus.$emit('addPlace', success.body);
       }, failure => {
-        // TODO error callback
-        console.log('response failure:', failure);
+        switch (failure.status) {
+          case 409:
+            // TODO: Show toast with error
+            console.log('Already present');
+            break;
+          default:
+            // TODO: Show toast with error
+            console.log('Request failed, sorry :(');
+            break;
+        }
       });
     },
   },
