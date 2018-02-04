@@ -40,6 +40,11 @@ export default {
   height: 100%;
 }
 
+.map-wrapper {
+  min-height: 100%;
+  position: relative;
+}
+
 #map {
   position: absolute;
   top: 0;
