@@ -1,10 +1,11 @@
 - attributes = { "aria-label": "main navigation", role: "navigation" }
 
-%section.hero.is-info{ attributes }
+%section.hero.is-info.navigation{ attributes }
   .hero-body
     .container
       %h1.title
         = content_for?(:title) ? content_for(:title) : "Ferret"
+        = link_to "Sign in", sign_in_path, class: "is-pulled-right"
       %h2.subtitle
         - if content_for?(:breadcrumbs)
           %nav.breadcrumb{ "aria-label": "breadcrumbs" }

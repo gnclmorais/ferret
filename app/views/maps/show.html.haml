@@ -3,14 +3,18 @@
 - content_for :breadcrumbs,
   breadcrumbs([["Maps", maps_path], [@map.name, map_path(@map)]])
 
-%section.hero.is-primary
-  .hero-body
-    .container
-      %h2.subtitle= @map.description
-      %h2.subtitle
-        = link_to edit_map_path(@map) do
-          %strong Edit >
+%section.section--tall
+  .columns.is-gapless.columns--tall
+    .column.is-one-third
+      .hero.is-primary
+        .hero-body
+          .container
+            %h2.subtitle= @map.description
+            %h2.subtitle
+              = link_to edit_map_path(@map) do
+                %strong Edit >
+    .column.map-wrapper
+      #map
 
-%section
-  .container
-    TODO: Show list of places and map
+= javascript_pack_tag "map_show"
+= stylesheet_pack_tag "map_show"
