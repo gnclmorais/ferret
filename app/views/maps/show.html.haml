@@ -10,9 +10,10 @@
         .hero-body
           .container
             %h2.subtitle= @map.description
-            %h2.subtitle
-              = link_to edit_map_path(@map) do
-                %strong Edit >
+            - if signed_in?
+              %h2.subtitle
+                = link_to edit_map_path(@map) do
+                  %strong Edit >
     .column.map-wrapper
       #map
 
