@@ -4,26 +4,31 @@
 
 .columns.is-gapless
   .column
-    %section.hero.is-success
-      = link_to new_map_path do
+    %section.section
+      %h2.title.is-2 Available maps
+      = render @maps
+      =# render "maps/map_card"
+  - if signed_in?
+    .column
+      %section.hero.is-success
+        = link_to new_map_path do
+          .hero-body
+            %h1.title New map >
+      %section.hero.is-primary
         .hero-body
-          %h1.title New map >
-  .column
-    %section.hero.is-primary
-      .hero-body
-        %h1.title Your maps
-    .section
-      - if @maps.empty?
-        You haven’t created a map yet
-      - @maps.each do |map|
-        %p
-          %strong= map.name
-          %br
-          = map.description
-          %br
-          = link_to "Show >", map_path(map)
-          |
-          = link_to "Edit >", edit_map_path(map)
-          |
-          = link_to "Destroy >", map_path(map),
-            method: :delete, data: { confirm: "Are you sure?" }
+          %h1.title Your maps
+      .section
+        - if @maps.empty?
+          You haven’t created a map yet
+        - @maps.each do |map|
+          %p
+            %strong= map.name
+            %br
+            = map.description
+            %br
+            = link_to "Show >", map_path(map)
+            |
+            = link_to "Edit >", edit_map_path(map)
+            |
+            = link_to "Destroy >", map_path(map),
+              method: :delete, data: { confirm: "Are you sure?" }

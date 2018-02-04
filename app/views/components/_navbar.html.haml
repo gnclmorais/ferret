@@ -5,7 +5,11 @@
     .container
       %h1.title
         = content_for?(:title) ? content_for(:title) : "Ferret"
-        = link_to "Sign in", sign_in_path, class: "is-pulled-right"
+        - if signed_in?
+          = button_to "Sign out", sign_out_path, method: :delete,
+            class: "is-pulled-right"
+        - else
+          = link_to "Sign in", sign_in_path, class: "is-pulled-right"
       %h2.subtitle
         - if content_for?(:breadcrumbs)
           %nav.breadcrumb{ "aria-label": "breadcrumbs" }

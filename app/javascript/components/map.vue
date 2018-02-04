@@ -1,6 +1,5 @@
 <template lang="haml">
-.map-wrapper
-  #map
+#map
 </template>
 
 <script>
@@ -36,15 +35,6 @@ export default {
 </script>
 
 <style lang="scss">
-#edit-map {
-  height: 100%;
-}
-
-.map-wrapper {
-  min-height: 100%;
-  position: relative;
-}
-
 #map {
   position: absolute;
   top: 0;
