@@ -43,7 +43,7 @@ class PinsController < ApplicationController
 
       place = Place.find_or_create_by(attributes(place_details))
 
-      Pin.create(map: map, place: place)
+      Pin.create(map_id: map.id, place_id: place.id)
     end
     # TODO: Try with invalid inputs
   end
@@ -51,7 +51,7 @@ class PinsController < ApplicationController
   def attributes(place)
     {
       name: place[:name],
-      address: place[:address],
+      address: place[:formatted_address],
       google_place_id: place[:place_id]
     }
   end

@@ -32,8 +32,8 @@ en:
         submit: Sign in
       user:
         create: Sign up
-  layouts:
-    application:
+  components:
+    navbar:
       sign_in: Sign in
       sign_out: Sign out
   passwords:

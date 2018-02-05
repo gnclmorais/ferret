@@ -1,7 +1,7 @@
 <template>
 <div class="content" v-if="localPlaces.length">
   <places-list-item v-for="(place, index) in localPlaces" :key="place.id"
-                    :place="place" :map="map"
+                    :loggedIn="loggedIn" :place="place" :map="map"
                     v-on:removePlace="remove(index)">
   </places-list-item>
 </div>
@@ -16,7 +16,7 @@ import Item from './places-list-item.vue';
 import { PlacesBus } from '../buses.js'
 
 export default {
-  props: ['map', 'places'],
+  props: ['loggedIn', 'map', 'places'],
   data() {
     return {
       localPlaces: this.places
