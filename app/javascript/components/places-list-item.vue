@@ -9,7 +9,7 @@
       </p>
     </div>
   </div>
-  <div class="media-right">
+  <div class="media-right" v-show="loggedIn">
     <button class="button" v-on:click="remove(place)">Remove</button>
   </div>
 </div>
@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  props: ['place', 'map'],
+  props: ['loggedIn', 'place', 'map'],
   methods: {
     remove: function (place) {
       this.$http.delete('/pins/' + place.id)

@@ -2,12 +2,14 @@
 
 - content_for :breadcrumbs, breadcrumbs([["Maps", maps_path]])
 
-.columns.is-gapless
+.columns.is-gapless.columns--tall
   .column
     %section.section
       %h2.title.is-2 Available maps
-      = render @maps
-      =# render "maps/map_card"
+      - if @maps.any?
+        = render @maps
+      - else
+        No maps available
   - if signed_in?
     .column
       %section.hero.is-success

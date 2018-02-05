@@ -1,7 +1,9 @@
-.card
+.card.map-card
   .card-content
     .content
       %p.title.is-5= map.name
       %p= map.description
   %footer.card-footer
     = link_to "Show", map_path(map), class: "card-footer-item"
+    - if signed_in?
+      = link_to "Edit", edit_map_path(map), class: "card-footer-item"

@@ -29,11 +29,13 @@ body {
 
   /* as parent of <section> */
   display: flex;
-  flex-flow: column wrap;
+  flex-direction: column;
 }
 
 .navigation {
+  /* Don't grow or shrink */
   flex-grow: 0;
+  flex-shrink: 0;
 }
 
 .section--tall {

@@ -14,8 +14,14 @@
               %h2.subtitle
                 = link_to edit_map_path(@map) do
                   %strong Edit >
-    .column.map-wrapper
-      #map
+      #places-panel
+        .box
+          #places-list{ ":logged_in": current_user.present?.to_s,
+                        ":map": @map.id,
+                        ":places": @map.pins.to_json }
+    .column
+      .map-wrapper.u-fullheight
+        #map
 
 = javascript_pack_tag "map_show"
 = stylesheet_pack_tag "map_show"
