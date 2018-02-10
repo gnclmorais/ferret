@@ -28,5 +28,12 @@ module Ferret
     config.generators do |generators|
       generators.template_engine :haml
     end
+
+    # Set custom layouts for Clearance
+    config.to_prepare do
+      Clearance::PasswordsController.layout 'application_clearance'
+      Clearance::SessionsController.layout 'application_clearance'
+      Clearance::UsersController.layout 'application_clearance'
+    end
   end
 end

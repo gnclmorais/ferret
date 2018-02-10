@@ -3,11 +3,4 @@
 
   %p= t('.description')
 
-  = form_for :password, url: passwords_path do |form|
-    .field.text-field
-      = form.label :email, class: 'label'
-      .control
-        = form.text_field :email, type: 'email', class: 'input'
-    .field.submit-field
-      .control
-        = form.submit 'Submit', class: 'button'
+  = render 'sessions/form_password_reset'

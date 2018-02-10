@@ -1,0 +1,23 @@
+!!!
+%html{ lang: "en" }
+  %head
+    %title Ferret
+    = csrf_meta_tags
+    = javascript_pack_tag "application"
+    = stylesheet_pack_tag "application"
+
+  %body
+    .fold
+      = render "components/navbar"
+
+      %section.section
+        .columns
+          .column
+          .column
+            .card
+              .card-content
+                .content
+                  = yield
+          .column
+    .footer
+      = render "components/footer"
