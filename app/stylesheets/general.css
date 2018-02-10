@@ -75,9 +75,35 @@ body {
   margin-top: 30px;
 }
 
+
 /**
  * Utilities
  */
 .u-fullheight {
   height: 100%;
+}
+
+
+/**
+ * Flexible vertical stack
+ */
+.flex-el {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-el__child-keep {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.flex-el__child-grow {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+
+
+.places-panel {
+  overflow: auto;
 }

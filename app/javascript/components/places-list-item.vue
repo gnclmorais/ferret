@@ -1,6 +1,6 @@
 <template>
 <div class="media" :data-id="place.id" :data-place-id="place.place_id">
-  <div class="media-content">
+  <div class="media-content" v-on:click="focusOnMap(place.place)">
     <div class="content">
       <p>
         <strong>{{ place.place.name }}</strong>
@@ -16,9 +16,39 @@
 </template>
 
 <script>
+import MapUtils from '../utils/maps'
+
 export default {
   props: ['loggedIn', 'place', 'map'],
   methods: {
+    focusOnMap: function (place) {
+      console.log('Clicked on:', place);
+
+      const geocoder = new google.maps.Geocoder();
+
+      geocoder.geocode({
+        'address': place.address
+      }, function (results, status) {
+        if (status !== google.maps.GeocoderStatus.OK) {
+          console.log('Problems with search:', status);
+          return;
+        }
+
+        const result = results[0];
+        const location = result.geometry.location;
+
+        // Adapt map bounds to the kind of place
+        map.fitBounds(result.geometry.viewport);
+
+        const marker = new google.maps.Marker({
+          position: location,
+          map: map,
+        });
+
+        // Recentre the map based on the clicked point
+        map.setCenter(location);
+      });
+    },
     remove: function (place) {
       this.$http.delete('/pins/' + place.id)
         .then(_success => {
