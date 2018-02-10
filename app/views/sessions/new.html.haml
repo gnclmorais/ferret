@@ -1,4 +1,11 @@
-#clearance.sign-in
-  %h2= t(".title")
-
-  = render '/sessions/form'
+%section.section
+  .columns
+    .column
+    .column
+      .card
+        .card-content
+          .content
+            #clearance.sign-in
+              %h2= t('.title')
+              = render '/sessions/form'
+    .column
