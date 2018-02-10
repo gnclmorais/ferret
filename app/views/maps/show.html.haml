@@ -5,8 +5,8 @@
 
 %section.section--tall
   .columns.is-gapless.columns--tall
-    .column.is-one-third
-      .hero.is-primary
+    .column.is-one-third.flex-el
+      .hero.is-primary.flex-el__child-keep
         .hero-body
           .container
             %h2.subtitle= @map.description
@@ -14,8 +14,8 @@
               %h2.subtitle
                 = link_to edit_map_path(@map) do
                   %strong Edit >
-      #places-panel
-        .box
+      #places-panel.places-panel.flex-el__child-grow
+        %section.section
           #places-list{ ":logged_in": current_user.present?.to_s,
                         ":map": @map.id,
                         ":places": @map.pins.to_json }
