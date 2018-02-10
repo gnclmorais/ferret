@@ -20,15 +20,26 @@ import MapUtils from '../utils/maps'
 
 export default {
   props: ['loggedIn', 'place', 'map'],
+  data() {
+    return {
+      alreadyFetched: {},
+    };
+  },
   methods: {
     focusOnMap: function (place) {
       console.log('Clicked on:', place);
+
+      const fetchedLocation = this.alreadyFetched[place.id];
+      if (fetchedLocation) {
+        map.panTo(fetchedLocation);
+        return;
+      }
 
       const geocoder = new google.maps.Geocoder();
 
       geocoder.geocode({
         'address': place.address
-      }, function (results, status) {
+      }, (results, status) => {
         if (status !== google.maps.GeocoderStatus.OK) {
           console.log('Problems with search:', status);
           return;
@@ -46,7 +57,9 @@ export default {
         });
 
         // Recentre the map based on the clicked point
-        map.setCenter(location);
+        map.panTo(location);
+
+        this.alreadyFetched[place.id] = location;
       });
     },
     remove: function (place) {
