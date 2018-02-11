@@ -1,5 +1,6 @@
 <template>
-<div class="media" :data-id="place.id" :data-place-id="place.place_id">
+<div class="media" :class="{ focus: focused }"
+                   :data-id="place.id" :data-place-id="place.place_id">
   <div class="media-content" v-on:click="focusOnMap(place.place)">
     <div class="content">
       <p>
@@ -16,6 +17,7 @@
 </template>
 
 <script>
+import { PlacesBus } from '../buses.js'
 import MapUtils from '../utils/maps'
 
 export default {
@@ -23,9 +25,25 @@ export default {
   data() {
     return {
       alreadyFetched: {},
+      focused: false,
     };
   },
+  mounted() {
+    PlacesBus.$on('focusPlace', this.focusOnList);
+  },
   methods: {
+    focusOnList(place) {
+      console.log('Focused place:', place, this.place.id, place.id);
+      if (this.place.id !== place.id) return;
+
+      var elem = this.$el
+      console.log('Scroll to:', elem.clientHeight);
+      elem.scrollTop = elem.clientHeight;
+      elem.scrollIntoView(true, { behavior: "smooth" });
+
+      this.focused = true;
+      setTimeout(() => { this.focused = false; }, 3000);
+    },
     focusOnMap: function (place) {
       console.log('Clicked on:', place);
 
@@ -75,4 +93,15 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+@keyframes highlight {
+    0% { background-color: hsl(48, 100%, 67%); }
+  100% { background-color: hsl(0, 0%, 100%); }
+}
+
+.focus {
+  animation-name: highlight;
+  animation-duration: 3s;
+  animation-timing-function: ease-in;
+}
+</style>

@@ -24,4 +24,16 @@ export default {
 
     map.setCenter(newCenter);
   },
+  geocode(address, successCallback, failureCallback) {
+    const geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({ 'address': address }, (results, status) => {
+      if (status !== google.maps.GeocoderStatus.OK) {
+        if (failureCallback) failureCallback(status);
+        return;
+      }
+
+      successCallback(results);
+    });
+  },
 };

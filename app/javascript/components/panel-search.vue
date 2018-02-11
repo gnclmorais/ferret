@@ -24,8 +24,6 @@ export default {
   },
   methods: {
     search(query) {
-      console.log('Parent searching…', query);
-
       var service = new google.maps.places.PlacesService(window.map);
 
       service.textSearch({

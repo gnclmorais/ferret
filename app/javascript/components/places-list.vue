@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import Item from './places-list-item.vue';
-
 import { PlacesBus } from '../buses.js'
+
+import Item from './places-list-item.vue';
 
 export default {
   props: ['loggedIn', 'map', 'places'],
