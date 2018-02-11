@@ -21,7 +21,7 @@
                         ":places": @map.pins.to_json }
     .column
       .map-wrapper.u-fullheight
-        #map
+        #map{ ":places": @map.pins.to_json }
 
 = javascript_pack_tag "map_show"
 = stylesheet_pack_tag "map_show"

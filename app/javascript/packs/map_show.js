@@ -22,6 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   new Vue({
     el: '#map',
-    render: h => h(Map),
+    render(h) {
+      return h(Map, {
+        props: {
+          'places': JSON.parse(this.$el.attributes[":places"].value),
+        },
+      });
+    },
   });
 })
