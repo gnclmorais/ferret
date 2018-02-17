@@ -67,5 +67,7 @@ gem 'oj', '~> 2.16.1'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# Linting
-gem 'rubocop', require: false
+group :development, :test do
+  # Linting
+  gem 'rubocop', require: false
+end
