@@ -1,10 +1,9 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
+Vue.use(VueResource)
 
 import List from '../components/places-list.vue'
 import Map from '../components/map.vue'
-
-Vue.use(VueResource)
 
 document.addEventListener('DOMContentLoaded', () => {
   new Vue({

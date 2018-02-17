@@ -3,11 +3,11 @@
 - content_for :breadcrumbs,
   breadcrumbs([["Maps", maps_path], [@map.name, edit_map_path(@map)]])
 
-#edit-map
-  .columns.is-variable.is-2.columns--tall
+#edit-map.flex-el__child-grow
+  .columns.is-variable.is-2
     .column
       #places-panel
-        .box
+        .box.edit-box
           = render "form", map: @map
           %hr
           #places-list{ ":map": @map.id, ":places": @map.pins.to_json }

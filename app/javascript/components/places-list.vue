@@ -1,5 +1,5 @@
 <template>
-<div class="content" v-if="localPlaces.length">
+<div class="content list" v-if="localPlaces.length">
   <places-list-item v-for="(place, index) in localPlaces" :key="place.id"
                     :loggedIn="loggedIn" :place="place" :map="map"
                     v-on:removePlace="remove(index)">
@@ -44,5 +44,9 @@ export default {
 .panel-places {
   position: relative;
   z-index: 1;
+}
+
+.list {
+  overflow: auto;
 }
 </style>

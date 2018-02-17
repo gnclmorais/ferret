@@ -39,18 +39,20 @@
 
 import Vue from 'vue'
 import VueResource from 'vue-resource'
+Vue.use(VueResource)
+
+import store from '../store/index.js'
 
 import List from '../components/places-list.vue'
 import Search from '../components/panel-search.vue'
 import Map from '../components/map.vue'
-
-Vue.use(VueResource)
 
 document.addEventListener('DOMContentLoaded', () => {
   // TODO: Remove when solved
   Vue.config.devtools = true;
 
   new Vue({
+    store,
     el: '#places-list',
     render(h) {
       return h(List, {
