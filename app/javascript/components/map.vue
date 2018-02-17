@@ -17,7 +17,7 @@ export default {
     };
   },
   mounted() {
-    console.log('Places:', this.places);
+    //console.log('Places:', this.places);
   },
   created() {
     const self = this;
@@ -41,7 +41,7 @@ export default {
       window.map = map;
       self.map = map;
 
-      console.log('Key:', process.env.GOOGLE_MAPS_API_KEY);
+      //console.log('Key:', process.env.GOOGLE_MAPS_API_KEY);
 
       self.addAllMarkers();
     })
@@ -51,7 +51,8 @@ export default {
   },
   methods: {
     addAllMarkers() {
-      this.places.forEach(place => {
+      // TODO: Fix this
+      (this.places || []).forEach(place => {
         MapUtils.geocode(place.place.address, results => {
           let marker = new google.maps.Marker({
             map: this.map,

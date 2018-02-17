@@ -1,14 +1,17 @@
 !!!
-%html{ lang: "en" }
+%html{ lang: 'en' }
   %head
     %title Ferret
     = csrf_meta_tags
-    = javascript_pack_tag "application"
-    = stylesheet_pack_tag "application"
+    = javascript_pack_tag 'application'
+    = stylesheet_pack_tag 'application'
 
   %body
     .fold
-      = render "components/navbar"
+      = render 'components/navbar'
       = yield
+
     .footer
-      = render "components/footer"
+      = render 'components/footer'
+
+    = render 'components/state'

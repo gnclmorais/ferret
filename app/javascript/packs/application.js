@@ -13,3 +13,4 @@ import 'bulma/bulma.sass';
 import '../../stylesheets/general.css';
 import '../../stylesheets/maps.css';
 
+import '../store/index.js'
