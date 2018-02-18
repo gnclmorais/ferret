@@ -16,8 +16,7 @@
                   %strong Edit >
       #places-panel.places-panel.flex-el__child-grow
         %section.section
-          #places-list{ ":logged_in": current_user.present?.to_s,
-                        ":map": @map.id,
+          #places-list{ ":map": @map.id,
                         ":places": @map.pins.to_json }
     .column
       .map-wrapper.u-fullheight
