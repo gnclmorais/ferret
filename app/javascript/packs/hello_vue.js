@@ -42,6 +42,7 @@ import VueResource from 'vue-resource'
 Vue.use(VueResource)
 
 import store from '../store/index.js'
+import setState from '../store/state.js'
 
 import List from '../components/places-list.vue'
 import Search from '../components/panel-search.vue'
@@ -50,6 +51,8 @@ import Map from '../components/map.vue'
 document.addEventListener('DOMContentLoaded', () => {
   // TODO: Remove when solved
   Vue.config.devtools = true;
+
+  setState(store);
 
   new Vue({
     store,

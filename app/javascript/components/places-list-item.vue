@@ -1,5 +1,5 @@
 <template>
-<div class="media" :class="{ focus: focused }"
+<li class="media" :class="{ focus: focused }"
                    :data-id="place.id" :data-place-id="place.place_id">
   <div class="media-content" v-on:click="focusOnMap(place.place)">
     <div class="content">
@@ -10,10 +10,10 @@
       </p>
     </div>
   </div>
-  <div class="media-right" v-show="loggedIn">
+  <div class="media-right" v-show="this.$store.state.loggedIn">
     <button class="button" v-on:click="remove(place)">Remove</button>
   </div>
-</div>
+</li>
 </template>
 
 <script>
@@ -21,25 +21,35 @@ import { PlacesBus } from '../buses.js'
 import MapUtils from '../utils/maps'
 
 export default {
-  props: ['loggedIn', 'place', 'map'],
+  props: ['place', 'map'],
   data() {
     return {
       alreadyFetched: {},
       focused: false,
+      loggedIn: this.$store.state.loggedIn
     };
   },
   mounted() {
     PlacesBus.$on('focusPlace', this.focusOnList);
   },
   methods: {
+    // loggedIn() {
+    //   console.log('Store', this.$store)
+    //   console.log('Logged in?', )
+    //   return this.$store.getters.isLoggedIn()
+    // },
     focusOnList(place) {
       console.log('Focused place:', place, this.place.id, place.id);
-      if (this.place.id !== place.id) return;
+      if (this.place.id !== place.id) {
+        this.focused = false
+        return;
+      }
 
-      var elem = this.$el
-      console.log('Scroll to:', elem.clientHeight);
-      elem.scrollTop = elem.clientHeight;
-      elem.scrollIntoView(true, { behavior: "smooth" });
+      this.$el.scrollIntoView(false, {
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'nearest',
+      });
 
       this.focused = true;
       setTimeout(() => { this.focused = false; }, 3000);

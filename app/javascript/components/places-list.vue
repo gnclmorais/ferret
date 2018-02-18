@@ -1,10 +1,10 @@
 <template>
-<div class="content list" v-if="localPlaces.length">
+<ol class="content list" v-if="localPlaces.length">
   <places-list-item v-for="(place, index) in localPlaces" :key="place.id"
-                    :loggedIn="loggedIn" :place="place" :map="map"
+                    :place="place" :map="map"
                     v-on:removePlace="remove(index)">
   </places-list-item>
-</div>
+</ol>
 <p v-else class="has-text-centered">
   No places in the map yet
 </p>
@@ -16,7 +16,7 @@ import { PlacesBus } from '../buses.js'
 import Item from './places-list-item.vue';
 
 export default {
-  props: ['loggedIn', 'map', 'places'],
+  props: ['map', 'places'],
   data() {
     return {
       localPlaces: this.places
@@ -25,6 +25,8 @@ export default {
   methods: {
     remove: function (index) {
       this.localPlaces.splice(index, 1)
+
+      PlacesBus.$emit('updated', this.localPlaces);
     },
   },
   components: {
@@ -34,19 +36,33 @@ export default {
     PlacesBus.$on('addPlace', place => {
       console.log('New place added:', place)
 
-      this.places.unshift(place)
+      this.localPlaces.unshift(place)
     })
   }
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .panel-places {
   position: relative;
   z-index: 1;
 }
 
-.list {
+ol {
   overflow: auto;
+  counter-reset: places-counter;
+}
+
+li::before {
+  content: counter(places-counter);
+  counter-increment: places-counter;
+
+  color: white;
+  background: #00d1b2;
+  margin-right: 5px;
+  border-radius: 50%;
+  min-width: 25px;
+  height: 25px;
+  text-align: center;
 }
 </style>

@@ -14,19 +14,29 @@ export default {
     return {
       markers: [],
       map: null,
+      localPlaces: this.places
     };
   },
   mounted() {
-    //console.log('Places:', this.places);
+    //console.log('Places:', this.localPlaces);
   },
   created() {
-    const self = this;
-
     loadMap({
       key: process.env.GOOGLE_MAPS_API_KEY,
       libraries: ['places'],
     })
-    .then(function (_googleMaps) {
+    .then(this.renderMap)
+    .catch(console.error);
+
+    PlacesBus.$on('updated', (places) => {
+      this.localPlaces = places;
+      this.renderMap()
+    });
+  },
+  methods: {
+    renderMap() {
+      this.markers = []
+
       var map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: -34.397, lng: 150.644 },
         zoom: 8,
@@ -39,23 +49,19 @@ export default {
       });
 
       window.map = map;
-      self.map = map;
+      this.map = map;
 
       //console.log('Key:', process.env.GOOGLE_MAPS_API_KEY);
 
-      self.addAllMarkers();
-    })
-    .catch(function (err) {
-      console.error(err);
-    });
-  },
-  methods: {
+      this.addAllMarkers();
+    },
     addAllMarkers() {
       // TODO: Fix this
-      (this.places || []).forEach(place => {
+      (this.localPlaces || []).forEach((place, index) => {
         MapUtils.geocode(place.place.address, results => {
           let marker = new google.maps.Marker({
             map: this.map,
+            label: '' + (index + 1),
             position: results[0].geometry.location
           });
 
@@ -63,13 +69,13 @@ export default {
             .addListener('click', function (mmap, pplace, mmarker) {
               PlacesBus.$emit('focusPlace', pplace);
 
-              mmap.setCenter(mmarker.getPosition());
+              //mmap.setCenter(mmarker.getPosition());
             }.bind(null, this.map, place, marker));
 
           this.markers.push(marker);
 
           // TODO: Bring Promises as soon as possible
-          if (this.markers.length === this.places.length) {
+          if (this.markers.length === this.localPlaces.length) {
             this.setMapBoundaries();
           }
         });
