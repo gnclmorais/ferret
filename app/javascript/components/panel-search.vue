@@ -1,6 +1,6 @@
 <template>
   <div class="panel-search">
-    <search-input v-on:search="search"></search-input>
+    <search-input v-on:search="search" v-on:clear="clear"></search-input>
     <search-list :map="map" :results="places"></search-list>
   </div>
 </template>
@@ -36,6 +36,9 @@ export default {
         console.log('Places found:', results.length)
         this.places = results;
       });
+    },
+    clear() {
+      this.places = []
     }
   }
 };

@@ -1,6 +1,6 @@
 <template>
-<li class="media" :class="{ focus: focused }"
-                   :data-id="place.id" :data-place-id="place.place_id">
+<li class="media item" :class="{ focus: focused }"
+    :data-id="place.id" :data-place-id="place.place_id">
   <div class="media-content" v-on:click="focusOnMap(place.place)">
     <div class="content">
       <p>
@@ -10,6 +10,7 @@
       </p>
     </div>
   </div>
+  <span class="icon"><i class="fa fa-bars item-handle"></i></span>
   <div class="media-right" v-show="this.$store.state.loggedIn">
     <button class="button" v-on:click="remove(place)">Remove</button>
   </div>
@@ -104,6 +105,16 @@ export default {
 </script>
 
 <style scoped>
+.item {
+  position: relative;
+}
+
+.item-handle {
+  position: absolute;
+  left: 0;
+  top: 30px;
+}
+
 @keyframes highlight {
     0% { background-color: hsl(48, 100%, 67%); }
   100% { background-color: hsl(0, 0%, 100%); }
