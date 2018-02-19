@@ -7,10 +7,11 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-import 'jquery-ujs';
-import 'bulma/bulma.sass';
+import 'jquery-ujs'
+import 'bulma/bulma.sass'
+import 'font-awesome-webpack'
 
-import '../../stylesheets/general.css';
-import '../../stylesheets/maps.css';
+import '../../stylesheets/general.css'
+import '../../stylesheets/maps.css'
 
 import '../store/index.js'

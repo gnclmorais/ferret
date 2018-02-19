@@ -11,6 +11,11 @@
              v-on:input="debounceInput" />
     </div>
     <div class="control">
+      <button class="button" v-on:click="clear" v-show="this.query">
+        <span class="icon"><i class="fa fa-times-circle"></i></span>
+      </button>
+    </div>
+    <div class="control">
       <button class="button is-link" v-on:click="debounceInput">Search</button>
     </div>
   </div>
@@ -37,6 +42,10 @@ export default {
       console.log('Searching for:', this.query);
       this.$emit('search', this.query);
     }, 500),
+    clear() {
+      this.query = ''
+      this.$emit('clear');
+    },
   },
 };
 </script>

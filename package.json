@@ -7,9 +7,12 @@
     "bulma-loader": "^1.0.1",
     "coffeescript": "1.12.7",
     "dotenv-webpack": "^1.5.4",
+    "font-awesome": "^4.7.0",
+    "font-awesome-npm-loader": "^1.0.3",
     "hamljs": "^0.6.2",
     "jquery": "^3.2.1",
     "jquery-ujs": "^1.2.2",
+    "less": "^3.0.1",
     "load-google-maps-api": "^1.0.0",
     "lodash": "^4.17.4",
     "vue": "^2.5.3",
@@ -21,6 +24,7 @@
     "webpack-merge": "^4.1.1"
   },
   "devDependencies": {
+    "font-awesome-webpack": "^0.0.5-beta.2",
     "webpack-dev-server": "^2.9.4"
   }
 }
