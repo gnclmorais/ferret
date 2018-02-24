@@ -11,9 +11,13 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import Sortable from 'sortablejs'
+// Vue.use(Sortable)
+
 import { PlacesBus } from '../buses.js'
 
-import Item from './places-list-item.vue';
+import Item from './places-list-item.vue'
 
 export default {
   props: ['map', 'places'],
@@ -23,6 +27,10 @@ export default {
     }
   },
   methods: {
+    onUpdate: function (event) {
+      PlacesBus.$emit('updated', this.localPlaces);
+      // TODO: Simply re-render the current map view
+    },
     remove: function (index) {
       this.localPlaces.splice(index, 1)
 
@@ -38,7 +46,13 @@ export default {
 
       this.localPlaces.unshift(place)
     })
-  }
+  },
+  mounted() {
+    new Sortable(this.$el, {
+      handle: '.item-handle',
+      onUpdate: this.onUpdate,
+    })
+  },
 };
 </script>
 
