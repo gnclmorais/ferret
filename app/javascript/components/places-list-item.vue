@@ -10,7 +10,7 @@
       </p>
     </div>
   </div>
-  <span class="icon"><i class="fa fa-bars item-handle"></i></span>
+  <span class="item-handle icon"><i class="fa fa-bars"></i></span>
   <div class="media-right" v-show="this.$store.state.loggedIn">
     <button class="button" v-on:click="remove(place)">Remove</button>
   </div>
@@ -104,15 +104,20 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .item {
   position: relative;
 }
 
 .item-handle {
+  cursor: row-resize;
   position: absolute;
   left: 0;
   top: 30px;
+
+  .item + .item & {
+    top: 45px;
+  }
 }
 
 @keyframes highlight {

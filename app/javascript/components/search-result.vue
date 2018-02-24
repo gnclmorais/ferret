@@ -87,11 +87,4 @@ export default {
 }
 .search-result:nth-child(even) { background-color: #ffffff; }
 .search-result:nth-child(odd)  { background-color: #f8f8f8; }
-
-// // // // // // // // // // // // // // // // // // // // // // // // // // //
-// Overrides
-//
-.media + .media {
-  margin: 0;
-}
 </style>
