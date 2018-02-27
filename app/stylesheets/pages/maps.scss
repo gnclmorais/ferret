@@ -1,0 +1,34 @@
+.box-of-maps {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.map-box {
+  flex: 1;
+  flex-basis: 50%;
+  max-width: 50%;
+  min-height: 200px;
+  padding: 15px;
+
+  display: flex;
+  flex-direction: column;
+
+  &:nth-child(4n+1) { background-color: darken(whitesmoke, 5%); }
+  &:nth-child(4n+2) { background-color: darken(whitesmoke, 10%); }
+  &:nth-child(4n+3) { background-color: darken(whitesmoke, 15%); }
+  &:nth-child(4n+4) { background-color: darken(whitesmoke, 20%); }
+}
+
+.map-box--new {
+  background: white !important;
+  border: 2px dashed darkgrey;
+}
+
+  .map-box__body {
+    flex: 2;
+  }
+
+  .map-box__footer {
+    flex: 1;
+    flex-grow: 0;
+  }

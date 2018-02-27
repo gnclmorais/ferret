@@ -10,7 +10,9 @@
       </p>
     </div>
   </div>
-  <span class="item-handle icon"><i class="fa fa-bars"></i></span>
+  <span class="item-handle icon" v-show="this.$store.state.loggedIn">
+    <i class="fa fa-bars"></i>
+  </span>
   <div class="media-right" v-show="this.$store.state.loggedIn">
     <button class="button" v-on:click="remove(place)">Remove</button>
   </div>

@@ -28,6 +28,7 @@ export default {
   },
   methods: {
     onUpdate: function (event) {
+      // TODO: Actually save the new order
       PlacesBus.$emit('updated', this.localPlaces);
       // TODO: Simply re-render the current map view
     },
