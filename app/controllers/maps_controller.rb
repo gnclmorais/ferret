@@ -23,7 +23,7 @@ class MapsController < ApplicationController
     @map = Map.new(map_params)
 
     if @map.save
-      redirect_to @map
+      redirect_to edit_map_path(@map)
     else
       render 'new'
     end
