@@ -21,6 +21,8 @@ export default {
     //console.log('Places:', this.localPlaces);
   },
   created() {
+    console.log('Places:', this.places);
+
     loadMap({
       key: process.env.GOOGLE_MAPS_API_KEY,
       libraries: ['places'],

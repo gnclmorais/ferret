@@ -14,4 +14,6 @@ import 'font-awesome-webpack'
 import '../../stylesheets/general.css'
 import '../../stylesheets/maps.css'
 
+import '../../stylesheets/pages/maps.scss'
+
 import '../store/index.js'

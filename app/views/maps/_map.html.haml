@@ -1,9 +1,10 @@
-.card.map-card
-  .card-content
-    .content
+.map-box
+  .map-box__body
+    = link_to map_path(map) do
       %p.title.is-5= map.name
-      %p= map.description
-  %footer.card-footer
-    = link_to "Show", map_path(map), class: "card-footer-item"
-    - if signed_in?
-      = link_to "Edit", edit_map_path(map), class: "card-footer-item"
+      %p.subtitle= map.description
+  - if signed_in?
+    %footer.map-box__footer
+      = link_to 'Edit', edit_map_path(map), class: 'button is-link'
+      = link_to 'Destroy', map_path(map), class: 'button is-danger',
+        method: :delete, data: { confirm: "Are you sure?" }
