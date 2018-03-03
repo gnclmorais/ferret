@@ -59,6 +59,7 @@ group :development do
   # Test runners
   gem 'guard'
   gem 'guard-minitest'
+  gem 'guard-rspec'
 end
 
 # Reporting
