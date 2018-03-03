@@ -49,6 +49,7 @@ group :development, :test do
   gem 'dotenv-rails'
   # Testing setup
   gem 'minitest-reporters'
+  gem 'rspec-rails'
 end
 
 group :development do
