@@ -41,4 +41,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Fast Feature Specs with Clearance
+  # https://github.com/thoughtbot/clearance/#fast-feature-specs
+  config.middleware.use Clearance::BackDoor
 end

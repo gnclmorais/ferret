@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class MapsControllerTest < ActionDispatch::IntegrationTest
+  let(user) { create(:user) }
+
   test '#index is successful' do
     get maps_path
     assert_response :success
@@ -12,7 +14,7 @@ class MapsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#new is successful' do
-    get new_map_path
+    get new_map_path(as: user)
     assert_response :success
   end
 

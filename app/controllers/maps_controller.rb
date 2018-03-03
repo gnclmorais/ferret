@@ -1,5 +1,5 @@
 class MapsController < ApplicationController
-  before_action :require_login, only: :edit
+  before_action :require_login, except: %w[index show]
 
   def index
     @maps = Map.all
@@ -16,7 +16,7 @@ class MapsController < ApplicationController
   def edit
     @map = Map.find(params[:id])
 
-    render layout: "application_without_navbar"
+    render layout: 'application_without_navbar'
   end
 
   def create
