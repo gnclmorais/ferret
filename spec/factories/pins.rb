@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory(:pin) do
+  factory :pin do
     association :place
     association :map
   end
