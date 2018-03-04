@@ -43,13 +43,15 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'chromedriver-helper'
   gem 'selenium-webdriver'
-  # Helpers & utils
-  gem 'factory_bot_rails'
   # Env config
   gem 'dotenv-rails'
   # Testing setup
   gem 'minitest-reporters'
   gem 'rspec-rails'
+  # Helpers & utils
+  gem 'factory_bot_rails'
+  gem 'shoulda'
+  gem 'shoulda-matchers'
 end
 
 group :development do
