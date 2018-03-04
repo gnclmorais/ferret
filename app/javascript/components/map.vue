@@ -64,7 +64,8 @@ export default {
           let marker = new google.maps.Marker({
             map: this.map,
             label: '' + (index + 1),
-            position: results[0].geometry.location
+            position: results[0].geometry.location,
+            icon: '/assets/icons/pin.svg',
           });
 
           marker
