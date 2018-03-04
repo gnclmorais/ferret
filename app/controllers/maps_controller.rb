@@ -20,7 +20,8 @@ class MapsController < ApplicationController
   end
 
   def create
-    @map = Map.new(map_params)
+    # TODO: Maybe find a better way to do this
+    @map = Map.new(**map_params, owner: current_user)
 
     if @map.save
       redirect_to edit_map_path(@map)
@@ -49,6 +50,6 @@ class MapsController < ApplicationController
   private
 
   def map_params
-    params.require(:map).permit(:name, :description)
+    params.require(:map).permit(:name, :description).to_h.symbolize_keys
   end
 end
