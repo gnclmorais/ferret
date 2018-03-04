@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :map do
+    association :owner, factory: :user
     name 'Get your caffeine fix'
     description 'All the best coffee shops in New York'
   end
