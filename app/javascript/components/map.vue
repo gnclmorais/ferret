@@ -68,8 +68,11 @@ export default {
             icon: '/assets/icons/pin.svg',
           });
 
+          console.log('add listener');
           marker
             .addListener('click', function (mmap, pplace, mmarker) {
+              console.log('$emit focusPlace');
+
               PlacesBus.$emit('focusPlace', pplace);
 
               //mmap.setCenter(mmarker.getPosition());
