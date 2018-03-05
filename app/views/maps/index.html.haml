@@ -6,7 +6,9 @@
   .column
     %section.section
       %h2.title.is-2 Available maps
-      = 'No maps available' if @maps.empty?
+      - if @maps.empty?
+        = 'No maps available'
+        = render 'map_new' if signed_in?
     - if @maps.any?
       .box-of-maps
         = render 'map_new' if signed_in?
