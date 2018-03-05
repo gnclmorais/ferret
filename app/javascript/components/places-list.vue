@@ -46,6 +46,7 @@ export default {
       console.log('New place added:', place)
 
       this.localPlaces.unshift(place)
+      PlacesBus.$emit('updated', this.localPlaces)
     })
   },
   mounted() {
