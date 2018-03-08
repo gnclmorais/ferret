@@ -1,6 +1,7 @@
 class Pin < ApplicationRecord
   belongs_to :place
   belongs_to :map
+  acts_as_list scope: :map
 
   delegate :name, to: :place
 
