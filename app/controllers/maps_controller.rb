@@ -1,5 +1,7 @@
 class MapsController < ApplicationController
-  before_action :require_login, except: %w[index show]
+  # TODO: Fix this :update thing, we need authentication
+  #       Google 'javascript rails ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken)'
+  before_action :require_login, except: %w[index show update]
 
   def index
     @maps = Map.all
@@ -33,6 +35,12 @@ class MapsController < ApplicationController
   def update
     @map = Map.find(params[:id])
 
+    if params[:pins].size == @map.pins.size
+      # TODO: Save new pin order
+    else
+      # TODO: do something?
+    end
+
     if @map.update(map_params)
       redirect_to @map
     else
@@ -50,6 +58,6 @@ class MapsController < ApplicationController
   private
 
   def map_params
-    params.require(:map).permit(:name, :description).to_h.symbolize_keys
+    params.require(:map).permit(:name, :description, :pins).to_h.symbolize_keys
   end
 end

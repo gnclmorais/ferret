@@ -10,7 +10,7 @@
       </p>
     </div>
   </div>
-  <span class="item-handle icon" v-show="this.$store.state.loggedIn">
+  <span class="item-handle icon" v-show="false && this.$store.state.loggedIn">
     <i class="fa fa-bars"></i>
   </span>
   <div class="media-right" v-show="this.$store.state.loggedIn">
