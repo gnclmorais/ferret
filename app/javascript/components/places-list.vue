@@ -28,7 +28,25 @@ export default {
   },
   methods: {
     onUpdate: function (event) {
+      console.log('dragged item', event.item);
+      console.log('new index', this.$children.indexOf(event.item));
+
+      console.log('this.$children', this.$children);
+
       // TODO: Actually save the new order
+      this.$http.put(`/maps/${this.map}`, {
+        id: this.map,
+        pins: this.localPlaces.map(pin => pin.id),
+      })
+        .then(() => {
+          console.log('updated!');
+          // TODO success
+        }, (err) => {
+          console.log('error', err);
+          // TODO
+        });
+
+
       PlacesBus.$emit('updated', this.localPlaces);
       // TODO: Simply re-render the current map view
     },
@@ -50,10 +68,11 @@ export default {
     })
   },
   mounted() {
-    new Sortable(this.$el, {
-      handle: '.item-handle',
-      onUpdate: this.onUpdate,
-    })
+    // Disable sorting for now
+    // new Sortable(this.$el, {
+    //   handle: '.item-handle',
+    //   onUpdate: this.onUpdate,
+    // })
   },
 };
 </script>
