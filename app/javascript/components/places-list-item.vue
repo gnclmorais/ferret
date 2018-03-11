@@ -18,11 +18,12 @@
           </div>
         </div>
         <div class="level-item">
-          <a class="tag is-light" v-on:click="addTag" v-show="!addingTag">
+          <a class="tag is-light" v-on:click="focusTagInput" v-show="!addingTag">
             + add tag
           </a>
-          <input class="input" type="text" v-show="addingTag" ref="tagInput"
-                 @keyup.enter="saveTag" v-model="tagInput" >
+          <input class="input is-small" type="text" v-show="addingTag"
+                 @keyup.enter="saveTag" @keyup.esc="blurTagInput"
+                 v-model="tagInput" ref="tagInput">
         </div>
       </div>
     </div>
@@ -122,9 +123,12 @@ export default {
           console.log('did not remove:', failure);
         });
     },
-    addTag() {
+    focusTagInput() {
       this.addingTag = true;
-      this.$refs.tagInput.focus();
+      this.$nextTick(() => this.$refs.tagInput.focus());
+    },
+    blurTagInput() {
+      this.addingTag = false;
     },
     saveTag() {
       this.tags.push({ name: this.tagInput });
