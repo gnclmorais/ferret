@@ -17,6 +17,11 @@ export default {
       localPlaces: this.places
     };
   },
+  computed: {
+    allPlaces() {
+      return this.localPlaces || [];
+    },
+  },
   mounted() {
     //console.log('Places:', this.localPlaces);
   },
@@ -53,35 +58,33 @@ export default {
       window.map = map;
       this.map = map;
 
-      //console.log('Key:', process.env.GOOGLE_MAPS_API_KEY);
-
       this.addAllMarkers();
     },
     addAllMarkers() {
-      // TODO: Fix this
-      (this.localPlaces || []).forEach((place, index) => {
+      this.markers = [];
+
+      console.log('this.allPlaces', this.allPlaces);
+
+      this.allPlaces.forEach((place, index) => {
+        const number = index + 1;
+
         MapUtils.geocode(place.place.address, results => {
           let marker = new google.maps.Marker({
             map: this.map,
-            label: '' + (index + 1),
+            label: String(number),
+            zIndex: number,
             position: results[0].geometry.location,
-            icon: '/assets/icons/pin.svg',
           });
 
-          console.log('add listener');
-          marker
-            .addListener('click', function (mmap, pplace, mmarker) {
-              console.log('$emit focusPlace');
-
-              PlacesBus.$emit('focusPlace', pplace);
-
-              //mmap.setCenter(mmarker.getPosition());
-            }.bind(null, this.map, place, marker));
+          marker.addListener('click', function (mmap, pplace, mmarker) {
+            PlacesBus.$emit('focusPlace', pplace);
+          }.bind(null, this.map, place, marker));
 
           this.markers.push(marker);
 
-          // TODO: Bring Promises as soon as possible
           if (this.markers.length === this.localPlaces.length) {
+            console.log('setMapBoundaries');
+
             this.setMapBoundaries();
           }
         });
@@ -90,12 +93,15 @@ export default {
     setMapBoundaries() {
       const latLngBounds = new google.maps.LatLngBounds();
 
+      console.log('markers', this.markers.length);
+
       this.markers.forEach(marker => {
+        console.log('Position:', marker.getPosition());
+
         latLngBounds.extend(marker.getPosition());
       });
 
-
-      //Center map and adjust Zoom based on the position of all markers.
+      // Center map and adjust Zoom based on the position of all markers.
       this.map.fitBounds(latLngBounds);
       this.map.setCenter(latLngBounds.getCenter());
     },
