@@ -85,7 +85,6 @@ export default {
         const marker = new google.maps.Marker({
           position: location,
           map: map,
-          icon: '/assets/icons/pin.svg',
         });
 
         // Recentre the map based on the clicked point

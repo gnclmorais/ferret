@@ -35,11 +35,11 @@ class MapsController < ApplicationController
   def update
     @map = Map.find(params[:id])
 
-    if params[:pins].size == @map.pins.size
-      # TODO: Save new pin order
-    else
-      # TODO: do something?
-    end
+    # if params[:pins].size == @map.pins.size
+    #   # TODO: Save new pin order
+    # else
+    #   # TODO: do something?
+    # end
 
     if @map.update(map_params)
       redirect_to @map

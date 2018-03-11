@@ -65,15 +65,6 @@ body {
   z-index: 1;
 }
 
-#edit-map {
-  padding: 15px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
 .edit-box {
   /* TODO: improve */
   max-height: calc(100vh - 30px);

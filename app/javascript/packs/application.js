@@ -11,6 +11,7 @@ import 'jquery-ujs'
 import 'bulma/bulma.sass'
 import 'font-awesome-webpack'
 
+import '../../stylesheets/overrides.scss'
 import '../../stylesheets/general.css'
 import '../../stylesheets/maps.css'
 
