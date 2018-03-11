@@ -9,6 +9,23 @@
         {{ place.place.address }}
       </p>
     </div>
+    <div class="level">
+      <div class="level-left">
+        <div v-for="(tag, index) in tags" class="level-item">
+          <div class="tags has-addons">
+            <span class="tag is-dark">{{ tag.name }}</span>
+            <a class="tag is-delete" v-on:click="removeTag(index)"></a>
+          </div>
+        </div>
+        <div class="level-item">
+          <a class="tag is-light" v-on:click="addTag" v-show="!addingTag">
+            + add tag
+          </a>
+          <input class="input" type="text" v-show="addingTag" ref="tagInput"
+                 @keyup.enter="saveTag" v-model="tagInput" >
+        </div>
+      </div>
+    </div>
   </div>
   <span class="item-handle icon" v-show="false && this.$store.state.loggedIn">
     <i class="fa fa-bars"></i>
@@ -29,7 +46,10 @@ export default {
     return {
       alreadyFetched: {},
       focused: false,
-      loggedIn: this.$store.state.loggedIn
+      loggedIn: this.$store.state.loggedIn,
+      addingTag: false,
+      tags: [],
+      tagInput: '',
     };
   },
   mounted() {
@@ -101,6 +121,18 @@ export default {
           // TODO error callback
           console.log('did not remove:', failure);
         });
+    },
+    addTag() {
+      this.addingTag = true;
+      this.$refs.tagInput.focus();
+    },
+    saveTag() {
+      this.tags.push({ name: this.tagInput });
+      this.tagInput = '';
+      this.addingTag = false;
+    },
+    removeTag(index) {
+      this.tags.splice(index, 1);
     },
   },
 };
