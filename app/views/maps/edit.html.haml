@@ -4,7 +4,7 @@
   breadcrumbs([["Maps", maps_path], [@map.name, edit_map_path(@map)]])
 
 .columns.columns--reset.flex-el__child-grow
-  .column.is-one-third
+  .column.is-one-third.map__places-column
     #places-panel
       .edit-box
         = render "form", map: @map
