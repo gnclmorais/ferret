@@ -1,7 +1,7 @@
 class MapsController < ApplicationController
   # TODO: Fix this :update thing, we need authentication
   #       Google 'javascript rails ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken)'
-  before_action :require_login, except: %w[index show update]
+  before_action :require_login, except: %w[index show]
 
   def index
     @maps = Map.all
