@@ -26,6 +26,8 @@
 // TODO: Import only debounce?
 import * as _ from 'lodash'
 
+import { PlacesBus } from '../buses.js'
+
 export default {
   data: function () {
     return { query: null };
@@ -46,6 +48,9 @@ export default {
       this.query = ''
       this.$emit('clear');
     },
+  },
+  mounted() {
+    PlacesBus.$on('addPlace', this.clear);
   },
 };
 </script>
