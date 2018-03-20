@@ -2,6 +2,9 @@
   <div class="panel-search">
     <search-input v-on:search="search" v-on:clear="clear"></search-input>
     <search-list :map="map" :results="places"></search-list>
+    <div class="box media no-results" v-if="noResults">
+      <div class="media-content">No places found</div>
+    </div>
   </div>
 </template>
 
@@ -15,6 +18,7 @@ export default {
   props: ['map'],
   data() {
     return {
+      noResults: false,
       places: []
     }
   },
@@ -35,9 +39,11 @@ export default {
 
         console.log('Places found:', results.length)
         this.places = results;
+        this.noResults = results.length === 0;
       });
     },
     clear() {
+      this.noResults = false;
       this.places = []
     }
   }
@@ -48,5 +54,9 @@ export default {
 .panel-search {
   position: relative;
   z-index: 1;
+}
+
+.no-results {
+  background-color: white;
 }
 </style>
