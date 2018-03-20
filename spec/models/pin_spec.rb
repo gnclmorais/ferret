@@ -5,13 +5,16 @@ RSpec.describe Pin, type: :model do
     expect(build(:pin)).to be_valid
   end
 
-  it 'pin requires a place' do
-    pin = build(:pin, place: nil)
-    expect(pin).to_not be_valid
-  end
+  it { should belong_to(:place) }
+  it { should belong_to(:map) }
 
-  it 'pin requires a map' do
-    pin = build(:pin, map: nil)
-    expect(pin).to_not be_valid
+  describe 'has many' do
+    it 'tags through tagged pins' do
+      pin = create(:pin)
+      expect(pin.tags).to be_empty
+
+      pin.tags << create(:tag)
+      expect(pin.tags).not_to be_empty
+    end
   end
 end
