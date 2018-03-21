@@ -10,7 +10,7 @@
 import $ from 'jquery'
 import {} from 'jquery-ujs'
 
-import 'bulma/bulma.sass'
+import '../../stylesheets/bulma.scss';
 import 'font-awesome-webpack'
 
 import '../../stylesheets/overrides.scss'
