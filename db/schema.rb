@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180320091201) do
+ActiveRecord::Schema.define(version: 20180323094023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20180320091201) do
   create_table "tagged_pins", id: false, force: :cascade do |t|
     t.integer "tag_id"
     t.integer "pin_id"
+    t.index ["tag_id", "pin_id"], name: "tag_to_pin", unique: true
     t.index ["tag_id"], name: "index_tagged_pins_on_tag_id"
   end
 
