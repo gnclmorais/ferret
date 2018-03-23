@@ -11,7 +11,7 @@
     </div>
     <div class="level">
       <div class="level-left">
-        <div v-for="(tag, index) in tags" class="level-item">
+        <div v-for="(tag, index) in place.tags" class="level-item">
           <div class="tags has-addons">
             <span class="tag is-dark">{{ tag.name }}</span>
             <a class="tag is-delete" v-on:click="removeTag(index)"></a>
@@ -38,8 +38,32 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import { PlacesBus } from '../buses.js'
 import MapUtils from '../utils/maps'
+
+const postTaggedPin = (tag, pin) => {
+  console.log('tag:', tag);
+  console.log('pin:', pin);
+
+  Vue.http.post('/tagged_pins', {
+    tagged_pin: { tag, pin },
+  }).then(success => {
+    // TODO
+    console.log('success tagging a pin')
+  }, failure => {
+    switch (failure.status) {
+      case 409:
+        // TODO
+        console.log('error 409 while tagging a pin')
+        break;
+      default:
+        // TODO
+        console.log('error while tagging a pin')
+        break;
+    }
+  });
+};
 
 export default {
   props: ['place', 'map'],
@@ -131,9 +155,13 @@ export default {
       this.addingTag = false;
     },
     saveTag() {
-      this.tags.push({ name: this.tagInput });
+      const tag = this.tagInput;
+
+      this.place.tags.push({ name: tag });
       this.tagInput = '';
       this.addingTag = false;
+
+      postTaggedPin(tag, this.place.id);
     },
     removeTag(index) {
       this.tags.splice(index, 1);

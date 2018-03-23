@@ -12,6 +12,6 @@ class Pin < ApplicationRecord
   validates_uniqueness_of :place_id, scope: :map_id
 
   def attributes
-    super.merge(place: place)
+    super.merge(place: place).merge(tags: tags)
   end
 end

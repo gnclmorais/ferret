@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(version: 20180323094023) do
   end
 
   create_table "places", force: :cascade do |t|
-    t.string "google_place_id", null: false
-    t.string "name", null: false
+    t.string "google_place_id"
     t.text "address", null: false
+    t.string "name", null: false
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
