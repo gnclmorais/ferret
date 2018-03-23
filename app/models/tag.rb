@@ -4,4 +4,11 @@ class Tag < ApplicationRecord
 
   validates :name, presence: true
   validates_uniqueness_of :name
+
+  def attributes
+    {
+      id: id,
+      name: name
+    }
+  end
 end
