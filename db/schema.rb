@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20180323094023) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tagged_pins", id: false, force: :cascade do |t|
+  create_table "tagged_pins", force: :cascade do |t|
     t.integer "tag_id"
     t.integer "pin_id"
     t.index ["tag_id", "pin_id"], name: "tag_to_pin", unique: true

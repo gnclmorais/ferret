@@ -14,7 +14,9 @@
         <div v-for="(tag, index) in place.tags" class="level-item">
           <div class="tags has-addons">
             <span class="tag is-dark">{{ tag.name }}</span>
-            <a class="tag is-delete" v-on:click="removeTag(index)"></a>
+            <a class="tag is-delete"
+               v-on:click="removeTag(index)"
+               v-show="tag.id"></a>
           </div>
         </div>
         <div class="level-item">
@@ -42,15 +44,19 @@ import Vue from 'vue'
 import { PlacesBus } from '../buses.js'
 import MapUtils from '../utils/maps'
 
-const postTaggedPin = (tag, pin) => {
-  console.log('tag:', tag);
-  console.log('pin:', pin);
+const postTaggedPin = (tag_name, pin_id, newTag) => {
+  console.log('tag:', tag_name);
+  console.log('pin:', pin_id);
 
   Vue.http.post('/tagged_pins', {
-    tagged_pin: { tag, pin },
+    tagged_pin: { tag_name, pin_id },
   }).then(success => {
+    const id = success.body.id;
+    console.log('new tag:', newTag);
+    Vue.nextTick(() => newTag.id = id);
+
     // TODO
-    console.log('success tagging a pin')
+    console.log('success tagging a pin', success)
   }, failure => {
     switch (failure.status) {
       case 409:
@@ -60,6 +66,29 @@ const postTaggedPin = (tag, pin) => {
       default:
         // TODO
         console.log('error while tagging a pin')
+        break;
+    }
+  });
+};
+
+const deleteTaggedPin = (id, name) => {
+  if (!id) {
+    console.log('That’s not right, we need an Id for TaggedPin');
+    return;
+  }
+
+  Vue.http.delete(`/tagged_pins/${id}`).then(success => {
+    // TODO
+    console.log('deleted a tag on a pin')
+  }, failure => {
+    switch (failure.status) {
+      case 409:
+        // TODO
+        console.log('error 409 while deleting a tag on a pin');
+        break;
+      default:
+        // TODO
+        console.log('error while deleting a tag on a pin');
         break;
     }
   });
@@ -157,14 +186,20 @@ export default {
     saveTag() {
       const tag = this.tagInput;
 
-      this.place.tags.push({ name: tag });
+      const newTag = { name: tag };
+      this.place.tags.push(newTag);
       this.tagInput = '';
       this.addingTag = false;
 
-      postTaggedPin(tag, this.place.id);
+      postTaggedPin(tag, this.place.id, newTag);
     },
     removeTag(index) {
-      this.tags.splice(index, 1);
+      const [removedTag] = this.place.tags.splice(index, 1);
+
+      if (removedTag) {
+        console.log('delete tag', removedTag);
+        deleteTaggedPin(removedTag.id, removedTag.name);
+      }
     },
   },
 };
