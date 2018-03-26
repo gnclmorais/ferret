@@ -16,7 +16,7 @@
             <span class="tag is-dark">{{ tag.name }}</span>
             <a class="tag is-delete"
                v-on:click="removeTag(index)"
-               v-show="tag.id"></a>
+               v-if="tag.id"></a>
           </div>
         </div>
         <div class="level-item">
@@ -44,16 +44,19 @@ import Vue from 'vue'
 import { PlacesBus } from '../buses.js'
 import MapUtils from '../utils/maps'
 
-const postTaggedPin = (tag_name, pin_id, newTag) => {
+function postTaggedPin(tag_name, pin_id) {
   console.log('tag:', tag_name);
   console.log('pin:', pin_id);
 
   Vue.http.post('/tagged_pins', {
     tagged_pin: { tag_name, pin_id },
   }).then(success => {
-    const id = success.body.id;
+    const newTag = success.body;
     console.log('new tag:', newTag);
-    Vue.nextTick(() => newTag.id = id);
+
+    const i = this.place.tags.findIndex(tag => tag.name === newTag.name);
+    console.log('found tag at ' + i)
+    this.$set(this.place.tags, i, newTag);
 
     // TODO
     console.log('success tagging a pin', success)
@@ -186,12 +189,11 @@ export default {
     saveTag() {
       const tag = this.tagInput;
 
-      const newTag = { name: tag };
-      this.place.tags.push(newTag);
+      this.place.tags.push({ name: tag });
       this.tagInput = '';
       this.addingTag = false;
 
-      postTaggedPin(tag, this.place.id, newTag);
+      postTaggedPin.bind(this)(tag, this.place.id);
     },
     removeTag(index) {
       const [removedTag] = this.place.tags.splice(index, 1);
