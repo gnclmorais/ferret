@@ -9,10 +9,7 @@ class TaggedPinsController < ApplicationController
       format.json do
         new_tagged_pin = TaggedPin.new(tag: tag, pin: pin)
         if new_tagged_pin.save
-          render json: {
-            id: new_tagged_pin.id,
-            name: tag.name
-          }, status: 200
+          render json: new_tagged_pin.to_json, status: 200
         else
           render json: { errors: new_tagged_pin.errors }, status: :conflict
         end

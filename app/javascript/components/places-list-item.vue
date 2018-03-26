@@ -11,7 +11,7 @@
     </div>
     <div class="level">
       <div class="level-left">
-        <div v-for="(tag, index) in place.tags" class="level-item">
+        <div v-for="(tag, index) in place.tagged_pins" class="level-item">
           <div class="tags has-addons">
             <span class="tag is-dark">{{ tag.name }}</span>
             <a class="tag is-delete"
@@ -54,9 +54,9 @@ function postTaggedPin(tag_name, pin_id) {
     const newTag = success.body;
     console.log('new tag:', newTag);
 
-    const i = this.place.tags.findIndex(tag => tag.name === newTag.name);
+    const i = this.place.tagged_pins.findIndex(tag => tag.name === newTag.name);
     console.log('found tag at ' + i)
-    this.$set(this.place.tags, i, newTag);
+    this.$set(this.place.tagged_pins, i, newTag);
 
     // TODO
     console.log('success tagging a pin', success)
@@ -189,14 +189,14 @@ export default {
     saveTag() {
       const tag = this.tagInput;
 
-      this.place.tags.push({ name: tag });
+      this.place.tagged_pins.push({ name: tag });
       this.tagInput = '';
       this.addingTag = false;
 
       postTaggedPin.bind(this)(tag, this.place.id);
     },
     removeTag(index) {
-      const [removedTag] = this.place.tags.splice(index, 1);
+      const [removedTag] = this.place.tagged_pins.splice(index, 1);
 
       if (removedTag) {
         console.log('delete tag', removedTag);
