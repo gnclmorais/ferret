@@ -21,6 +21,11 @@ module.exports = {
       loader: "file-loader"
     }]
   },
+  resolve: {
+    alias: {
+      jquery: 'jquery/src/jquery',
+    },
+  },
   plugins: [
     new Dotenv({
       path: '.env',
@@ -29,6 +34,10 @@ module.exports = {
     new webpack.ProvidePlugin({
        $: 'jquery',
        jQuery: 'jquery',
+       'window.jQuery': 'jquery',
     }),
-  ]
+  ],
+  entry: {
+    vendor: ['jquery'],
+  },
 }
