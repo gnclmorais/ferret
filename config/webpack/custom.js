@@ -38,6 +38,6 @@ module.exports = {
     }),
   ],
   entry: {
-    vendor: ['jquery'],
+    vendor: ['jquery', 'jquery-ujs'],
   },
 }
