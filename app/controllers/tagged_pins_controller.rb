@@ -34,6 +34,6 @@ class TaggedPinsController < ApplicationController
   private
 
   def tagged_pins_params
-    params.require(:tagged_pin)
+    params.require(:tagged_pin).permit(:tag_name, :pin_id)
   end
 end
