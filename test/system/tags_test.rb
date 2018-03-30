@@ -6,12 +6,14 @@ class TagsTest < ApplicationSystemTestCase
     @map = create(:map, owner: @user)
 
     # sign_in_as(@user)
+    # sign_in_with(@user.email, 'password')
   end
 
   test 'map owner can add a tag' do
     create(:pin, map: @map)
 
-    visit edit_map_url(@map, as: @user)
+    visit root_path(as: @user)
+    visit edit_map_path(@map, as: @user)
     assert_no_text 'coffee'
 
     click_link '+ add tag'
