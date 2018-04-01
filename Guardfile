@@ -6,7 +6,7 @@
 # until the gem dependencies are resolved.
 # To solve the issue either add the missing dependencies or remove the tests.
 
-guard :minitest, all_on_start: false do
+guard :minitest, all_on_start: false, env: { RAILS_ENV: 'test' } do
   watch(%r{^app/(.+)\.rb$})            { |m| "test/#{m[1]}_test.rb" }
   watch(%r{^app/views/(.+)_mailer/.+}) { |m| "test/mailers/#{m[1]}_mailer_test.rb" }
   watch(%r{^lib/(.+)\.rb$})            { |m| "test/lib/#{m[1]}_test.rb" }
