@@ -55,8 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
   setState(store);
 
   // From https://gorails.com/episodes/using-vuejs-for-nested-forms-part-1
-  Vue.http.headers.common['X-CSRF-Token'] =
-    document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  const csrfToken = document.querySelector('meta[name="csrf-token"]')
+  if (csrfToken) {
+    Vue.http.headers.common['X-CSRF-Token'] = csrfToken.getAttribute('content');
+  }
 
   new Vue({
     store,
