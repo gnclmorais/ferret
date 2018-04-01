@@ -14,15 +14,15 @@
         <div v-for="(tag, index) in place.tagged_pins" class="level-item">
           <div class="tags has-addons">
             <span class="tag is-dark">{{ tag.name }}</span>
-            <a class="tag is-delete"
+            <a class="tag is-delete" href="#"
                v-on:click="removeTag(index)"
                v-if="tag.id"></a>
           </div>
         </div>
         <div class="level-item">
-          <a class="tag is-light" v-on:click="focusTagInput" v-show="!addingTag">
+          <button class="tag is-light" v-on:click="focusTagInput" v-show="!addingTag">
             + add tag
-          </a>
+          </button>
           <input class="input is-small" type="text" v-show="addingTag"
                  @keyup.enter="saveTag" @keyup.esc="blurTagInput"
                  v-model="tagInput" ref="tagInput">
