@@ -6,4 +6,8 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   def refresh
     page.driver.browser.navigate.refresh
   end
+
+  def assert_field(field_selector, text:)
+    assert_equal text, find_field(field_selector).value
+  end
 end

@@ -25,7 +25,6 @@ class TagsTest < ApplicationSystemTestCase
   test 'map owner can delete a tag' do
     pin = create(:pin, map: @map)
     create(:tagged_pin, pin: pin, tag: create(:tag, name: 'espresso'))
-    binding.pry
     visit edit_map_path(@map, as: @user)
     assert_text 'espresso'
 
