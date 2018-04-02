@@ -1,6 +1,11 @@
 language: ruby
 rvm:
   - 2.3.5
+addons:
+  apt:
+    packages:
+      - google-chrome-stable
+      - chromium-chromedriver
 cache:
   - bundler
   - yarn
