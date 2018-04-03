@@ -11,6 +11,7 @@ cache:
   - yarn
 before_script:
   - psql -c 'create database ferret_test;' -U postgres
+  - webdriver-manager update --versions.chrome=2.37
 script:
   - bin/rails assets:precompile
   - bin/rails test
