@@ -6,9 +6,10 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   Capybara.register_driver :chrome do |app|
     browser_options = ::Selenium::WebDriver::Chrome::Options.new
     browser_options.args << '--headless'
-    # browser_options.args << '--disable-gpu'
-    # browser_options.args << '--window-size=1920,2000'
     browser_options.args << '--no-sandbox' if ENV['CONTINUOUS_INTEGRATION']
+    browser_options.args << '--disable-gpu'
+    # browser_options.args << '--window-size=1920,2000'
+    # browser_options.args '--remote-debugging-port=9222'
     Capybara::Selenium::Driver.new(
       app, browser: :chrome, options: browser_options
     )
