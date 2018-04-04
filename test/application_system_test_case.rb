@@ -2,7 +2,18 @@ require 'test_helper'
 require 'capybara'
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  driven_by :selenium, using: :headless_firefox
+  driven_by(
+    :selenium,
+    using: :chrome,
+    screen_size: [1400, 900],
+    options: {
+      desired_capabilities: {
+        chromeOptions: {
+          args: %w[headless]
+        }
+      }
+    }
+  )
 
   # driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
 
