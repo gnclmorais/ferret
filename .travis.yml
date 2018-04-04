@@ -5,8 +5,10 @@ cache:
   - bundler
   - yarn
 dist: trusty
+env:
+  - MOZ_HEADLESS=1
 addons:
-  chrome: stable
+  firefox: latest
 before_script:
   - psql -c 'create database ferret_test;' -U postgres
 script:
