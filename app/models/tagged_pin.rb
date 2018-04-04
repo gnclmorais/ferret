@@ -6,7 +6,8 @@ class TaggedPin < ApplicationRecord
   def as_json(options = {})
     {
       id: id,
-      name: tag.name
+      name: tag.name,
+      tag_id: tag.id
     }
   end
 end

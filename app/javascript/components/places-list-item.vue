@@ -13,7 +13,9 @@
       <div class="level-left">
         <div v-for="(tag, index) in place.tagged_pins" class="level-item">
           <div class="tags has-addons">
-            <span class="tag is-dark">{{ tag.name }}</span>
+            <button class="tag is-dark" v-on:click="filterByTag(tag)">
+              {{ tag.name }}
+            </button>
             <a class="tag is-delete" href="#"
                v-on:click="removeTag(index)"
                v-if="tag.id"></a>
@@ -202,6 +204,9 @@ export default {
         console.log('delete tag', removedTag);
         deleteTaggedPin(removedTag.id, removedTag.name);
       }
+    },
+    filterByTag(tag) {
+      this.$emit('filterByTag', tag);
     },
   },
 };
