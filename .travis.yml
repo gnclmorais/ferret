@@ -4,6 +4,9 @@ rvm:
 cache:
   - bundler
   - yarn
+# Workaround for https://github.com/travis-ci/travis-ci/issues/8836
+# sudo: false
+sudo: required
 dist: trusty
 addons:
   chrome: stable
