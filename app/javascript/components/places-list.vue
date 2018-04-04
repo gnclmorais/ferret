@@ -2,8 +2,14 @@
 <ol class="content list" v-if="localPlaces.length">
   <places-list-item v-for="(place, index) in localPlaces" :key="place.id"
                     :place="place" :map="map"
-                    v-on:removePlace="remove(index)">
+                    v-on:removePlace="remove(index)"
+                    v-on:filterByTag="onFilterByTag">
   </places-list-item>
+
+  <div v-show="isFiltered">
+    Filtered by <br>{{ filteringTag.name }}</br>
+    <button class="is-button" v-on:click="clearFilter">Clear filter</button>
+  </div>
 </ol>
 <p v-else class="has-text-centered">
   No places in the map yet
@@ -23,16 +29,14 @@ export default {
   props: ['map', 'places'],
   data() {
     return {
-      localPlaces: this.places
+      originalPlaces: this.places,
+      localPlaces: this.places,
+      isFiltered: false,
+      filteringTag: {},
     }
   },
   methods: {
     onUpdate: function (event) {
-      console.log('dragged item', event.item);
-      console.log('new index', this.$children.indexOf(event.item));
-
-      console.log('this.$children', this.$children);
-
       // TODO: Actually save the new order
       this.$http.put(`/maps/${this.map}`, {
         id: this.map,
@@ -46,7 +50,6 @@ export default {
           // TODO
         });
 
-
       PlacesBus.$emit('updated', this.localPlaces);
       // TODO: Simply re-render the current map view
     },
@@ -54,6 +57,20 @@ export default {
       this.localPlaces.splice(index, 1)
 
       PlacesBus.$emit('updated', this.localPlaces);
+    },
+    onFilterByTag: function (tag) {
+      this.localPlaces = this.originalPlaces.filter((place) => {
+        return place.tagged_pins.find((tagged_pin) => {
+          return tagged_pin.name === tag.name;
+        });
+      });
+      this.filteringTag = tag;
+      this.isFiltered = true;
+    },
+    clearFilter: function () {
+      this.localPlaces = this.originalPlaces;
+      this.filteringTag = {};
+      this.isFiltered = false;
     },
   },
   components: {
