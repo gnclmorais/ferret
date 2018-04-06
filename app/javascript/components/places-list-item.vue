@@ -113,8 +113,17 @@ export default {
   },
   mounted() {
     PlacesBus.$on('focusPlace', this.focusOnList);
+    document.addEventListener('click', this.handleClickOutside);
+  },
+  destroyed() {
+    document.removeEventListener('click', this.handleClickOutside);
   },
   methods: {
+    handleClickOutside(event) {
+      if (!this.$el.contains(event.target)) {
+        this.addingTag = false;
+      }
+    },
     // loggedIn() {
     //   console.log('Store', this.$store)
     //   console.log('Logged in?', )
