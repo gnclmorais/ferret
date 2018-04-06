@@ -1,19 +1,24 @@
 <template>
-<ol class="content list" v-if="localPlaces.length">
-  <places-list-item v-for="(place, index) in localPlaces" :key="place.id"
-                    :place="place" :map="map"
-                    v-on:removePlace="remove(index)"
-                    v-on:filterByTag="onFilterByTag">
-  </places-list-item>
+<div>
+  <article class="message" v-show="isFiltered">
+    <div class="message-body">
+      Filtered by <strong>{{ filteringTag.name }}</strong>
+      <br>
+      <button class="is-button" v-on:click="clearFilter">Clear filter</button>
+    </div>
+  </article>
 
-  <div v-show="isFiltered">
-    Filtered by <br>{{ filteringTag.name }}</br>
-    <button class="is-button" v-on:click="clearFilter">Clear filter</button>
-  </div>
-</ol>
-<p v-else class="has-text-centered">
-  No places in the map yet
-</p>
+  <ol class="content list" v-if="localPlaces.length">
+    <places-list-item v-for="(place, index) in localPlaces" :key="place.id"
+                      :place="place" :map="map"
+                      v-on:removePlace="remove(index)"
+                      v-on:filterByTag="onFilterByTag">
+    </places-list-item>
+  </ol>
+  <p v-else class="has-text-centered">
+    No places in the map yet
+  </p>
+</div>
 </template>
 
 <script>
