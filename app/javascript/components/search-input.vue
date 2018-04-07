@@ -16,7 +16,9 @@
       </button>
     </div>
     <div class="control">
-      <button class="button is-link" v-on:click="debounceInput">Search</button>
+      <button class="button is-primary" v-on:click="debounceInput">
+        Search
+      </button>
     </div>
   </div>
 </div>

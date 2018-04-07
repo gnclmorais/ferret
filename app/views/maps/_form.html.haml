@@ -22,9 +22,9 @@
 
   .field
     .control
-      = form.submit "Save map", class: "button is-link"
+      = form.submit "Save map", class: "button is-primary"
       - if map.persisted?
-        = link_to "Preview", map_path(map), class: "button", target: "_blank"
+        = link_to "Preview", map_path(map), target: "_blank", class: "button"
         = link_to "Delete", map_path(map),
           class: "button is-danger is-pulled-right",
           method: :delete, data: { confirm: "Are you sure?" }
