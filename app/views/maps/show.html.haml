@@ -9,7 +9,9 @@
       .hero.is-info.flex-el__child-keep
         .hero-body
           .container
-            %h2.subtitle= @map.description
+            %h1.title= @map.name
+            - unless @map.description.empty?
+              %h2.subtitle= @map.description
             - if signed_in?
               %h2.subtitle
                 = link_to edit_map_path(@map) do
