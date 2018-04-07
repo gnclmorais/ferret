@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="list-wrapper">
   <article class="message" v-show="isFiltered">
     <div class="message-body">
       Filtered by <strong>{{ filteringTag.name }}</strong>
@@ -100,13 +100,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.list-wrapper {
+  overflow: auto;
+}
+
 .panel-places {
   position: relative;
   z-index: 1;
 }
 
 ol {
-  overflow: auto;
   counter-reset: places-counter;
 }
 
