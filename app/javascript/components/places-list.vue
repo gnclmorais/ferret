@@ -100,6 +100,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~bulma/bulma';
+
 .list-wrapper {
   overflow: auto;
 }
@@ -118,7 +120,7 @@ li::before {
   counter-increment: places-counter;
 
   color: white;
-  background: #00d1b2;
+  background: $info;
   margin-right: 5px;
   border-radius: 50%;
   min-width: 25px;

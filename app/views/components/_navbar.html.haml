@@ -7,13 +7,14 @@
     -# <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
   .navbar-menu
     .navbar-start
-      - if content_for?(:breadcrumbs)
-        %nav.breadcrumb{ "aria-label": "breadcrumbs" }
-          %ul
-            %li= link_to "Home", "/"
-            = content_for(:breadcrumbs)
-      - else
-        .navbar-item All the places in a single place.
+      .navbar-item
+        - if content_for?(:breadcrumbs)
+          %nav.breadcrumb{ "aria-label": "breadcrumbs" }
+            %ul
+              %li= link_to "Home", "/"
+              = content_for(:breadcrumbs)
+        - else
+          All the places in a single place.
     .navbar-end
       .navbar-item
         - if signed_in?

@@ -1,7 +1,7 @@
 module ApplicationHelper
   # TODO: Change pages into *pages
   def breadcrumbs(pages)
-    klass = ->(total, index) { 'is-active' if total == index }
+    klass = ->(total, index) { 'is-active white' if total == index }
 
     max_index = pages.length - 1
 

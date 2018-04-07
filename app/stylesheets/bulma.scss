@@ -7,8 +7,21 @@
 
 // 2. Set your own initial variables
 $purple: #57068c;
+$purple-invert: #fff;
 
 // 3. Set the derived variables
+// Base
 $primary: $purple;
+$primary-invert: $purple-invert;
+
+// 5. Add new color variables to the color map.
+@import "~bulma/sass/utilities/derived-variables";
+
+// Breadcrumb
+// https://bulma.io/documentation/components/breadcrumb/
+$breadcrumb-item-color: white;
+$breadcrumb-item-hover-color: whitesmoke;
+$breadcrumb-item-active-color: $info;
+// $breadcrumb-item-separator-color: $text;
 
 @import '~bulma/bulma';
