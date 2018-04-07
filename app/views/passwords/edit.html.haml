@@ -6,6 +6,10 @@
   = form_for :password_reset,
     url: user_password_path(@user, token: @user.confirmation_token),
     html: { method: :put } do |form|
+    #flash
+      - flash.each do |key, value|
+        .flash{ class: key }= value
+
     .field.password-field
       = form.label :password, class: 'label'
       .control
