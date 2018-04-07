@@ -1,0 +1,6 @@
+- if defined?(flash) && flash.any?
+  %article.message.is-danger
+    .message-body
+      #flash
+        - flash.each do |key, value|
+          .flash{ class: key }= value
