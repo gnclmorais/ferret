@@ -1,6 +1,4 @@
-#flash
-  - flash.each do |key, value|
-    .flash{ class: key }= value
+= render "sessions/errors"
 
 .field.text-field
   = form.label :email, class: 'label'
