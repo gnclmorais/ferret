@@ -16,7 +16,7 @@
       </button>
     </div>
     <div class="control">
-      <button class="button is-primary" v-on:click="debounceInput">
+      <button :class="buttonClasses" v-on:click="debounceInput">
         Search
       </button>
     </div>
@@ -32,7 +32,15 @@ import { PlacesBus } from '../buses.js'
 
 export default {
   data: function () {
-    return { query: null };
+    return {
+      query: null,
+      isSearching: false,
+    };
+  },
+  computed: {
+    buttonClasses() {
+      return `button is-primary ${ this.isSearching ? 'is-loading' : '' }`;
+    },
   },
   watch: {
     query() {
@@ -44,15 +52,21 @@ export default {
       if (!this.query) return;
 
       console.log('Searching for:', this.query);
+      this.isSearching = true;
       this.$emit('search', this.query);
     }, 500),
     clear() {
       this.query = ''
       this.$emit('clear');
     },
+    searchDone() {
+      this.isSearching = false;
+    },
   },
   mounted() {
-    PlacesBus.$on('addPlace', this.clear);
+    PlacesBus
+      .$on('addPlace', this.clear)
+      .$on('searchDone', this.searchDone);
   },
 };
 </script>
