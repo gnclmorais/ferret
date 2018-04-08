@@ -12,6 +12,8 @@
 import Input from './search-input.vue'
 import List from './search-results.vue'
 
+import { PlacesBus } from '../buses.js'
+
 const store = [];
 
 export default {
@@ -33,6 +35,8 @@ export default {
       service.textSearch({
         query: query,
       }, (results, status) => {
+        PlacesBus.$emit('searchDone');
+
         if (status != google.maps.places.PlacesServiceStatus.OK) {
           console.log('Errors:', status);
         }

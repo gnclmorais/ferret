@@ -18,10 +18,10 @@
             </button>
             <a class="tag is-delete" href="#"
                v-on:click="removeTag(index)"
-               v-if="tag.id && this.$store.state.loggedIn"></a>
+               v-if="tag.id && loggedIn"></a>
           </div>
         </div>
-        <div class="level-item" v-if="this.$store.state.loggedIn">
+        <div class="level-item" v-if="loggedIn">
           <button class="tag is-light" v-on:click="focusTagInput" v-show="!addingTag">
             + add tag
           </button>
@@ -32,10 +32,10 @@
       </div>
     </div>
   </div>
-  <span class="item-handle icon" v-show="false && this.$store.state.loggedIn">
+  <span class="item-handle icon" v-show="false">
     <i class="fa fa-bars"></i>
   </span>
-  <div class="media-right" v-show="this.$store.state.loggedIn">
+  <div class="media-right" v-show="loggedIn">
     <button class="button" v-on:click="remove(place)">Remove</button>
   </div>
 </li>
