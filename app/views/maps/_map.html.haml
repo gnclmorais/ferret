@@ -6,5 +6,5 @@
   - if signed_in?
     %footer.map-box__footer
       = link_to 'Edit', edit_map_path(map), class: 'button is-link'
-      = link_to 'Destroy', map_path(map), class: 'button is-danger',
+      = link_to 'Destroy', map_path(map), class: 'button is-danger is-outlined',
         method: :delete, data: { confirm: "Are you sure?" }

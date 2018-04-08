@@ -26,6 +26,6 @@
       - if map.persisted?
         = link_to "Preview", map_path(map), target: "_blank", class: "button"
         = link_to "Delete", map_path(map),
-          class: "button is-danger is-pulled-right",
+          class: "button is-danger is-pulled-right is-outlined",
           method: :delete, data: { confirm: "Are you sure?" }
 
