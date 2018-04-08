@@ -18,10 +18,10 @@
             </button>
             <a class="tag is-delete" href="#"
                v-on:click="removeTag(index)"
-               v-if="tag.id"></a>
+               v-if="tag.id && this.$store.state.loggedIn"></a>
           </div>
         </div>
-        <div class="level-item">
+        <div class="level-item" v-if="this.$store.state.loggedIn">
           <button class="tag is-light" v-on:click="focusTagInput" v-show="!addingTag">
             + add tag
           </button>
