@@ -113,3 +113,9 @@ body {
 .places-panel {
   overflow: auto;
 }
+
+
+/* Navbar */
+.navbar-main {
+  z-index: 1000;
+}
