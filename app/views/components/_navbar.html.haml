@@ -10,9 +10,7 @@
       .navbar-item
         - if content_for?(:breadcrumbs)
           %nav.breadcrumb{ "aria-label": "breadcrumbs" }
-            %ul
-              %li= link_to "Home", "/"
-              = content_for(:breadcrumbs)
+            %ul= content_for(:breadcrumbs)
         - else
           All the places in a single place.
     .navbar-end
