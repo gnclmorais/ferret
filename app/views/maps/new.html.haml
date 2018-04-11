@@ -3,6 +3,11 @@
 - content_for :breadcrumbs,
   breadcrumbs([["Maps", maps_path], ["New map", new_map_path]])
 
-.section
+%section.hero.is-link
+  .hero-body
+    .container
+      %h1.title New map
+
+%section.section
   .container
     = render "form", map: @map

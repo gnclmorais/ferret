@@ -2,14 +2,22 @@
 
 - content_for :breadcrumbs, breadcrumbs([["Maps", maps_path]])
 
-.columns.is-gapless.columns--tall
-  .column
-    %section.section
-      %h2.title.is-2 Available maps
-      - if @maps.empty?
-        = 'No maps available'
-        = render 'map_new' if signed_in?
-    - if @maps.any?
-      .box-of-maps
-        = render 'map_new' if signed_in?
-        = render @maps
+%section.hero.is-link
+  .hero-body
+    .container
+      %h1.title Available maps
+
+%section.section
+  .container
+    / %h1.title Available maps
+
+    - if @maps.empty?
+      = 'No maps available'
+      = render 'map_new' if signed_in?
+      -# TODO: Improve this
+    - else
+      .columns.is-multiline
+        - if signed_in?
+          .column.is-half= render 'map_new'
+        - @maps.each do |map|
+          .column.is-half= render map

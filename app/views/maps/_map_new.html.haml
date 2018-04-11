@@ -1,5 +1,5 @@
-.map-box.map-box--new
-  .map-box__body
-    %h3.title= link_to 'New map >', new_map_path
-  / %footer.map-box__footer
-  /   = link_to 'Edit', edit_map_path(map), class: 'button is-link'
+= link_to new_map_path do
+  .card.card--equal-height.card--new
+    .card-content
+      .content
+        %p.title New map
