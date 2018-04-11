@@ -9,14 +9,14 @@
 
 %section.section
   .container
-    / %h1.title Available maps
-
-    - if @maps.empty?
-      = 'No maps available'
-      = render 'map_new' if signed_in?
-      -# TODO: Improve this
-    - else
-      .columns.is-multiline
+    .columns.is-multiline
+      - if @maps.empty?
+        - if signed_in?
+          .column.is-half= render 'map_new'
+        - else
+          .column No maps available yet
+        -# TODO: Improve this
+      - else
         - if signed_in?
           .column.is-half= render 'map_new'
         - @maps.each do |map|
