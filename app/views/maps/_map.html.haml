@@ -4,10 +4,11 @@
       .content
         %p.title= map.name
         %p.subtitle= map.description
-  %footer.card-footer
-    = link_to 'Edit', edit_map_path(map), class: 'card-footer-item'
-    = link_to 'Destroy', map_path(map), class: 'card-footer-item',
-      method: :delete, data: { confirm: "Are you sure?" }
+  - if signed_in?
+    %footer.card-footer
+      = link_to 'Edit', edit_map_path(map), class: 'card-footer-item'
+      = link_to 'Destroy', map_path(map), class: 'card-footer-item',
+        method: :delete, data: { confirm: "Are you sure?" }
 
 / .map-box
 /   .map-box__body
