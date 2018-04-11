@@ -5,17 +5,13 @@
 
 %section.section--tall
   .columns.is-gapless.columns--tall
-    .column.is-one-third.flex-el
+    .column.is-one-third.flex-el.map__places-column
       .hero.is-info.flex-el__child-keep
         .hero-body
           .container
             %h1.title= @map.name
             - unless @map.description.empty?
               %h2.subtitle= @map.description
-            - if signed_in?
-              %h2.subtitle
-                = link_to edit_map_path(@map) do
-                  %strong Edit >
       #places-panel.places-panel.flex-el__child-grow
         %section.section
           #places-list{ ":map": @map.id,
