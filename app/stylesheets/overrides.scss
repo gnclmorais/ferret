@@ -26,3 +26,9 @@
     margin-top: auto;
   }
 }
+
+.card__title {
+  .card:hover & {
+    text-decoration: underline;
+  }
+}

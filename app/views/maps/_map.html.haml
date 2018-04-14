@@ -2,12 +2,12 @@
   = link_to map_path(map) do
     .card-content
       .content
-        %p.title= map.name
+        %p.title.has-text-link.card__title= map.name
         %p.subtitle= map.description
   - if signed_in?
     %footer.card-footer
       = link_to 'Edit', edit_map_path(map), class: 'card-footer-item'
-      = link_to 'Destroy', map_path(map), class: 'card-footer-item',
+      = link_to 'Delete', map_path(map), class: 'card-footer-item',
         method: :delete, data: { confirm: "Are you sure?" }
 
 / .map-box
