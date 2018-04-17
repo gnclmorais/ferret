@@ -4,13 +4,13 @@
   breadcrumbs([["Maps", maps_path], [@map.name, edit_map_path(@map)]])
 
 .columns.columns--reset.flex-el__child-grow
-  .column.is-one-third.map__places-column
-    #places-panel
-      .edit-box
+  .column.is-one-third.is-paddingless.map__places-column
+    #places-panel.column__panels.edit-box
+      .column__panel.column__panel--stay
         = render "form", map: @map
-        %hr
+      .column__panel.column__panel--grow
         #places-list{ ":map": @map.id, ":places": @map.pins.to_json }
-  .column.map-wrapper
+  .column.is-paddingless.map-wrapper
     .columns.columns--reset
       .column
         #search-panel{ ":map": @map.id }
