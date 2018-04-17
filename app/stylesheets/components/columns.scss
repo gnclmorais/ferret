@@ -28,6 +28,6 @@ $panel-spacing: 20px;
   }
 
   .column__panel--grow {
-    background-color: red;
     flex-grow: 1;
+    overflow: auto;
   }

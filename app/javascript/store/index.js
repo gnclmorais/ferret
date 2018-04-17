@@ -20,7 +20,7 @@ export default new Vuex.Store({
       console.log('loggedIn:', state.loggedIn)
     },
     logOut(state) {
-      // state.currentUser = null
+      state.currentUser = null;
     },
   },
   // actions: {

@@ -222,6 +222,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~bulma/bulma';
+
 .item {
   position: relative;
 }
@@ -246,5 +248,24 @@ export default {
   animation-name: highlight;
   animation-duration: 3s;
   animation-timing-function: ease-in;
+}
+
+li {
+  // &:nth-child(odd) {
+  //   background-color: whitesmoke;
+  // }
+
+  &::before {
+    content: counter(places-counter);
+    counter-increment: places-counter;
+
+    color: white;
+    background: $info;
+    margin-right: 5px;
+    border-radius: 50%;
+    min-width: 25px;
+    height: 25px;
+    text-align: center;
+  }
 }
 </style>
