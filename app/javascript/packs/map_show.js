@@ -9,7 +9,8 @@ import List from '../components/places-list.vue'
 import Map from '../components/map.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
-  setState(store);
+  store.commit('logOut', null);
+  // setState(store);
 
   new Vue({
     store,

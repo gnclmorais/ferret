@@ -8,10 +8,9 @@
     .column.is-one-third.flex-el.map__places-column
       .hero.is-info.flex-el__child-keep
         .hero-body
-          .container
-            %h1.title= @map.name
-            - unless @map.description.empty?
-              %h2.subtitle= @map.description
+          %h1.title= @map.name
+          - unless @map.description.empty?
+            %h2.subtitle= @map.description
         - if signed_in?
           .hero-foot
             %nav.tabs.is-right
