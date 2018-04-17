@@ -9,10 +9,19 @@
 $purple: #57068c;
 $purple-invert: #fff;
 
+$french-plum: #870058;
+
 // 3. Set the derived variables
 // Base
 $primary: $purple;
 $primary-invert: $purple-invert;
+
+$info: #4CE0D2;
+$link: #4CE0D2;
+
+// Other possibilities:
+// - #FE5F55 and #99E1D9
+// - #F64740 for links
 
 // 5. Add new color variables to the color map.
 @import "~bulma/sass/utilities/derived-variables";
