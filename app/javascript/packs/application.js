@@ -14,6 +14,8 @@ import '../../stylesheets/overrides.scss'
 import '../../stylesheets/general.css'
 import '../../stylesheets/maps.css'
 
+import '../../stylesheets/components/columns.scss'
+
 import '../../stylesheets/pages/maps.scss'
 
 import '../store/index.js'
