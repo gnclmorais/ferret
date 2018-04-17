@@ -55,7 +55,7 @@ class MapsTest < ApplicationSystemTestCase
     visit maps_path(as: map.owner)
 
     accept_alert do
-      click_link 'Destroy'
+      click_link 'Delete'
     end
 
     assert_no_text map.name
