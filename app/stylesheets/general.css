@@ -25,13 +25,13 @@ body {
 .fold {
   position: relative;
 
-  /* as child of <body> */
-  flex-basis: 100vh;
-  flex-grow: 1;
-
   /* as parent of <section> */
   display: flex;
   flex-direction: column;
+
+  /* as child of <body> */
+  min-height: 100vh;
+  flex-grow: 1;
 }
 
 .navigation {
