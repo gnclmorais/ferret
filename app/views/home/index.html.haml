@@ -1,3 +1,25 @@
-.section
-  .container
-    = link_to "Maps >", maps_path
+.content
+  .section.hero.is-info
+    .hero-body
+      .container
+        %h2.title Save your favorite places
+        %h3.subtitle Keep you favorite places close-by
+  .section.hero.is-primary
+    .hero-body
+      .container
+        %h2.title Organise and discover more
+        %h3.subtitle Tag your spots and use it to discover other lists
+  .section.hero.is-info
+    .hero-body
+      .container
+        %h2.title Share your lists with the world
+        %h3.subtitle Spread the joy with shareable maps
+
+  .section.hero.is-primary
+    .hero-body
+      = link_to maps_path do
+        .container
+          %h2.title
+            See all maps now
+            %i.fa.fa-angle-right
+          %h3.subtitle Check out out community’ maps
