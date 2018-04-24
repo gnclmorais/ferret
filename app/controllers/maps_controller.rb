@@ -13,10 +13,12 @@ class MapsController < ApplicationController
 
   def show
     @map = Map.find(params[:id])
+    render layout: 'application_fullscreen'
   end
 
   def edit
     @map = Map.find(params[:id])
+    render layout: 'application_fullscreen'
   end
 
   def create
