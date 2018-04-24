@@ -1,0 +1,18 @@
+!!!
+%html{ lang: 'en' }
+  %head
+    %title Ferret
+    = csrf_meta_tags
+    = javascript_pack_tag 'vendor'
+    = javascript_pack_tag 'application'
+    = stylesheet_pack_tag 'application'
+
+  %body
+    .fold.fold--fullscreen
+      = render 'components/navbar'
+      = yield
+
+    .footer
+      = render 'components/footer'
+
+    = render 'components/state'
