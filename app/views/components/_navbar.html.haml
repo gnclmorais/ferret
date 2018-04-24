@@ -1,22 +1,23 @@
 - attributes = { role: "navigation", aria_label: "main navigation" }
 
 %nav.navbar.is-primary.navbar-main{ attributes }
-  .navbar-brand
-    = link_to "/", class: "navbar-item" do
-      Ferret
-    -# <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
-  .navbar-menu
-    .navbar-start
-      .navbar-item
-        - if content_for?(:breadcrumbs)
-          %nav.breadcrumb{ "aria-label": "breadcrumbs" }
-            %ul= content_for(:breadcrumbs)
-        - else
-          All the places in a single place.
-    .navbar-end
-      .navbar-item
-        - if signed_in?
-          = button_to t(".sign_out"), sign_out_path, method: :delete,
-            class: "button is-black"
-        - else
-          = link_to t(".sign_in"), sign_in_path, class: "button is-white"
+  .container
+    .navbar-brand
+      = link_to "/", class: "navbar-item" do
+        Ferret
+      -# <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+    .navbar-menu
+      .navbar-start
+        .navbar-item
+          - if content_for?(:breadcrumbs)
+            %nav.breadcrumb{ "aria-label": "breadcrumbs" }
+              %ul= content_for(:breadcrumbs)
+          - else
+            All the places in a single place.
+      .navbar-end
+        .navbar-item
+          - if signed_in?
+            = button_to t(".sign_out"), sign_out_path, method: :delete,
+              class: "button is-black"
+          - else
+            = link_to t(".sign_in"), sign_in_path, class: "button is-white"
