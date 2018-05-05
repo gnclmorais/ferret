@@ -59,8 +59,12 @@ export default {
       this.query = ''
       this.$emit('clear');
     },
-    searchDone() {
+    searchDone(err, data) {
       this.isSearching = false;
+
+      if (err) {
+        console.log('There was an error', err);
+      }
     },
   },
   mounted() {
