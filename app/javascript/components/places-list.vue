@@ -34,7 +34,10 @@ export default {
   props: ['map', 'places'],
   data() {
     return {
-      originalPlaces: this.places,
+      originalPlaces: this.places.map((place, i) => {
+        place.index = i + 1;
+        return place;
+      }),
       localPlaces: this.places,
       isFiltered: false,
       filteringTag: {},
@@ -102,14 +105,5 @@ export default {
 <style lang="scss" scoped>
 .list-wrapper {
   overflow: auto;
-}
-
-.panel-places {
-  position: relative;
-  z-index: 1;
-}
-
-ol {
-  counter-reset: places-counter;
 }
 </style>
