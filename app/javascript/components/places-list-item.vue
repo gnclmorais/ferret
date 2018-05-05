@@ -25,8 +25,10 @@
           <button class="tag is-light" v-on:click="focusTagInput" v-show="!addingTag">
             + add tag
           </button>
-          <input class="input is-small" type="text" v-show="addingTag"
+          <input :class="{ input: true, 'is-small': true, 'is-danger': hasError }"
+                 type="text" v-show="addingTag"
                  @keyup.enter="saveTag" @keyup.esc="blurTagInput"
+                 v-on:input="onChange"
                  v-model="tagInput" ref="tagInput">
         </div>
       </div>
@@ -109,6 +111,7 @@ export default {
       addingTag: false,
       tags: [],
       tagInput: '',
+      hasError: false,
     };
   },
   mounted() {
@@ -207,6 +210,7 @@ export default {
 
       if (this.alreadyExists(tag)) {
         console.log('Repeated tag, place add something different');
+        this.hasError = true;
         return;
       }
 
@@ -223,6 +227,9 @@ export default {
         console.log('delete tag', removedTag);
         deleteTaggedPin(removedTag.id, removedTag.name);
       }
+    },
+    onChange() {
+      this.hasError = false;
     },
     filterByTag(tag) {
       this.$emit('filterByTag', tag);
