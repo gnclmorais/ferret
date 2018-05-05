@@ -1,0 +1,8 @@
+.section--tall {
+  /* as child of <fold> (probably) */
+  flex-grow: 1;
+
+  /* as parent of <columns> (probably) */
+  display: flex;
+  flex-flow: column wrap;
+}

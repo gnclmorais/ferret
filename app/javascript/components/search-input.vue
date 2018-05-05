@@ -1,5 +1,5 @@
 <template>
-<div class="box is-paddingless is-clipped">
+<div>
   <div class="field has-addons">
     <label for="search-input" class="label is-hidden">Search</label>
     <div class="control is-expanded">
