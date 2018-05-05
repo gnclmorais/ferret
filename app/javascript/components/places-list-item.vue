@@ -197,8 +197,18 @@ export default {
     blurTagInput() {
       this.addingTag = false;
     },
+    alreadyExists(tag) {
+      return this.place.tagged_pins.findIndex(
+        tagged_pin => tagged_pin.name === tag
+      ) > -1;
+    },
     saveTag() {
-      const tag = this.tagInput;
+      const tag = this.tagInput.trim();
+
+      if (this.alreadyExists(tag)) {
+        console.log('Repeated tag, place add something different');
+        return;
+      }
 
       this.place.tagged_pins.push({ name: tag });
       this.tagInput = '';

@@ -68,5 +68,6 @@ export default {
 
 .no-results {
   background-color: white;
+  margin-top: 15px;
 }
 </style>
