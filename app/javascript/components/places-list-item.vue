@@ -1,6 +1,6 @@
 <template>
 <li class="media item" :class="{ focus: focused }"
-    :data-id="place.id" :data-place-id="place.place_id">
+    :data-id="place.id" :data-place-id="place.place_id" :data-index="place.index">
   <div class="media-content" v-on:click="focusOnMap(place.place)">
     <div class="content">
       <p>
@@ -251,14 +251,8 @@ export default {
 }
 
 li {
-  // &:nth-child(odd) {
-  //   background-color: whitesmoke;
-  // }
-
   &::before {
-    content: counter(places-counter);
-    counter-increment: places-counter;
-
+    content: attr(data-index);
     color: white;
     background: $info;
     margin-right: 5px;
