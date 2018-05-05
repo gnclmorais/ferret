@@ -30,6 +30,12 @@ export default {
   },
   methods: {
     search(query) {
+      if (typeof google === "undefined") {
+        this.noResults = true;
+        PlacesBus.$emit('searchDone', 'No Google; are you online?');
+        return;
+      }
+
       var service = new google.maps.places.PlacesService(window.map);
 
       service.textSearch({
