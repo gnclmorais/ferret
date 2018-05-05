@@ -33,24 +33,9 @@ body {
   flex: 1 1 auto;
   min-height: 100vh;
 }
-.fold--fullscreen {
-  flex-basis: 100vh;
-}
-
-.navigation {
-  /* Don't grow or shrink */
-  flex-grow: 0;
-  flex-shrink: 0;
-}
-
-.section--tall {
-  /* as child of <fold> (probably) */
-  flex-grow: 1;
-
-  /* as parent of <columns> (probably) */
-  display: flex;
-  flex-flow: column wrap;
-}
+  .fold--fullscreen {
+    flex-basis: 100vh;
+  }
 
 .columns--tall {
   /* as child of <section> (probably) */

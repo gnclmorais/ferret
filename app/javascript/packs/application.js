@@ -7,15 +7,30 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-import '../../stylesheets/bulma.scss';
-import 'font-awesome-webpack'
 
-import '../../stylesheets/overrides.scss'
-import '../../stylesheets/general.css'
-import '../../stylesheets/maps.css'
+// // // // // // // // // // // // // // // // // // // // // // // // // // //
+// 3rd parties
 
-import '../../stylesheets/components/columns.scss'
+import 'font-awesome-webpack';
 
-import '../../stylesheets/pages/maps.scss'
 
-import '../store/index.js'
+// // // // // // // // // // // // // // // // // // // // // // // // // // //
+// Stylesheets
+
+// Bulma customisation
+import '../../stylesheets/overrides/bulma.scss';
+// Project-specific overrides to Bulma
+import '../../stylesheets/overrides/card.scss';
+import '../../stylesheets/overrides/column.scss';
+import '../../stylesheets/overrides/section.scss';
+// General project stylesheets
+import '../../stylesheets/general.scss';
+import '../../stylesheets/pages/maps.scss';
+// Project specific components
+import '../../stylesheets/components/column_panels.scss';
+
+
+// // // // // // // // // // // // // // // // // // // // // // // // // // //
+// JavaScript
+
+import '../store/index.js';
