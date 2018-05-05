@@ -36,6 +36,22 @@ class TagsTest < ApplicationSystemTestCase
     assert_no_text 'espresso'
   end
 
+  test 'map owner can filter by a tag' do
+    create(:pin, map: @map, place: build(:place, name: 'Shopping'))
+
+    pin_cafe = create(:pin, map: @map, place: build(:place, name: 'Caffeine'))
+    create(:tagged_pin, pin: pin_cafe, tag: create(:tag, name: 'espresso'))
+
+    visit edit_map_path(@map, as: @user)
+    assert_text 'Caffeine'
+    assert_text 'Shoppin'
+
+    click_button 'espresso'
+    assert_text 'Filtered by espresso'
+    assert_text 'Caffeine'
+    assert_no_text 'Shoppin'
+  end
+
   test 'other users see tags but no delete button' do
   end
 end
