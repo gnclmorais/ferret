@@ -6,21 +6,21 @@
 %section.section--tall
   .columns.is-gapless.columns--tall
     .column.is-one-third.flex-el.map__places-column
-      .hero.is-primary.flex-el__child-keep
-        .hero-body
-          %h1.title= @map.name
-          - unless @map.description.empty?
-            %h2.subtitle= @map.description
-        - if signed_in?
-          .hero-foot
-            %nav.tabs.is-right
-              .container
-                %ul
-                  %li= link_to 'Edit', edit_map_path(@map)
-      #places-panel.places-panel.flex-el__child-grow
-        %section.section
-          #places-list{ ":map": @map.id,
-                        ":places": @map.pins.to_json }
+      .column__panel.column__panel--stay.has-background-primary
+        .hero.is-primary
+          .hero-body
+            %h1.title= @map.name
+            - unless @map.description.empty?
+              %h2.subtitle= @map.description
+          - if signed_in?
+            .hero-foot
+              %nav.tabs.is-right
+                .container
+                  %ul
+                    %li= link_to 'Edit', edit_map_path(@map)
+      #places-panel.column__panel.column__panel--grow
+        #places-list{ ":map": @map.id,
+                      ":places": @map.pins.to_json }
     .column
       .map-wrapper.u-fullheight
         #map{ ":places": @map.pins.to_json }
