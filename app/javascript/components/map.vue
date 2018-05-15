@@ -76,7 +76,7 @@ export default {
             position: results[0].geometry.location,
           });
 
-          marker.addListener('click', function (mmap, pplace, mmarker) {
+          marker.addListener('mouseover', function (mmap, pplace, mmarker) {
             PlacesBus.$emit('focusPlace', pplace);
           }.bind(null, this.map, place, marker));
 
