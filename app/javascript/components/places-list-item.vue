@@ -133,6 +133,11 @@ export default {
     //   return this.$store.getters.isLoggedIn()
     // },
     focusOnList(place) {
+      if (this.timeout) {
+        clearTimeout(this.timeout);
+        console.log('clearTimeout');
+      }
+
       console.log('Focused place:', place, this.place.id, place.id);
       if (this.place.id !== place.id) {
         this.focused = false
@@ -146,7 +151,7 @@ export default {
       });
 
       this.focused = true;
-      setTimeout(() => { this.focused = false; }, 3000);
+      this.timeout = setTimeout(() => { this.focused = false; }, 3000);
     },
     focusOnMap: function (place) {
       console.log('Clicked on:', place);
