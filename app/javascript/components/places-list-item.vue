@@ -17,12 +17,12 @@
               {{ tag.name }}
             </button>
             <a class="tag is-delete" href="#"
-               v-on:click="removeTag(index)"
+               v-on:click.stop="removeTag(index)"
                v-if="tag.id && loggedIn"></a>
           </div>
         </div>
         <div class="level-item" v-if="loggedIn">
-          <button class="tag is-light" v-on:click="focusTagInput" v-show="!addingTag">
+          <button class="tag is-light" v-on:click.stop="focusTagInput" v-show="!addingTag">
             + add tag
           </button>
           <input :class="{ input: true, 'is-small': true, 'is-danger': hasError }"
