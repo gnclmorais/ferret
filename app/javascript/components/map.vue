@@ -1,5 +1,8 @@
 <template lang="haml">
-#map
+<div>
+  #map
+  %button.button.button--reset-zoom{ type: "button", "v-on:click": "setMapBoundaries" } Reset zoom
+</div>
 </template>
 
 <script>
@@ -42,8 +45,6 @@ export default {
   },
   methods: {
     renderMap() {
-      this.markers = []
-
       var map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: -34.397, lng: 150.644 },
         zoom: 8,
@@ -91,9 +92,9 @@ export default {
       });
     },
     setMapBoundaries() {
-      const latLngBounds = new google.maps.LatLngBounds();
+      if (this.markers.length === 0) return;
 
-      console.log('markers', this.markers.length);
+      const latLngBounds = new google.maps.LatLngBounds();
 
       this.markers.forEach(marker => {
         console.log('Position:', marker.getPosition());
@@ -113,7 +114,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #map {
   position: absolute;
   top: 0;
@@ -121,5 +122,12 @@ export default {
   right: 0;
   bottom: 0;
   background-color: lightblue; // TODO: Remove this
+}
+
+.button--reset-zoom {
+  position: absolute;
+  z-index: 1;
+  top: 15px;
+  right: 15px;
 }
 </style>
