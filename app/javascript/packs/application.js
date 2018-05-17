@@ -11,7 +11,13 @@
 // // // // // // // // // // // // // // // // // // // // // // // // // // //
 // 3rd parties
 
-import 'font-awesome-webpack';
+import fontawesome from '@fortawesome/fontawesome';
+import freeSolid from '@fortawesome/fontawesome-free-solid';
+import freeRegular from '@fortawesome/fontawesome-free-regular';
+import freeBrands from '@fortawesome/fontawesome-free-brands';
+fontawesome.library.add(freeSolid);
+fontawesome.library.add(freeRegular);
+fontawesome.library.add(freeBrands);
 
 
 // // // // // // // // // // // // // // // // // // // // // // // // // // //
