@@ -38,7 +38,13 @@
     <i class="fa fa-bars"></i>
   </span>
   <div class="media-right" v-show="loggedIn">
-    <button class="button" v-on:click="remove(place)">Remove</button>
+    <button class="button is-white">
+      <span class="icon"><i class="fas fa-pen-square"></i></span>
+    </button>
+    <br>
+    <button class="button is-danger is-inverted" v-on:click="remove(place)">
+      <span class="icon"><i class="fa fa-minus-square"></i></span>
+    </button>
   </div>
 </li>
 </template>
