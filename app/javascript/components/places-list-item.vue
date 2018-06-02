@@ -4,7 +4,14 @@
     <div class="media-content" v-on:click="focusOnMap(place.place)">
       <div class="content">
         <p>
-          <strong>{{ place.place.name }}</strong>
+          <strong v-show="!title.editing">{{ place.place.name }}</strong>
+          <input :class="{ input: true, 'is-small': true, 'is-danger': title.hasError }"
+                 type="text" v-show="title.editing"
+                 @keyup.enter="saveTitle" @keyup.esc="blurTitleInput"
+                 v-on:input=""
+                 v-model="title.input" ref="titleInput">
+
+
           <br>
           {{ place.place.address }}
         </p>
@@ -38,7 +45,8 @@
       <i class="fa fa-bars"></i>
     </span>
     <div class="media-right" v-show="loggedIn">
-      <button class="button is-white">
+      <button class="button is-white"
+              v-on:click.stop="focusTitleInput" v-show="!title.editing">
         <span class="icon"><i class="fas fa-pen-square"></i></span>
       </button>
       <br>
@@ -67,6 +75,11 @@
         tags: [],
         tagInput: '',
         hasError: false,
+        title: {
+          input: '',
+          editing: false,
+          hasError: false,
+        },
       };
     },
     mounted() {
@@ -153,9 +166,16 @@
             console.log('did not remove:', failure);
           });
       },
+      focusTitleInput() {
+        this.title.editing = true;
+        this.$nextTick(() => this.$refs.titleInput.focus());
+      },
       focusTagInput() {
         this.addingTag = true;
         this.$nextTick(() => this.$refs.tagInput.focus());
+      },
+      blurTitleInput() {
+        this.title.editing = false;
       },
       blurTagInput() {
         this.addingTag = false;
@@ -164,6 +184,9 @@
         return this.place.tagged_pins.findIndex(
           tagged_pin => tagged_pin.name === tag
         ) > -1;
+      },
+      saveTitle() {
+        console.log('test to save title');
       },
       saveTag() {
         const tag = this.tagInput.trim();
