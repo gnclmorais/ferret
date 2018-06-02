@@ -1,18 +1,29 @@
 const Dotenv = require('dotenv-webpack')
 const webpack = require('webpack')
 
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+
 module.exports = {
+  devServer: {
+    stats: {
+      warnings: false,
+    }
+  },
+
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loader: 'babel',
-      exclude: /node_modules/
-    }, {
+    rules: [{
       test: /\.vue$/,
-      loader: 'vue'
+      loader: 'vue-loader'
     }, {
-      test: /\.s[a|c]ss$/,
-      loader: 'style!css!sass'
+      test: /\.js$/,
+      loader: 'babel-loader',
+      exclude: file => (
+        /node_modules/.test(file) &&
+        !/\.vue\.js/.test(file)
+      )
+    }, {
+      test: /\.css$/,
+      loader: ['vue-style-loader', 'css-loader'],
     }, {
       test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       loader: "url-loader?limit=10000&mimetype=application/font-woff"
@@ -35,6 +46,7 @@ module.exports = {
     new webpack.ProvidePlugin({
        $: 'jquery',
     }),
+    new VueLoaderPlugin(),
   ],
   entry: {
     vendor: ['jquery', 'jquery-ujs'],

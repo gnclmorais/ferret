@@ -54,7 +54,7 @@
   import { PlacesBus } from '../buses.js'
   import MapUtils from '../utils/maps'
 
-  import { postTaggedPin, deleteTaggedPin } from '../modules/tagged-pins';
+  import { postTaggedPin, deleteTaggedPin } from 'modules/tagged-pins';
 
   export default {
     props: ['place', 'map'],

@@ -1,7 +1,10 @@
-<template lang="haml">
+<template>
 <div>
-  #map
-  %button.button.button--reset-zoom{ type: "button", "v-on:click": "setMapBoundaries" } Reset zoom
+  <div id="map"></div>
+  <button type="button" class="button button--reset-zoom"
+          v-on:click="setMapBoundaries">
+    Reset zoom
+  </button>
 </div>
 </template>
 
