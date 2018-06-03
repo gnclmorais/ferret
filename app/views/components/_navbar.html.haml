@@ -20,4 +20,5 @@
             = button_to t(".sign_out"), sign_out_path, method: :delete,
               class: "button is-black"
           - else
-            = link_to t(".sign_in"), sign_in_path, class: "button is-white"
+            = link_to t(".sign_in"), sign_in_path,
+              class: "button is-white is-hidden"
