@@ -1,3 +1,10 @@
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  Exclude:
+    - 'schema.rb'
+    - 'db/**/*'
+
 Documentation:
   Enabled: false
 
