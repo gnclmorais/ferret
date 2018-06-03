@@ -1,9 +1,20 @@
 %footer
   .container
-    .content.has-text-centered
-      %p
-        %strong Ferret
+    .columns
+      .column
+        .has-text-weight-bold Maps & Rec project
         by
-        Gonçalo Morais
+        = link_to 'Gonçalo Morais', 'https://twitter.com/gnclmorais'
         and
-        Marion Miclet
+        = link_to 'Marion Miclet', 'https://marionmiclet.com'
+      .column
+      .column
+        .has-text-weight-bold Maps
+        %ul
+          %li
+            = link_to 'Découvrir New York en Séries', maps_path
+      .column
+        .has-text-weight-bold Terms & Policies
+        %ul
+          %li Privacy
+          %li Terms
