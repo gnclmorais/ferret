@@ -32,7 +32,6 @@ class TagsTest < ApplicationSystemTestCase
       find('.is-delete').click
     end
 
-    refresh
     assert_no_text 'espresso'
   end
 
