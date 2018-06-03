@@ -10,8 +10,6 @@
                  @keyup.enter="saveTitle" @keyup.esc="blurTitleInput"
                  v-on:input=""
                  v-model="title.input" ref="titleInput">
-
-
           <br>
           {{ place.place.address }}
         </p>
@@ -45,12 +43,13 @@
       <i class="fa fa-bars"></i>
     </span>
     <div class="media-right" v-show="loggedIn">
-      <button class="button is-white"
+      <button class="button is-white is-hidden" title="Edit name"
               v-on:click.stop="focusTitleInput" v-show="!title.editing">
         <span class="icon"><i class="fas fa-pen-square"></i></span>
       </button>
-      <br>
-      <button class="button is-danger is-inverted" v-on:click="remove(place)">
+      <br class="is-hidden">
+      <button class="button is-danger is-inverted" title="Remove from map"
+              v-on:click="remove(place)">
         <span class="icon"><i class="fa fa-minus-square"></i></span>
       </button>
     </div>
@@ -76,7 +75,7 @@
         tagInput: '',
         hasError: false,
         title: {
-          input: '',
+          input: this.place.place.name,
           editing: false,
           hasError: false,
         },
