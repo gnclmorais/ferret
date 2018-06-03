@@ -14,6 +14,6 @@ before_script:
   - psql -c 'create database ferret_test;' -U postgres
 script:
   - bin/rails assets:precompile
-  - bin/rails test:system
   - bin/rails test
+  - bin/rails test:system
   - bundle exec rspec
