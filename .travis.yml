@@ -13,6 +13,7 @@ addons:
 before_script:
   - psql -c 'create database ferret_test;' -U postgres
 script:
+  - npm install
   - bin/rails assets:precompile
   - bin/rails test
   - bin/rails test:system
