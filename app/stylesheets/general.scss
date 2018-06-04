@@ -107,3 +107,31 @@ body {
 .navbar-main {
   z-index: 1000;
 }
+
+
+
+/**
+ * List
+ */
+.ul {
+  list-style-type: square;
+  padding-left: 20px;
+
+  & + .p,
+  & + .ul {
+    margin-top: 10px;
+  }
+}
+
+.li {}
+
+
+/**
+ * Paragraph
+ */
+.p {
+  & + .p,
+  & + .ul {
+    margin-top: 10px;
+  }
+}
