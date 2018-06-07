@@ -18,6 +18,9 @@ Bundler.require(*Rails.groups)
 
 module Ferret
   class Application < Rails::Application
+    # Custom configuration
+    config.x.application_name = "Maps & Rec"
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
