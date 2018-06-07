@@ -1,4 +1,10 @@
 module ApplicationHelper
+  def page_title
+    return Rails.configuration.x.application_name unless content_for?(:title)
+
+    [content_for(:title), Rails.configuration.x.application_name].join(" | ")
+  end
+
   # TODO: Change pages into *pages
   def breadcrumbs(pages)
     klass = ->(total, index) { 'is-active white' if total == index }
