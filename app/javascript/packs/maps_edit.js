@@ -41,6 +41,16 @@ import Vue from 'vue'
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
 
+import Toasted from 'vue-toasted';
+Vue.use(Toasted, {
+  position: 'bottom-center',
+  duration: 2000,
+  action: {
+    text: 'Close',
+    onClick: (_e, toastObject) => toastObject.goAway(0),
+  },
+});
+
 import store from '../store/index.js'
 import setState from '../store/state.js'
 

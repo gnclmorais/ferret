@@ -15,9 +15,10 @@
 </template>
 
 <script>
+import * as _ from 'lodash'
+
 import { PlacesBus } from '../buses.js'
 import MapUtils from '../utils/maps'
-import * as _ from 'lodash'
 
 export default {
   props: ['map', 'place'],
@@ -67,12 +68,10 @@ export default {
       }, failure => {
         switch (failure.status) {
           case 409:
-            // TODO: Show toast with error
-            console.log('Already present');
+            this.$toasted.show('Already added to this map');
             break;
           default:
-            // TODO: Show toast with error
-            console.log('Request failed, sorry :(');
+            this.$toasted.show('Request failed, try again later');
             break;
         }
       });
