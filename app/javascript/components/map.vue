@@ -105,9 +105,15 @@ export default {
         latLngBounds.extend(marker.getPosition());
       });
 
+      // Set a max zoom for the focus...
+      map.setOptions({ maxZoom: 16 });
+
       // Center map and adjust Zoom based on the position of all markers.
       this.map.fitBounds(latLngBounds);
       this.map.setCenter(latLngBounds.getCenter());
+
+      // ... and now reset the zoom for users to do whatever they want!
+      map.setOptions({ maxZoom: null });
     },
     scrollToPlace() {
       var container = this.$el.querySelector("#container");
