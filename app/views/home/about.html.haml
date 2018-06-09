@@ -1,0 +1,13 @@
+- content_for :title, "About"
+
+.hero.is-info
+  .hero-body
+    .container
+      %h1.title= content_for(:title)
+
+.section
+  .container
+    By
+    = link_to 'Gonçalo Morais', 'https://twitter.com/gnclmorais'
+    and
+    = link_to 'Marion Miclet', 'https://marionmiclet.com'

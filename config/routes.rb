@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'maps#index'
 
+  get '/about' => 'home#about'
+
   resource :session, controller: 'sessions'
   resources :users, controller: 'users'
 
@@ -9,7 +11,6 @@ Rails.application.routes.draw do
   resources :search_places, only: %i[create]
   resources :tagged_pins, only: %i[create destroy]
 
-  # resource :legal, only: %i[privacy terms]
   get '/legal/privacy' => 'legal#privacy'
   get '/legal/terms' => 'legal#terms'
 end

@@ -3,6 +3,8 @@ class HomeController < ApplicationController
 
   def index; end
 
+  def about; end
+
   private
 
   def skip_homepage
