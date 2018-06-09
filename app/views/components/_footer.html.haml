@@ -2,11 +2,10 @@
   .container
     .columns
       .column
-        .has-text-weight-bold Maps & Rec project
-        by
-        = link_to 'Gonçalo Morais', 'https://twitter.com/gnclmorais'
-        and
-        = link_to 'Marion Miclet', 'https://marionmiclet.com'
+        .has-text-weight-bold
+          = Rails.configuration.x.application_name
+          project
+        = link_to 'About', '/about'
       .column
       .column
         .has-text-weight-bold Maps
@@ -14,7 +13,7 @@
           %li
             = link_to 'Découvrir New York en Séries', maps_path
       .column
-        .has-text-weight-bold Terms & Policies
+        .has-text-weight-bold Legal
         %ul
           %li= link_to 'Privacy', '/legal/privacy'
           %li= link_to 'Terms', '/legal/terms'
