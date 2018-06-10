@@ -9,7 +9,7 @@
           </strong>
           <input :class="{ input: true, 'is-small': true, 'is-danger': title.hasError }"
                  type="text" v-show="title.editing"
-                 @keyup.enter="saveTitle(place.place.name)"
+                 @keyup.enter="saveTitle(place.name)"
                  @keyup.esc="blurTitleInput"
                  v-on:input="onTitleChange"
                  v-model="title.input" ref="titleInput">
@@ -64,6 +64,7 @@
   import { PlacesBus } from '../buses.js'
   import MapUtils from '../utils/maps'
 
+  import { updatePin } from 'modules/pins';
   import { postTaggedPin, deleteTaggedPin } from 'modules/tagged-pins';
 
   export default {
@@ -198,6 +199,8 @@
           this.hasError = false;
           return;
         }
+
+        updatePin(this.place.id, newTitle);
 
         this.place.name = newTitle;
       },

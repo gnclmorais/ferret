@@ -58,6 +58,27 @@ RSpec.describe PinsController, type: :controller do
       end
     end
 
+    context 'can update existing pins' do
+      before { sign_in_as user }
+
+      it 'updates an existing pin on an existing map' do
+        pin = create(:pin, place: place, name: "Old")
+
+        expect do
+          post :update, params: {
+            id: pin.id,
+            pin: {
+              id: pin.id,
+              name: "New"
+            },
+            format: :json
+          }
+        end.to(change { pin.reload.name })
+
+        expect(response).to have_http_status(:success)
+      end
+    end
+
     context 'can destroy existing pins' do
       before do
         sign_in_as user
