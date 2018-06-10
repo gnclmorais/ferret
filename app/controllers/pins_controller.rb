@@ -2,6 +2,23 @@ class PinsController < ApplicationController
   # TODO: Fix this
   skip_before_action :verify_authenticity_token
 
+  def update
+    id, newName = update_pin_params[:pin].values_at(:id, :name)
+
+    pin = Pin.find(id)
+    pin.update(name: newName)
+
+    respond_to do |format|
+      format.json do
+        if pin.save
+          head :ok
+        else
+          render json: { errors: pin.errors }, status: :conflict
+        end
+      end
+    end
+  end
+
   def create
     respond_to do |format|
       pin = ensure_pin
@@ -63,6 +80,11 @@ class PinsController < ApplicationController
   def pin_params
     params.require(:map)
     params.require(:place).permit(:id, :place_id, :name, :address)
+    params
+  end
+
+  def update_pin_params
+    params.require(:pin).permit(:id, :name)
     params
   end
 end

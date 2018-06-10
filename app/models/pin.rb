@@ -18,7 +18,5 @@ class Pin < ApplicationRecord
 
   def ensure_name
     self.name ||= self.place.name
-
-    binding.pry if self.name.nil?
   end
 end
