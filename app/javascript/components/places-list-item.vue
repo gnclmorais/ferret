@@ -4,11 +4,14 @@
     <div class="media-content" v-on:click="focusOnMap(place.place)">
       <div class="content">
         <p>
-          <strong v-show="!title.editing">{{ place.place.name }}</strong>
+          <strong v-show="!title.editing" v-on:click.stop="focusTitleInput">
+            {{ place.name }}
+          </strong>
           <input :class="{ input: true, 'is-small': true, 'is-danger': title.hasError }"
                  type="text" v-show="title.editing"
-                 @keyup.enter="saveTitle" @keyup.esc="blurTitleInput"
-                 v-on:input=""
+                 @keyup.enter="saveTitle(place.place.name)"
+                 @keyup.esc="blurTitleInput"
+                 v-on:input="onTitleChange"
                  v-model="title.input" ref="titleInput">
           <br>
           {{ place.place.address }}
@@ -75,7 +78,7 @@
         tagInput: '',
         hasError: false,
         title: {
-          input: this.place.place.name,
+          input: this.place.name,
           editing: false,
           hasError: false,
         },
@@ -184,8 +187,19 @@
           tagged_pin => tagged_pin.name === tag
         ) > -1;
       },
-      saveTitle() {
-        console.log('test to save title');
+      saveTitle(oldTitle) {
+        const newTitle = this.title.input.trim();
+
+        // Reset title input
+        this.title.editing = false;
+
+        if (this.title.input === oldTitle) {
+          console.log('Title is the same, skipping…');
+          this.hasError = false;
+          return;
+        }
+
+        this.place.name = newTitle;
       },
       saveTag() {
         const tag = this.tagInput.trim();
@@ -209,6 +223,9 @@
           console.log('delete tag', removedTag);
           deleteTaggedPin(removedTag.id, removedTag.name);
         }
+      },
+      onTitleChange() {
+        this.title.hasError = false;
       },
       onChange() {
         this.hasError = false;
