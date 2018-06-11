@@ -32,4 +32,23 @@ class PinsTest < ApplicationSystemTestCase
       assert_no_text pin.name
     end
   end
+
+  test 'editing a pin from a Map' do
+    map = create(:map)
+    pin = create(:pin, map: map, name: 'Happy Bones')
+
+    visit edit_map_path(map, as: map.owner)
+
+    within first('.item') do
+      find('span', text: pin.name).click
+
+      edit_title_input = find('input[type="text"]')
+      edit_title_input.set('New name')
+      edit_title_input.send_keys(:enter)
+    end
+
+    visit edit_map_path(map, as: map.owner)
+    assert has_no_content? 'Happy Bones'
+    assert has_content? 'New name'
+  end
 end

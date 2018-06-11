@@ -4,9 +4,10 @@
     <div class="media-content" v-on:click="focusOnMap(place.place)">
       <div class="content">
         <p>
-          <strong v-show="!title.editing" v-on:click.stop="focusTitleInput">
+          <span class="has-text-weight-bold"
+                v-show="!title.editing" v-on:click.stop="focusTitleInput">
             {{ place.name }}
-          </strong>
+          </span>
           <input :class="{ input: true, 'is-small': true, 'is-danger': title.hasError }"
                  type="text" v-show="title.editing"
                  @keyup.enter="saveTitle(place.name)"
