@@ -170,6 +170,8 @@
           });
       },
       focusTitleInput() {
+        if (!this.loggedIn) return;
+
         this.title.editing = true;
         this.$nextTick(() => this.$refs.titleInput.focus());
       },
