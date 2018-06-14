@@ -56,9 +56,15 @@ export default {
       console.log('Map:', this.map);
       console.log('Place:', place);
 
-      const placeAttributes = _.pick(place, [
-        'id', 'place_id', 'name', 'formatted_address'
-      ]);
+      const placeAttributes = _.extend(
+        _.pick(place, [
+          'id', 'place_id', 'name', 'formatted_address'
+        ]),
+        {
+          lat: place.geometry.location.lat(),
+          lng: place.geometry.location.lng(),
+        }
+      );
 
       this.$http.post('/pins', {
         map: this.map,

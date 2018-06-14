@@ -69,7 +69,10 @@ class PinsController < ApplicationController
     {
       name: place[:name],
       address: place[:formatted_address],
-      google_place_id: place[:place_id]
+      google_place_id: place[:place_id],
+
+      lat: place[:lat],
+      lng: place[:lng]
     }
   end
 

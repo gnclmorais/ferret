@@ -15,6 +15,22 @@ import { Promise } from 'bluebird'
 import { PlacesBus } from '../buses.js'
 import MapUtils from '../utils/maps'
 
+const makeMarker = (markers, place, map, number, location) => {
+  let marker = new google.maps.Marker({
+    map: map,
+    label: String(number),
+    zIndex: number,
+    position: location,
+    // position: results[0].geometry.location,
+  });
+
+  marker.addListener('mouseover', function (mmap, pplace, mmarker) {
+    PlacesBus.$emit('focusPlace', pplace);
+  }.bind(null, map, place, marker));
+
+  markers.push(marker);
+};
+
 export default {
   props: ['places'],
   data() {
@@ -74,23 +90,30 @@ export default {
         return new Promise((resolve, reject) => {
           const number = index + 1;
 
-          console.log(`Place ${index}:`, place);
+          if (place.place.lat && place.place.lng) {
+            makeMarker(
+              this.markers,
+              place,
+              this.map,
+              number,
+              new google.maps.LatLng(
+                place.place.lat, place.place.lng
+              ),
+            );
+
+            return resolve();
+          }
 
           MapUtils.geocode(place.place.address, results => {
             console.log(`Results for ${index}:`, results);
 
-            let marker = new google.maps.Marker({
-              map: this.map,
-              label: String(number),
-              zIndex: number,
-              position: results[0].geometry.location,
-            });
-
-            marker.addListener('mouseover', function (mmap, pplace, mmarker) {
-              PlacesBus.$emit('focusPlace', pplace);
-            }.bind(null, this.map, place, marker));
-
-            this.markers.push(marker);
+            makeMarker(
+              this.markers,
+              place,
+              this.map,
+              number,
+              results[0].geometry.location
+            );
 
             resolve();
           }, error => {
