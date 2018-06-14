@@ -10,6 +10,7 @@
 
 <script>
 import * as loadMap from 'load-google-maps-api'
+import { Promise } from 'bluebird'
 
 import { PlacesBus } from '../buses.js'
 import MapUtils from '../utils/maps'
@@ -69,33 +70,44 @@ export default {
 
       console.log('this.allPlaces', this.allPlaces);
 
-      this.allPlaces.forEach((place, index) => {
-        const number = index + 1;
+      Promise.map(this.allPlaces, (place, index) => {
+        return new Promise((resolve, reject) => {
+          const number = index + 1;
 
-        MapUtils.geocode(place.place.address, results => {
-          let marker = new google.maps.Marker({
-            map: this.map,
-            label: String(number),
-            zIndex: number,
-            position: results[0].geometry.location,
+          console.log(`Place ${index}:`, place);
+
+          MapUtils.geocode(place.place.address, results => {
+            console.log(`Results for ${index}:`, results);
+
+            let marker = new google.maps.Marker({
+              map: this.map,
+              label: String(number),
+              zIndex: number,
+              position: results[0].geometry.location,
+            });
+
+            marker.addListener('mouseover', function (mmap, pplace, mmarker) {
+              PlacesBus.$emit('focusPlace', pplace);
+            }.bind(null, this.map, place, marker));
+
+            this.markers.push(marker);
+
+            resolve();
+          }, error => {
+            console.log('Error on geocoding:', error);
+
+            reject(new Error(error));
           });
-
-          marker.addListener('mouseover', function (mmap, pplace, mmarker) {
-            PlacesBus.$emit('focusPlace', pplace);
-          }.bind(null, this.map, place, marker));
-
-          this.markers.push(marker);
-
-          if (this.markers.length === this.localPlaces.length) {
-            console.log('setMapBoundaries');
-
-            this.setMapBoundaries();
-          }
         });
+      }).then(() => {
+        this.setMapBoundaries();
+      }).error(function (e) {
+        console.error('Error while putting markers on map:', e.message);
       });
     },
     setMapBoundaries() {
       if (this.markers.length === 0) return;
+      console.log('setMapBoundaries');
 
       const latLngBounds = new google.maps.LatLngBounds();
 
