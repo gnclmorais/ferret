@@ -134,8 +134,13 @@
           return;
         }
 
-        const geocoder = new google.maps.Geocoder();
+        if (place.lat && place.lng) {
+          const location = new google.maps.LatLng(place.lat, place.lng);
+          map.panTo(location);
+          return;
+        }
 
+        const geocoder = new google.maps.Geocoder();
         geocoder.geocode({
           'address': place.address
         }, (results, status) => {
@@ -146,6 +151,8 @@
 
           const result = results[0];
           const location = result.geometry.location;
+
+          console.log('Viewport:', result.geometry.viewport)
 
           // Adapt map bounds to the kind of place
           map.fitBounds(result.geometry.viewport);
@@ -239,6 +246,7 @@
       filterByTag(tag) {
         this.$emit('filterByTag', tag);
       },
+
     },
   };
 </script>
