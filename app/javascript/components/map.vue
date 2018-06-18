@@ -16,15 +16,23 @@ import { PlacesBus } from '../buses.js'
 import MapUtils from '../utils/maps'
 
 const makeMarker = (markers, place, map, number, location) => {
+  console.log('Number ->', String(number));
+
   let marker = new google.maps.Marker({
     map: map,
-    label: String(number),
-    zIndex: number,
+    animation: google.maps.Animation.DROP,
+    label: {
+      text: String(number),
+      color: 'white',
+    },
+    zIndex: number + 100,
     position: location,
-    // position: results[0].geometry.location,
+    optimized: false,
   });
 
   marker.addListener('mouseover', function (mmap, pplace, mmarker) {
+    console.log('hovering on', pplace)
+
     PlacesBus.$emit('focusPlace', pplace);
   }.bind(null, map, place, marker));
 
@@ -134,18 +142,13 @@ export default {
 
       const latLngBounds = new google.maps.LatLngBounds();
 
-      this.markers.forEach(marker => {
-        console.log('Position:', marker.getPosition());
-
-        latLngBounds.extend(marker.getPosition());
-      });
+      this.markers.forEach(marker => latLngBounds.extend(marker.getPosition()));
 
       // Set a max zoom for the focus...
       map.setOptions({ maxZoom: 16 });
 
-      // Center map and adjust Zoom based on the position of all markers.
+      // ... adjust map zoom to fit all markers...
       this.map.fitBounds(latLngBounds);
-      this.map.setCenter(latLngBounds.getCenter());
 
       // ... and now reset the zoom for users to do whatever they want!
       map.setOptions({ maxZoom: null });
