@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class MapsTest < ApplicationSystemTestCase
   test 'showing a list of Maps' do
-    map = create(:map)
+    map = create(:map, :published)
 
     visit maps_path
 
