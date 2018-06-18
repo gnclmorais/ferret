@@ -22,7 +22,8 @@ export default {
       worldCoordinateNewCenter
     );
 
-    map.setCenter(newCenter);
+    // https://stackoverflow.com/a/16376850/590525
+    map.panTo(newCenter);
   },
   geocode(address, successCallback, failureCallback) {
     const geocoder = new google.maps.Geocoder();

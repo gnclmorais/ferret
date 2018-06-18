@@ -110,11 +110,11 @@
           console.log('clearTimeout');
         }
 
-        console.log('Focused place:', place, this.place.id, place.id);
         if (this.place.id !== place.id) {
           this.focused = false
           return;
         }
+        console.log('Focused place:', place, this.place.id, place.id);
 
         this.$el.scrollIntoView(false, {
           behavior: 'smooth',
