@@ -22,6 +22,11 @@
 
   .field
     .control
+      = form.label :published, class: "checkbox has-text-weight-bold"
+      = form.check_box :published
+
+  .field
+    .control
       = form.submit "Save map", class: "button is-primary"
       - if map.persisted?
         = link_to "Preview", map_path(map), target: "_blank", class: "button"

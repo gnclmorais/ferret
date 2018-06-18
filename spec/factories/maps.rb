@@ -10,4 +10,8 @@ FactoryBot.define do
       create :pin, map: map
     end
   end
+
+  trait :published do
+    published true
+  end
 end
