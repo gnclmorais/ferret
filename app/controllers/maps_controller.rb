@@ -4,7 +4,7 @@ class MapsController < ApplicationController
   before_action :require_login, except: %w[index show]
 
   def index
-    @maps = Map.all
+    @maps = signed_in? ? Map.all : Map.where(published: true)
   end
 
   def new
