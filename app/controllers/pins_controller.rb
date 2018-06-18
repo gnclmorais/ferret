@@ -1,6 +1,6 @@
 class PinsController < ApplicationController
   # TODO: Fix this
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
 
   def update
     id, newName = update_pin_params[:pin].values_at(:id, :name)
