@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe MapsController, type: :controller do
   let(:user) { create(:user) }
-  let(:map) { create(:map) }
+  let(:map) { create(:map, :published) }
 
   describe 'Anonymous users' do
     context 'have read access' do
@@ -84,6 +84,11 @@ RSpec.describe MapsController, type: :controller do
       end
 
       it 'updates an existing map' do
+        patch :update, params: { id: map, map: { published: false } }
+        expect(map.reload.published).to be false
+      end
+
+      it 'existing maps can be set to private' do
         patch :update, params: { id: map, map: { name: 'New Name' } }
         expect(map.reload.name).to eq('New Name')
       end

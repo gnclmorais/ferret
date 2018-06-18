@@ -58,6 +58,8 @@ class MapsController < ApplicationController
   private
 
   def map_params
-    params.require(:map).permit(:name, :description, :pins).to_h.symbolize_keys
+    params
+      .require(:map).permit(:name, :description, :pins, :published)
+      .to_h.symbolize_keys
   end
 end
