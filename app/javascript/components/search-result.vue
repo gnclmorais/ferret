@@ -22,6 +22,16 @@ import MapUtils from '../utils/maps'
 
 export default {
   props: ['map', 'place'],
+  data() {
+    return {
+      marker: null,
+    };
+  },
+  destroyed() {
+    console.log('destroyed', this.marker);
+
+    if (this.marker) this.marker.setMap(null);
+  },
   methods: {
     focusOnMap: function (place) {
       console.log('Clicked on:', place);
@@ -30,7 +40,7 @@ export default {
 
       geocoder.geocode({
         'address': place.formatted_address
-      }, function (results, status) {
+      }, (results, status) => {
         if (status !== google.maps.GeocoderStatus.OK) {
           console.log('Problems with search:', status);
           return;
@@ -42,14 +52,17 @@ export default {
         // Adapt map bounds to the kind of place
         map.fitBounds(result.geometry.viewport);
 
-        const marker = new google.maps.Marker({
-          position: location,
-          map: map,
-        });
+        if (!this.marker) {
+          const marker = new google.maps.Marker({
+            position: location,
+            map: map,
+          });
+          this.marker = marker;
+        }
 
         // Recentre the map based on the clicked point
-        const delta = window.screen.width / 3;
-        MapUtils.offsetCenter(map, location, delta);
+        // const delta = window.screen.width / 3;
+        // MapUtils.offsetCenter(map, location, delta);
       });
     },
     addToList: function (place, event) {

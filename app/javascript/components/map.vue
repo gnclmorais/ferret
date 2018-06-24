@@ -68,26 +68,35 @@ export default {
 
     PlacesBus.$on('updated', (places) => {
       this.localPlaces = places;
-      this.renderMap()
+      this.renderMap();
     });
   },
   methods: {
     renderMap() {
-      var map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 8,
-        mapTypeControl: true,
-        mapTypeControlOptions: {
-          style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-          position: google.maps.ControlPosition.BOTTOM_CENTER
-        },
-        fullscreenControl: false,
-      });
+      if (this.map) {
+        this.clearAllMarkers();
+      } else {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: { lat: -34.397, lng: 150.644 },
+          zoom: 8,
+          mapTypeControl: true,
+          mapTypeControlOptions: {
+            style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+            position: google.maps.ControlPosition.BOTTOM_CENTER
+          },
+          fullscreenControl: false,
+        });
 
-      window.map = map;
-      this.map = map;
+        window.map = map;
+        this.map = map;
+      }
 
       this.addAllMarkers();
+    },
+    clearAllMarkers() {
+      // developers.google.com/maps/documentation/javascript/markers#remove
+      this.markers.map(x => x.setMap(null));
+      this.markers.length = 0;
     },
     addAllMarkers() {
       this.markers = [];
@@ -145,13 +154,13 @@ export default {
       this.markers.forEach(marker => latLngBounds.extend(marker.getPosition()));
 
       // Set a max zoom for the focus...
-      map.setOptions({ maxZoom: 16 });
+      this.map.setOptions({ maxZoom: 16 });
 
       // ... adjust map zoom to fit all markers...
       this.map.fitBounds(latLngBounds);
 
       // ... and now reset the zoom for users to do whatever they want!
-      map.setOptions({ maxZoom: null });
+      this.map.setOptions({ maxZoom: null });
     },
     scrollToPlace() {
       var container = this.$el.querySelector("#container");
