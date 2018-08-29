@@ -15,6 +15,5 @@ before_script:
 script:
   - npm install
   - bin/rails assets:precompile
-  - bin/rails test
-  - bin/rails test:system
   - bundle exec rspec
+  - bin/rails test:system
