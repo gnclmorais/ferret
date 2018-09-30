@@ -18,7 +18,7 @@
     "less": "^3.0.1",
     "load-google-maps-api": "^1.0.0",
     "lodash": "^4.17.4",
-    "npm": "^6.1.0",
+    "npm": "^6.4.1",
     "sortablejs": "^1.7.0",
     "vue": "^2.5.3",
     "vue-loader": "^15.2.4",
