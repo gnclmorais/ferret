@@ -39,8 +39,7 @@ class PinsController < ApplicationController
 
     respond_to do |format|
       format.json do
-        if pin.delete
-          place.delete if place.pins.empty?
+        if pin.destroy
           head :no_content
         else
           render json: { message: pin.errors }, status: :unprocessable_entity
