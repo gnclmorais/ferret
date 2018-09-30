@@ -17,4 +17,13 @@ RSpec.describe Map, type: :model do
     map = Map.new(name: 'Name', description: nil)
     expect(map).to_not be_valid
   end
+
+  describe 'destroy' do
+    it 'removes any associated pins' do
+      map = create(:map)
+      pin = create(:pin, map: map)
+
+      expect { map.destroy }.to change { Pin.count }.from(1).to(0)
+    end
+  end
 end
