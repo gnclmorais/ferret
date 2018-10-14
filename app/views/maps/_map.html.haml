@@ -6,6 +6,21 @@
         %p.subtitle= map.description
   - if signed_in?
     %footer.card-footer
+      .card-footer-item
+        - if map.published?
+          .has-text-black
+            %i.fa.fa-eye
+            &nbsp;
+            Public
+        - else
+          .has-text-grey
+            %i.fa.fa-eye-slash
+            &nbsp;
+            Private
+        / .field
+        /   %input.switch{ id: "switchExample", type: "checkbox", name: "switchExample" }
+        /   %label{ for: "switchExample" }
+        /     Private?
       = link_to 'Edit', edit_map_path(map), class: 'card-footer-item'
       = link_to 'Delete', map_path(map), class: 'card-footer-item',
         method: :delete, data: { confirm: "Are you sure?" }
