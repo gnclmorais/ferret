@@ -7,4 +7,6 @@ class Map < ApplicationRecord
   validates :owner,       presence: true
   validates :name,        presence: true
   validates :description, presence: true
+
+  scope :with_tagged_places, -> { includes(pins: [:place, :tags]) }
 end
