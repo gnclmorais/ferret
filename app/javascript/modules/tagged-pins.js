@@ -1,4 +1,6 @@
-const postTaggedPin = (tag_name, pin_id) => {
+import Vue from 'vue';
+
+const postTaggedPin = (context, tag_name, pin_id) => {
   console.log('tag:', tag_name);
   console.log('pin:', pin_id);
 
@@ -8,9 +10,9 @@ const postTaggedPin = (tag_name, pin_id) => {
     const newTag = success.body;
     console.log('new tag:', newTag);
 
-    const i = this.place.tagged_pins.findIndex(tag => tag.name === newTag.name);
+    const i = context.place.tagged_pins.findIndex(tag => tag.name === newTag.name);
     console.log('found tag at ' + i)
-    this.$set(this.place.tagged_pins, i, newTag);
+    context.$set(context.place.tagged_pins, i, newTag);
 
     // TODO
     console.log('success tagging a pin', success)
