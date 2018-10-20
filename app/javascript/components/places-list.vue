@@ -88,7 +88,9 @@ export default {
     PlacesBus.$on('addPlace', place => {
       console.log('New place added:', place)
 
-      this.localPlaces.unshift(place)
+      place.index = this.localPlaces.length + 1;
+      this.localPlaces.push(place);
+
       PlacesBus.$emit('updated', this.localPlaces)
     })
   },
