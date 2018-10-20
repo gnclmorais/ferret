@@ -227,7 +227,7 @@
         this.tagInput = '';
         this.addingTag = false;
 
-        postTaggedPin.bind(this)(tag, this.place.id);
+        postTaggedPin(this, tag, this.place.id);
       },
       removeTag(index) {
         const [removedTag] = this.place.tagged_pins.splice(index, 1);

@@ -12,12 +12,14 @@ class MapsController < ApplicationController
   end
 
   def show
-    @map = Map.find(params[:id])
+    @map = Map.with_tagged_places.find(params[:id])
+
     render layout: 'application_fullscreen'
   end
 
   def edit
-    @map = Map.find(params[:id])
+    @map = Map.with_tagged_places.find(params[:id])
+
     render layout: 'application_fullscreen'
   end
 
