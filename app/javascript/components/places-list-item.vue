@@ -162,6 +162,8 @@
             map: map,
           });
 
+          PlacesBus.$emit('markerAdded', marker);
+
           // Recentre the map based on the clicked point
           map.panTo(location);
 
