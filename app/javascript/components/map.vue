@@ -45,7 +45,8 @@ export default {
     return {
       markers: [],
       map: null,
-      localPlaces: this.places
+      focusedMarker: null,
+      localPlaces: this.places,
     };
   },
   computed: {
@@ -69,6 +70,10 @@ export default {
     PlacesBus.$on('updated', (places) => {
       this.localPlaces = places;
       this.renderMap();
+    });
+
+    PlacesBus.$on('markerAdded', (marker) => {
+      this.focusedMarker = marker;
     });
   },
   methods: {
@@ -97,6 +102,11 @@ export default {
       // developers.google.com/maps/documentation/javascript/markers#remove
       this.markers.map(x => x.setMap(null));
       this.markers.length = 0;
+
+      if (this.focusedMarker) {
+        this.focusedMarker.setMap(null);
+        this.focusedMarker = null;
+      }
     },
     addAllMarkers() {
       this.markers = [];
