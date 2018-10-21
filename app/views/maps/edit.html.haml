@@ -1,4 +1,4 @@
-- content_for :title, "Edit “#{@map.name}”"
+- content_for :title, raw("Edit “#{@map.name}”")
 
 - content_for :breadcrumbs,
   breadcrumbs([["Maps", maps_path], [@map.name, edit_map_path(@map)]])
