@@ -11,14 +11,9 @@
 %section.section
   .container
     .columns.is-multiline
-      - if @maps.empty?
-        - if signed_in?
-          .column.is-half= render 'map_new'
-        - else
-          .column No maps available yet
-        -# TODO: Improve this
-      - else
-        - if signed_in?
-          .column.is-half= render 'map_new'
-        - @maps.each do |map|
-          .column.is-half= render map
+      - if signed_in?
+        .column.is-half= render 'map_new'
+      - @maps.each do |map|
+        .column.is-half= render map
+      - if @maps.blank?
+        .column No maps available yet
