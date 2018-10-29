@@ -1,4 +1,4 @@
-- content_for :title, "Edit “#{@map.name}”"
+- content_for :title, raw("Edit “#{@map.name}”")
 
 - content_for :breadcrumbs,
   breadcrumbs([["Maps", maps_path], [@map.name, edit_map_path(@map)]])
@@ -8,7 +8,7 @@
     #places-panel.column__panels.edit-box
       .column__panel.column__panel--stay
         = render "form", map: @map
-      .column__panel.column__panel--grow
+      .column__panel--grow
         #places-list{ ":map": @map.id, ":places": @map.pins.to_json }
   .column.is-paddingless.map-wrapper
     .columns.columns--reset
