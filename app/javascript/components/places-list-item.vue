@@ -1,5 +1,5 @@
 <template>
-  <li class="media item" :class="{ focus: focused }"
+  <li class="media item" :class="classObject"
       :data-id="place.id" :data-place-id="place.place_id" :data-index="place.index">
     <div class="media-content" v-on:click="focusOnMap(place.place)">
       <div class="content">
@@ -69,7 +69,7 @@
   import { postTaggedPin, deleteTaggedPin } from 'modules/tagged-pins';
 
   export default {
-    props: ['place', 'map'],
+    props: ['index', 'place', 'map'],
     data() {
       return {
         alreadyFetched: {},
@@ -86,6 +86,14 @@
         },
       };
     },
+    computed: {
+      classObject() {
+        return {
+          focus: this.focused,
+          even: this.isEven(),
+        };
+      },
+    },
     mounted() {
       PlacesBus.$on('focusPlace', this.focusOnList);
       document.addEventListener('click', this.handleClickOutside);
@@ -94,6 +102,9 @@
       document.removeEventListener('click', this.handleClickOutside);
     },
     methods: {
+      isEven() {
+        return this.index % 2 !== 0;
+      },
       handleClickOutside(event) {
         if (!this.$el.contains(event.target)) {
           this.addingTag = false;
@@ -161,6 +172,8 @@
             position: location,
             map: map,
           });
+
+          PlacesBus.$emit('markerAdded', marker);
 
           // Recentre the map based on the clicked point
           map.panTo(location);
@@ -280,6 +293,10 @@
     animation-timing-function: ease-in;
   }
 
+  .even {
+    background: $white-ter;
+  }
+
   li {
     &::before {
       content: attr(data-index);
@@ -291,5 +308,8 @@
       height: 25px;
       text-align: center;
     }
+
+    margin: 0px !important; // Override .media rules
+    padding: 20px;
   }
 </style>

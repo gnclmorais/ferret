@@ -10,7 +10,7 @@
 
   <ol class="content list" v-if="localPlaces.length">
     <places-list-item v-for="(place, index) in localPlaces" :key="place.id"
-                      :place="place" :map="map"
+                      :index="index" :place="place" :map="map"
                       v-on:removePlace="remove(index)"
                       v-on:filterByTag="onFilterByTag">
     </places-list-item>
@@ -88,7 +88,9 @@ export default {
     PlacesBus.$on('addPlace', place => {
       console.log('New place added:', place)
 
-      this.localPlaces.unshift(place)
+      place.index = this.localPlaces.length + 1;
+      this.localPlaces.push(place);
+
       PlacesBus.$emit('updated', this.localPlaces)
     })
   },
@@ -105,5 +107,9 @@ export default {
 <style lang="scss" scoped>
 .list-wrapper {
   overflow: auto;
+}
+
+.padding-giver {
+  padding: 20px;
 }
 </style>

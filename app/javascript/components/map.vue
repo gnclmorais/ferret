@@ -11,6 +11,7 @@
 <script>
 import * as loadMap from 'load-google-maps-api'
 import { Promise } from 'bluebird'
+import * as _ from 'lodash'
 
 import { PlacesBus } from '../buses.js'
 import MapUtils from '../utils/maps'
@@ -45,7 +46,8 @@ export default {
     return {
       markers: [],
       map: null,
-      localPlaces: this.places
+      focusedMarker: null,
+      localPlaces: this.places,
     };
   },
   computed: {
@@ -69,6 +71,10 @@ export default {
     PlacesBus.$on('updated', (places) => {
       this.localPlaces = places;
       this.renderMap();
+    });
+
+    PlacesBus.$on('markerAdded', (marker) => {
+      this.focusedMarker = marker;
     });
   },
   methods: {
@@ -97,6 +103,11 @@ export default {
       // developers.google.com/maps/documentation/javascript/markers#remove
       this.markers.map(x => x.setMap(null));
       this.markers.length = 0;
+
+      if (this.focusedMarker) {
+        this.focusedMarker.setMap(null);
+        this.focusedMarker = null;
+      }
     },
     addAllMarkers() {
       this.markers = [];
@@ -154,13 +165,13 @@ export default {
       this.markers.forEach(marker => latLngBounds.extend(marker.getPosition()));
 
       // Set a max zoom for the focus...
-      this.map.setOptions({ maxZoom: 16 });
+      this.map.setOptions({ maxZoom: 15 });
 
       // ... adjust map zoom to fit all markers...
       this.map.fitBounds(latLngBounds);
 
       // ... and now reset the zoom for users to do whatever they want!
-      this.map.setOptions({ maxZoom: null });
+      _.debounce(() => this.map.setOptions({ maxZoom: null }));
     },
     scrollToPlace() {
       var container = this.$el.querySelector("#container");
