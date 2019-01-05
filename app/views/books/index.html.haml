@@ -1,0 +1,16 @@
+- name = "Books"
+- content_for :title, name
+- content_for :breadcrumbs, breadcrumbs([[name, books_path]])
+
+%section.hero.is-primary
+  .hero-body
+    .container
+      %h1.title= name
+
+%section.section
+  .container
+    .columns.is-multiline
+      - @books.each do |book|
+        .column.is-half= book
+      - if @books.blank?
+        .column No books created yet
