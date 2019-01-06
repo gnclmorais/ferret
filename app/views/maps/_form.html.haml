@@ -10,12 +10,12 @@
             = msg
 
   .field
-    = form.label :name, class: "label"
+    = form.label :name, class: "label", for: :map_name
     .control
       = form.text_field :name, id: :map_name, autofocus: true, class: "input"
 
   .field
-    = form.label :description, class: "label"
+    = form.label :description, class: "label", for: :map_description
     .control
       = form.text_area :description, id: :map_description,
         rows: "2", class: "textarea"
