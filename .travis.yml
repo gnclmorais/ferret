@@ -3,7 +3,7 @@ rvm:
   - 2.4.4
 cache:
   - bundler
-  - yarn
+  - npm
 # Workaround for https://github.com/travis-ci/travis-ci/issues/8836
 # sudo: false
 sudo: required
