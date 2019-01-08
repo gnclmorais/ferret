@@ -18,7 +18,7 @@
                 .container
                   %ul
                     %li= link_to 'Edit', edit_map_path(@map)
-      #places-panel.column__panel.column__panel--grow
+      #places-panel.column__panel--grow
         #places-list{ ":map": @map.id,
                       ":places": @map.pins.to_json }
     .column

@@ -1,0 +1,17 @@
+- name = @book.name
+- content_for :title, name
+- content_for :breadcrumbs,
+  breadcrumbs([["Books", books_path], [name, books_path]])
+
+%section.hero.is-primary
+  .hero-body
+    .container
+      %h1.title= name
+
+%section.section
+  .container
+    .columns.is-multiline
+      - @book.maps.each do |map|
+        .column.is-half= render map
+      - if @book.maps.blank?
+        .column No maps available yet

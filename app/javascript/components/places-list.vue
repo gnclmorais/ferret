@@ -1,6 +1,6 @@
 <template>
 <div class="list-wrapper">
-  <article class="message" v-show="isFiltered">
+  <article class="message is-marginless" v-show="isFiltered">
     <div class="message-body">
       Filtered by <strong>{{ filteringTag.name }}</strong>
       <br>
@@ -15,9 +15,11 @@
                       v-on:filterByTag="onFilterByTag">
     </places-list-item>
   </ol>
-  <p v-else class="has-text-centered">
-    No places in the map yet
-  </p>
+  <article v-else class="message has-text-centered has-background-white">
+    <p class="message-body">
+      No places in the map yet
+    </p>
+  </article>
 </div>
 </template>
 
