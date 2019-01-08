@@ -15,6 +15,7 @@
                       v-on:filterByTag="onFilterByTag">
     </places-list-item>
   </ol>
+
   <article v-else class="message has-text-centered has-background-white">
     <p class="message-body">
       No places in the map yet
