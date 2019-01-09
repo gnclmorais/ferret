@@ -6,7 +6,11 @@
 %section.hero.is-primary
   .hero-body
     .container
-      %h1.title= name
+      %h1.title
+        = name
+        - if signed_in?
+          = link_to "Edit book / Upload cover", edit_book_path(@book),
+            class: "button is-pulled-right"
 
 %section.section
   .container

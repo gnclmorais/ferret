@@ -45,4 +45,7 @@ Rails.application.configure do
   # Fast Feature Specs with Clearance
   # https://github.com/thoughtbot/clearance/#fast-feature-specs
   config.middleware.use Clearance::BackDoor
+
+  # https://stackoverflow.com/a/54154991/590525
+  config.active_storage.service = :test
 end
