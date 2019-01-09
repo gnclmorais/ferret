@@ -69,12 +69,6 @@ ActiveRecord::Schema.define(version: 2019_01_09_083258) do
     t.index ["place_id"], name: "index_pins_on_place_id"
   end
 
-  create_table "pins_tags", id: false, force: :cascade do |t|
-    t.bigint "tag_id", null: false
-    t.bigint "pin_id", null: false
-    t.index ["tag_id", "pin_id"], name: "index_pins_tags_on_tag_id_and_pin_id"
-  end
-
   create_table "places", force: :cascade do |t|
     t.string "google_place_id", null: false
     t.string "name", null: false

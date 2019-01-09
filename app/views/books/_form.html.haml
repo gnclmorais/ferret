@@ -1,0 +1,26 @@
+= form_with model: book, local: true do |form|
+  - if book.errors.any?
+    .content
+      .twelve.columns#error-explanatzion
+        %h2
+          = pluralize(book.errors.count, "error")
+          prohibited this book from being saved:
+        %ul
+          = list_of book.errors.full_messages do |msg|
+            = msg
+
+  .field
+    = form.label :name, class: "label", for: :book_name
+    .control
+      = form.text_field :name, id: :book_name, autofocus: true, class: "input"
+
+  .field
+    = form.label :cover, class: "label", for: :book_cover
+    .control
+      = form.file_field :cover, id: :book_cover
+
+  %br
+
+  .field
+    .control
+      = form.submit "Save book", class: "button is-primary"

@@ -1,0 +1,10 @@
+= link_to book_path(book) do
+  .card
+    - if book.cover.attached?
+      .card-image
+        %figure.image
+          = image_tag url_for(book.cover)
+    .card-content
+      .media
+        .media-content
+          %p.title.has-text-link.is-4= book.name

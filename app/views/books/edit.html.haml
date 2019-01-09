@@ -1,4 +1,4 @@
-- name = "Books"
+- name = "Edit ‘#{@book.name}’ book"
 - content_for :title, name
 - content_for :breadcrumbs, breadcrumbs([[name, books_path]])
 
@@ -9,9 +9,4 @@
 
 %section.section
   .container
-    .columns.is-multiline
-      - @books.each do |book|
-        .column.is-half
-          = render book
-      - if @books.blank?
-        .column No books created yet
+    = render "form", book: @book

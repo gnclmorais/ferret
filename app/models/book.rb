@@ -4,4 +4,6 @@ class Book < ApplicationRecord
 
   has_many :book_maps
   has_many :maps, through: :book_maps
+
+  has_one_attached :cover
 end
