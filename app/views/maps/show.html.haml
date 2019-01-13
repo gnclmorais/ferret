@@ -26,10 +26,7 @@
               %h2.subtitle.has-text-white= @map.description
           - if signed_in?
             .hero-foot
-              %nav.tabs.is-right
-                .container
-                  %ul
-                    %li= link_to 'Edit', edit_map_path(@map)
+              = link_to 'Edit', edit_map_path(@map), class: "button is-pulled-right"
       #places-panel.column__panel--grow
         #places-list{ ":map": @map.id,
                       ":places": @map.pins.to_json }
