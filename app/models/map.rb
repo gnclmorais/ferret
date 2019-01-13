@@ -4,8 +4,8 @@ class Map < ApplicationRecord
   has_many :pins, -> { order(position: :asc) }, dependent: :destroy
   has_many :places, through: :pins
 
-  has_many :book_maps
-  has_one :book, through: :book_maps
+  has_one :book_map
+  has_one :book, through: :book_map
   has_one_attached :cover
 
   validates :owner,       presence: true
