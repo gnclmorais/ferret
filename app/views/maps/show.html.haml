@@ -3,15 +3,23 @@
 - content_for :breadcrumbs,
   breadcrumbs([["Maps", maps_path], [@map.name, map_path(@map)]])
 
+:ruby
+  style = [
+    "background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url(#{url_for(@map.cover)})",
+    "background-size: cover",
+    "background-position: center center"
+  ].join(";") if @map.cover.attached?
+  klass = "has-background-primary" unless @map.cover.attached?
+
 %section.section--tall
   .columns.is-gapless.columns--tall
     .column.is-one-third.flex-el.map__places-column
-      .column__panel.column__panel--stay.has-background-primary
-        .hero.is-primary
+      .column__panel.column__panel--stay{ style: style, class: klass }
+        .hero
           .hero-body
-            %h1.title= @map.name
+            %h1.title.has-text-white= @map.name
             - unless @map.description.empty?
-              %h2.subtitle= @map.description
+              %h2.subtitle.has-text-white= @map.description
           - if signed_in?
             .hero-foot
               %nav.tabs.is-right

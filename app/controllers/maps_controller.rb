@@ -38,12 +38,6 @@ class MapsController < ApplicationController
   def update
     @map = Map.find(params[:id])
 
-    # if params[:pins].size == @map.pins.size
-    #   # TODO: Save new pin order
-    # else
-    #   # TODO: do something?
-    # end
-
     if @map.update(map_params)
       redirect_to @map
     else
@@ -62,7 +56,7 @@ class MapsController < ApplicationController
 
   def map_params
     params
-      .require(:map).permit(:name, :description, :pins, :published)
+      .require(:map).permit(:name, :description, :pins, :published, :cover)
       .to_h.symbolize_keys
   end
 end
