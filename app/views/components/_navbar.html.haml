@@ -1,11 +1,10 @@
-- attributes = { role: "navigation", aria_label: "main navigation" }
-
-%nav.navbar.is-primary.navbar-main{ attributes }
+%nav.navbar.is-primary.navbar-main{ role: "navigation",
+                                    aria_label: "main navigation" }
   .container{ class: ("is-fluid" if defined? fullscreen)}
     .navbar-brand
-      = link_to "/", class: "navbar-item" do
-        = Rails.configuration.x.application_name || "Ferret"
-      -# <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+      = link_to "/", class: "navbar-item", title: "Home" do
+        %span.item-handle.icon
+          %i.fa.fa-home
     .navbar-menu
       .navbar-start
         .navbar-item
