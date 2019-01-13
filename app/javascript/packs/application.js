@@ -11,13 +11,15 @@
 // // // // // // // // // // // // // // // // // // // // // // // // // // //
 // 3rd parties
 
-import fontawesome from '@fortawesome/fontawesome';
-import freeSolid from '@fortawesome/fontawesome-free-solid';
-import freeRegular from '@fortawesome/fontawesome-free-regular';
-import freeBrands from '@fortawesome/fontawesome-free-brands';
-fontawesome.library.add(freeSolid);
-fontawesome.library.add(freeRegular);
-fontawesome.library.add(freeBrands);
+import { library, dom } from "@fortawesome/fontawesome-svg-core";
+import {
+  faMapMarkedAlt,
+  faCompressArrowsAlt,
+} from "@fortawesome/free-solid-svg-icons";
+
+library.add(faMapMarkedAlt);
+library.add(faCompressArrowsAlt);
+dom.watch();
 
 
 // // // // // // // // // // // // // // // // // // // // // // // // // // //
