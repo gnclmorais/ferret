@@ -1,7 +1,11 @@
 - content_for :title, raw(@map.name)
 
-- content_for :breadcrumbs,
-  breadcrumbs([["Maps", maps_path], [@map.name, map_path(@map)]])
+:ruby
+  root = @map.book ? [@map.book.name, book_path(@map.book)] : ["Maps", maps_path]
+  content_for(
+    :breadcrumbs,
+    breadcrumbs([root, [@map.name, map_path(@map)]])
+  )
 
 :ruby
   style = [
