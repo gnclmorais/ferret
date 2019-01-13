@@ -12,6 +12,7 @@ RSpec.describe BooksController, type: :controller do
 
     context 'books' do
       it 'shows a list of the existing books' do
+        create(:book)
         get :index
         expect(response).to have_http_status(:success)
       end
