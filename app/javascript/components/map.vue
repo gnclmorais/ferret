@@ -54,6 +54,7 @@ export default {
       map: null,
       focusedMarker: null,
       localPlaces: this.places,
+      myLocation: {},
     };
   },
   computed: {
@@ -179,9 +180,36 @@ export default {
       // ... and now reset the zoom for users to do whatever they want!
       _.debounce(() => this.map.setOptions({ maxZoom: null }));
     },
+    loadLocation() {
+      const geoMarker = new GeolocationMarker(window.map);
+
+      window.google.maps.event.
+        addListenerOnce(geoMarker, 'position_changed', () => {
+          this.myLocation = {
+            center: geoMarker.getPosition(),
+            bounds: geoMarker.getBounds(),
+            timestamp: new Date().getTime(),
+          };
+          map.setCenter(this.myLocation.center);
+          map.fitBounds(this.myLocation.bounds);
+        });
+    },
     showMyLocation() {
-      // TODO
-      alert('Not developed yet!')
+      // Try HTML5 geolocation
+      if (navigator.geolocation) {
+        if (this.myLocation.center && this.myLocation.bounds) {
+          map.setCenter(this.myLocation.center);
+          map.fitBounds(this.myLocation.bounds);
+
+          const howLongAgo = new Date().getTime() - (this.myLocation.timestamp || 0);
+          if (howLongAgo < 5000) return;
+        }
+
+        import('geolocation-marker').then(this.loadLocation);
+      } else {
+        // Browser doesn't support Geolocation
+        alert('Sorry, your browser doesn’t support that feature');
+      }
     },
     scrollToPlace() {
       var container = this.$el.querySelector("#container");
