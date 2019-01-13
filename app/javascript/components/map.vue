@@ -1,9 +1,17 @@
 <template>
 <div>
   <div id="map"></div>
-  <button type="button" class="button button--reset-zoom"
+  <button type="button" class="button button--reset-zoom" title="Reset zoom"
           v-on:click="setMapBoundaries">
-    Reset zoom
+    <span class="icon">
+      <i class="fas fa-compress-arrows-alt"></i>
+    </span>
+  </button>
+  <button type="button" class="button button--where-am-i" title="Where am I?"
+          v-on:click="showMyLocation">
+    <span class="icon">
+      <i class="fas fa-map-marked-alt"></i>
+    </span>
   </button>
 </div>
 </template>
@@ -171,6 +179,10 @@ export default {
       // ... and now reset the zoom for users to do whatever they want!
       _.debounce(() => this.map.setOptions({ maxZoom: null }));
     },
+    showMyLocation() {
+      // TODO
+      alert('Not developed yet!')
+    },
     scrollToPlace() {
       var container = this.$el.querySelector("#container");
       container.scrollTop = container.scrollHeight;
@@ -192,7 +204,14 @@ export default {
 .button--reset-zoom {
   position: absolute;
   z-index: 1;
-  top: 15px;
-  right: 15px;
+  top: 10px;
+  right: 10px;
+}
+
+.button--where-am-i {
+  position: absolute;
+  z-index: 1;
+  top: 55px;
+  right: 10px;
 }
 </style>
