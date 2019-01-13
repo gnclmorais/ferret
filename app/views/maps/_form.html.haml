@@ -21,6 +21,11 @@
         rows: "2", class: "textarea"
 
   .field
+    = form.label :cover, class: "label", for: :map_cover
+    .control
+      = form.file_field :cover, id: :map_cover
+
+  .field
     .control
       = form.label :published, class: "checkbox has-text-weight-bold"
       = form.check_box :published

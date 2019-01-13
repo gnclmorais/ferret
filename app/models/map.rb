@@ -6,6 +6,7 @@ class Map < ApplicationRecord
 
   has_many :book_maps
   has_one :book, through: :book_maps
+  has_one_attached :cover
 
   validates :owner,       presence: true
   validates :name,        presence: true
