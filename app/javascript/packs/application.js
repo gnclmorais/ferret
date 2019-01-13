@@ -31,6 +31,7 @@ import '../../stylesheets/overrides/column.scss';
 import '../../stylesheets/overrides/section.scss';
 // General project stylesheets
 import '../../stylesheets/general.scss';
+import '../../stylesheets/utils.scss';
 import '../../stylesheets/pages/maps.scss';
 // Project specific components
 import '../../stylesheets/components/column_panels.scss';

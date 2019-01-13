@@ -1,0 +1,9 @@
+.is-nowrap {
+  white-space: nowrap;
+}
+
+.is-underline-on-hover {
+  &:hover {
+    text-decoration: underline;
+  }
+}
