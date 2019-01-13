@@ -4,7 +4,7 @@
   .container{ class: ("is-fluid" if defined? fullscreen)}
     .navbar-brand
       = link_to "/", class: "navbar-item" do
-        Ferret
+        = Rails.configuration.x.application_name || "Ferret"
       -# <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
     .navbar-menu
       .navbar-start
