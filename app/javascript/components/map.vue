@@ -31,9 +31,7 @@ const makeMarker = (markers, place, map, number, location) => {
     optimized: false,
   });
 
-  marker.addListener('mouseover', function (mmap, pplace, mmarker) {
-    console.log('hovering on', pplace)
-
+  marker.addListener('click', function (mmap, pplace, mmarker) {
     PlacesBus.$emit('focusPlace', pplace);
   }.bind(null, map, place, marker));
 
