@@ -11,6 +11,7 @@
     "bulma-loader": "^1.0.1",
     "coffeescript": "1.12.7",
     "dotenv-webpack": "^1.5.4",
+    "geolocation-marker": "^2.0.5",
     "hamljs": "^0.6.2",
     "i": "^0.3.6",
     "jquery": "^3.2.1",
