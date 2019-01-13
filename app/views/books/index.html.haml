@@ -1,17 +1,19 @@
-- name = "Books"
+- name = "Binge Watching collection maps"
 - content_for :title, name
 - content_for :breadcrumbs, breadcrumbs([[name, books_path]])
 
 %section.hero.is-primary
   .hero-body
     .container
-      %h1.title= name
+      %h1.title
+        Binge Watching
+        %span.has-text-weight-light collection maps
 
 %section.section
   .container
     .columns.is-multiline
       - @books.each do |book|
-        .column.is-half
+        .column.is-one-third
           = render book
       - if @books.blank?
         .column No books created yet
