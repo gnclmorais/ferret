@@ -47,7 +47,7 @@
       <i class="fa fa-bars"></i>
     </span>
     <div class="media-right" v-show="loggedIn">
-      <button class="button is-white is-hidden" title="Edit name"
+      <button class="button is-white" title="Edit name"
               v-on:click.stop="focusTitleInput" v-show="!title.editing">
         <span class="icon"><i class="fas fa-pen-square"></i></span>
       </button>
