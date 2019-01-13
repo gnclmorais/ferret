@@ -13,12 +13,28 @@
 
 import { library, dom } from "@fortawesome/fontawesome-svg-core";
 import {
-  faMapMarkedAlt,
+  faAngleRight,
+  faBars,
   faCompressArrowsAlt,
+  faEye,
+  faEyeSlash,
+  faHome,
+  faMapMarkedAlt,
+  faMinusSquare,
+  faPenSquare,
+  faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faMapMarkedAlt);
+library.add(faAngleRight);
+library.add(faBars);
 library.add(faCompressArrowsAlt);
+library.add(faEye);
+library.add(faEyeSlash);
+library.add(faHome);
+library.add(faMapMarkedAlt);
+library.add(faMinusSquare);
+library.add(faPenSquare);
+library.add(faTimesCircle);
 dom.watch();
 
 

@@ -9,12 +9,12 @@
       .card-footer-item
         - if map.published?
           .has-text-black
-            %i.fa.fa-eye
+            %i.fas.fa-eye
             &nbsp;
             Public
         - else
           .has-text-grey
-            %i.fa.fa-eye-slash
+            %i.fas.fa-eye-slash
             &nbsp;
             Private
       = link_to 'Edit', edit_map_path(map), class: 'card-footer-item'
