@@ -22,7 +22,7 @@
         <div class="level-left">
           <div v-for="(tag, index) in place.tagged_pins" class="level-item">
             <div class="tags has-addons">
-              <button class="tag is-dark" v-on:click.stop="filterByTag(tag)">
+              <button class="tag is-light" v-on:click.stop="filterByTag(tag)">
                 {{ tag.name }}
               </button>
               <a class="tag is-delete" href="#"
