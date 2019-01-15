@@ -1,7 +1,7 @@
 <template>
 <div class="media search-result" v-on:click="focusOnMap(place)">
   <div class="media-left">
-    <button title="Add place" class="button" v-on:click="addToList(place)">
+    <button title="Add place" class="button" v-on:click.stop="addToList(place)">
       +
     </button>
   </div>
