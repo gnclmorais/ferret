@@ -3,16 +3,19 @@
   "description": "Explore cities through the eyes of famous tv shows.",
   "env": {
     "AWS_ACCESS_KEY_ID": {
-      "required": true,
+      "required": true
     },
     "AWS_SECRET_ACCESS_KEY": {
-      "required": true,
+      "required": true
     },
     "AWS_REGION": {
-      "required": true,
+      "required": true
     },
     "AWS_BUCKET_NAME": {
-      "required": true,
+      "required": true
+    },
+    "GOOGLE_MAPS_API_KEY": {
+      "required": true
     }
   }
 }

@@ -1,0 +1,49 @@
+/**
+ * App structure:
+ *
+ * <body>
+ *   <fold>
+ *     <navbar></navbar>
+ *     <fold-content></fold-content>
+ *   </fold>
+ *   <footer></footer>
+ * </body>
+ */
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+  .fold {
+    flex-basis: 100vh;
+    max-height: 100vh;
+    flex-grow: 0;
+    overflow: scroll;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+  }
+  .fold--fullscreen {
+
+  }
+
+    .navbar {
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+
+    .fold-content {
+      flex-grow: 1;
+      flex-shrink: 0;
+      overflow: hidden;
+      height: 0; // triggers the overflow
+    }
+
+  .footer {
+    flex-grow: 0;
+    overflow: scroll;
+  }

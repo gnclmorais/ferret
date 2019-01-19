@@ -30,4 +30,5 @@ $panel-spacing: 20px;
   .column__panel--grow {
     flex-grow: 1;
     overflow: auto;
+    height: 0; // triggers  overflow
   }
