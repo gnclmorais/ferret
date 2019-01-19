@@ -3,15 +3,15 @@
 - content_for :breadcrumbs,
   breadcrumbs([["Maps", maps_path], [@map.name, edit_map_path(@map)]])
 
-.columns.columns--reset.flex-el__child-grow
-  .column.is-one-third.is-paddingless.map__places-column
+.columns.is-marginless.u-fullheight
+  .column.map__left-column.is-one-third.is-paddingless
     #places-panel.column__panels.edit-box
       .column__panel.column__panel--stay
         = render "form", map: @map
       .column__panel--grow
         #places-list{ ":map": @map.id, ":places": @map.pins.to_json }
-  .column.is-paddingless.map-wrapper
-    .columns.columns--reset
+  .column.map__right-column.is-two-thirds.is-paddingless
+    .columns.map-wrapper.is-marginless.u-fullheight
       .column
         #search-panel{ ":map": @map.id }
       .column

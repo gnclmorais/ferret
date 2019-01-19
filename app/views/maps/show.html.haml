@@ -15,9 +15,9 @@
   ].join(";") if @map.cover.attached?
   klass = "has-background-primary" unless @map.cover.attached?
 
-%section.section--tall
-  .columns.is-gapless.columns--tall
-    .column.is-one-third.flex-el.map__places-column
+%section.u-fullheight
+  .columns.is-gapless.u-fullheight
+    .column.map__left-column.is-one-third
       .column__panel.column__panel--stay{ style: style, class: klass }
         .hero
           .hero-body
@@ -30,7 +30,7 @@
       #places-panel.column__panel--grow
         #places-list{ ":map": @map.id,
                       ":places": @map.pins.to_json }
-    .column
+    .column.map__right-column.is-two-thirds.is-paddingless
       .map-wrapper.u-fullheight
         #map{ ":places": @map.pins.to_json }
 
