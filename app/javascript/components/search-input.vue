@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="field has-addons">
+  <div class="field has-addons search-wrapper">
     <label for="search-input" class="label is-hidden">Search</label>
     <div class="control is-expanded">
       <input type="input"
@@ -76,4 +76,7 @@ export default {
 </script>
 
 <style lang="scss">
+.search-wrapper {
+  margin-bottom: 10px;
+}
 </style>

@@ -1,16 +1,13 @@
 !!!
 %html{ lang: 'en' }
   %head
-    %title= page_title
-    = csrf_meta_tags
-    = javascript_pack_tag 'vendor'
-    = javascript_pack_tag 'application'
-    = stylesheet_pack_tag 'application'
+    = render 'layouts/head'
 
   %body
     .fold
       = render 'components/navbar'
-      = yield
+      .fold-content
+        = yield
 
     .footer
       = render 'components/footer'

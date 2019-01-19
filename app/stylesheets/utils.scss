@@ -1,9 +1,17 @@
-.is-nowrap {
+.u-fullheight {
+  height: 100%;
+}
+
+.u-nowrap {
   white-space: nowrap;
 }
 
-.is-underline-on-hover {
+.u-underline-on-hover {
   &:hover {
     text-decoration: underline;
   }
+}
+
+.u-flex {
+  display: flex;
 }
