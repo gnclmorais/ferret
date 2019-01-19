@@ -1,18 +1,18 @@
-%nav.navbar.is-primary.navbar-main{ role: "navigation",
-                                    aria_label: "main navigation" }
+- data = { role: "navigation", aria_label: "main navigation" }
+
+%nav.navbar.navbar-main.is-primary{ data }
   .container{ class: ("is-fluid" if defined? fullscreen)}
     .navbar-brand
       = link_to "/", class: "navbar-item", title: "Home" do
         %span.item-handle.icon
           %i.fas.fa-home
+      .navbar-item
+        - if content_for?(:breadcrumbs)
+          %nav.breadcrumb{ "aria-label": "breadcrumbs" }
+            %ul= content_for(:breadcrumbs)
+        - else
+          All the places in a single place.
     .navbar-menu
-      .navbar-start
-        .navbar-item
-          - if content_for?(:breadcrumbs)
-            %nav.breadcrumb{ "aria-label": "breadcrumbs" }
-              %ul= content_for(:breadcrumbs)
-          - else
-            All the places in a single place.
       .navbar-end
         .navbar-item
           - if signed_in?
