@@ -45,10 +45,9 @@ dom.watch();
 import '../../stylesheets/overrides/bulma.scss';
 // Project-specific overrides to Bulma
 import '../../stylesheets/overrides/card.scss';
-import '../../stylesheets/overrides/column.scss';
-import '../../stylesheets/overrides/section.scss';
 // General project stylesheets
 import '../../stylesheets/general.scss';
+import '../../stylesheets/structure.scss';
 import '../../stylesheets/utils.scss';
 import '../../stylesheets/pages/maps.scss';
 // Project specific components

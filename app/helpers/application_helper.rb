@@ -8,7 +8,7 @@ module ApplicationHelper
   # TODO: Change pages into *pages
   def breadcrumbs(pages)
     klass = ->(total, index) {
-      total == index ? 'is-active' : 'is-underline-on-hover'
+      total == index ? 'is-active' : 'u-underline-on-hover'
     }
 
     max_index = pages.length - 1
