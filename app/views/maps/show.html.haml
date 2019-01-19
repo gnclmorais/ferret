@@ -17,7 +17,7 @@
 
 %section.u-fullheight
   .columns.is-gapless.u-fullheight
-    .column.map__left-column.is-one-third
+    .column.map__left-column.is-one-third.is-hidden-mobile
       .column__panel.column__panel--stay{ style: style, class: klass }
         .hero
           .hero-body
@@ -30,7 +30,7 @@
       #places-panel.column__panel--grow
         #places-list{ ":map": @map.id,
                       ":places": @map.pins.to_json }
-    .column.map__right-column.is-two-thirds.is-paddingless
+    .column.map__right-column.is-two-thirds.is-paddingless.u-fullheight
       .map-wrapper.u-fullheight
         #map{ ":places": @map.pins.to_json }
 
