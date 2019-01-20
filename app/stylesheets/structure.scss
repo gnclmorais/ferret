@@ -18,17 +18,19 @@ body {
 }
 
   .fold {
-    flex-basis: 100vh;
-    max-height: 100vh;
-    flex-grow: 0;
-    overflow: scroll;
-    height: 100vh;
-
-    display: flex;
-    flex-direction: column;
+    min-height: 100vh;
   }
   .fold--fullscreen {
+    height: 100vh;
+    display: flex;
+    flex-basis: 100vh;
+    flex-grow: 1;
+    flex-direction: column;
+    overflow: scroll;
 
+    .fold-content {
+      height: 0; // triggers the overflow
+    }
   }
 
     .navbar {
@@ -40,7 +42,7 @@ body {
       flex-grow: 1;
       flex-shrink: 0;
       overflow: hidden;
-      height: 0; // triggers the overflow
+      min-height: 0; // triggers the overflow
     }
 
   .footer {
