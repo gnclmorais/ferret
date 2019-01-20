@@ -22,8 +22,18 @@ import { Promise } from 'bluebird'
 import * as _ from 'lodash'
 
 import { PlacesBus } from '../buses.js'
+import MapInfoCard from './MapInfoCard.js'
 import MapUtils from '../utils/maps'
 
+const showCard = (map, marker, place) => {
+  const infoWindow = new google.maps.InfoWindow({
+    content: MapInfoCard(place),
+  });
+  infoWindow.open(map, marker);
+  return infoWindow;
+};
+
+let previouslyOpenCard;
 const makeMarker = (markers, place, map, number, location) => {
   console.log('Number ->', String(number));
 
@@ -41,6 +51,9 @@ const makeMarker = (markers, place, map, number, location) => {
 
   marker.addListener('click', function (mmap, pplace, mmarker) {
     PlacesBus.$emit('focusPlace', pplace);
+
+    if (previouslyOpenCard) previouslyOpenCard.close();
+    previouslyOpenCard = showCard(mmap, mmarker, pplace);
   }.bind(null, map, place, marker));
 
   markers.push(marker);
