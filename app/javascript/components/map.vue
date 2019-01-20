@@ -35,8 +35,6 @@ const showCard = (map, marker, place) => {
 
 let previouslyOpenCard;
 const makeMarker = (markers, place, map, number, location) => {
-  console.log('Number ->', String(number));
-
   let marker = new google.maps.Marker({
     map: map,
     animation: google.maps.Animation.DROP,
@@ -75,12 +73,7 @@ export default {
       return this.localPlaces || [];
     },
   },
-  mounted() {
-    //console.log('Places:', this.localPlaces);
-  },
   created() {
-    console.log('Places:', this.places);
-
     loadMap({
       key: process.env.GOOGLE_MAPS_API_KEY,
       libraries: ['places'],
@@ -132,8 +125,6 @@ export default {
     addAllMarkers() {
       this.markers = [];
 
-      console.log('this.allPlaces', this.allPlaces);
-
       Promise.map(this.allPlaces, (place, index) => {
         return new Promise((resolve, reject) => {
           const number = index + 1;
@@ -153,8 +144,6 @@ export default {
           }
 
           MapUtils.geocode(place.place.address, results => {
-            console.log(`Results for ${index}:`, results);
-
             makeMarker(
               this.markers,
               place,
@@ -165,8 +154,6 @@ export default {
 
             resolve();
           }, error => {
-            console.log('Error on geocoding:', error);
-
             reject(new Error(error));
           });
         });
@@ -178,8 +165,6 @@ export default {
     },
     setMapBoundaries() {
       if (this.markers.length === 0) return;
-      console.log('setMapBoundaries');
-
       const latLngBounds = new google.maps.LatLngBounds();
 
       this.markers.forEach(marker => latLngBounds.extend(marker.getPosition()));
