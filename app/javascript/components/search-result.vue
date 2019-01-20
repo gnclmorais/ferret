@@ -61,8 +61,8 @@ export default {
         }
 
         // Recentre the map based on the clicked point
-        // const delta = window.screen.width / 3;
-        // MapUtils.offsetCenter(map, location, delta);
+        const delta = window.screen.width / 3 / 2;
+        MapUtils.offsetCenter(map, location, delta);
       });
     },
     addToList: function (place, event) {
