@@ -104,6 +104,8 @@ export default {
             position: google.maps.ControlPosition.BOTTOM_CENTER
           },
           fullscreenControl: false,
+          // TODO: Improve touch detection
+          gestureHandling: "ontouchend" in document ? 'greedy' : 'cooperative',
         });
 
         window.map = map;
