@@ -2,6 +2,6 @@
 %meta{ content: "width=device-width, initial-scale=1", name: "viewport" }
 %title= page_title
 = csrf_meta_tags
-= javascript_pack_tag 'vendor'
-= javascript_pack_tag 'application'
+= javascript_pack_tag 'vendor', async: true, defer: true
+= javascript_pack_tag 'application', async: true, defer: true
 = stylesheet_pack_tag 'application'
