@@ -1,7 +1,7 @@
 !!!
 %html{ lang: "en" }
   %head
-    %title= page_title
+    = display_custom_meta_tags
     = csrf_meta_tags
     = javascript_pack_tag "application", async: true, defer: true
     = stylesheet_pack_tag "application"

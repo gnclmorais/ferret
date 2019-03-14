@@ -21,6 +21,11 @@ module Ferret
   class Application < Rails::Application
     # Custom configuration
     config.x.application_name = "Maps & Rec"
+    config.x.application_description = <<-DESC
+      Welcome to the Binge Watching collection online platform,
+      where you can browse the New York and London locations by chapters,
+      series, and tags.
+    DESC
 
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
