@@ -12,6 +12,7 @@ dist: trusty
 addons:
   chrome: stable
 before_script:
+  - bundle exec chromedriver-update 2.46
   - psql -c 'create database ferret_test;' -U postgres
 script:
   - bin/rails assets:precompile
