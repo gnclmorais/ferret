@@ -1,7 +1,7 @@
 <template>
   <li class="media item" :class="classObject"
       :data-id="place.id" :data-place-id="place.place_id" :data-index="place.index">
-    <div class="media-content" v-on:click="focusOnMap(place.place)">
+    <div class="media-content media-content--max-width" v-on:click="focusOnMap(place.place)">
       <div class="content">
         <p>
           <span class="has-text-weight-bold"
@@ -19,7 +19,7 @@
         </p>
       </div>
       <div class="level">
-        <div class="level-left">
+        <div class="level-left level-left--wrap">
           <div v-for="(tag, index) in place.tagged_pins" class="level-item">
             <div class="tags has-addons">
               <button class="tag is-light" v-on:click.stop="filterByTag(tag)">
@@ -311,5 +311,14 @@
 
     margin: 0px !important; // Override .media rules
     padding: 20px;
+  }
+
+  .media-content--max-width {
+    max-width: 100%;
+  }
+
+  .level-left--wrap {
+    flex-wrap: wrap;
+    max-width: 100%
   }
 </style>
