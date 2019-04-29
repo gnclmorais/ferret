@@ -5,3 +5,12 @@
 = javascript_pack_tag 'vendor'
 = javascript_pack_tag 'application'
 = stylesheet_pack_tag 'application'
+
+- if Rails.env.production?
+  - id = ENV['ANALYTICS_ID'] # analytics
+  %script{ src: "https://www.googletagmanager.com/gtag/js?id=#{id}", async: true }
+  %script
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', "#{id}");
