@@ -12,11 +12,11 @@
       where you can browse the New York and London locations by chapters,
       series, and tags.
 
-.section
-  .container
-    %p.p
-      %b
-        About the Binge Watching Collection – Coming out May 2019
+    %br
+    %br
+
+    %h3.is-size-5.has-text-weight-semibold.p
+      About the Binge Watching Collection – Coming out May 2019
     %p.p
       The Binge Watching collection (Abrams Books) takes you on an exploration
       of a city through its most emblematic TV series. Discover the essence of
@@ -32,9 +32,26 @@
       an informative, entertaining, interactive, and unique visit to a place
       that is so much more than a backdrop.
 
+    %br
+    %br
+
+    %h3.is-size-5.has-text-weight-semibold.p Buy the books
+    %p.p
+      You can find the books at
+      = succeed "," do
+        = link_to 'Abrams', 'https://www.abramsbooks.com/contributor/marion-miclet_23539325/'
+      = succeed "," do
+        = link_to 'Amazon.com', 'https://www.amazon.com/s?i=stripbooks&rh=p_27%3AMarion+Miclet&s=relevancerank&text=Marion+Miclet&ref=dp_byline_sr_book_1'
+      = succeed "," do
+        = link_to 'Amazon.co.uk', 'https://www.amazon.co.uk/s?i=stripbooks&rh=p_27%3AMarion+Miclet&s=relevancerank&text=Marion+Miclet&ref=dp_byline_sr_book_1'
+      and
+      = succeed "." do
+        = link_to 'Amazon.fr', 'https://www.amazon.fr/s?i=stripbooks&rh=p_27%3AMarion+Miclet&s=relevancerank&text=Marion+Miclet&ref=dp_byline_sr_book_1'
+
 .section
   .container
     By
-    = link_to 'Gonçalo Morais', 'https://twitter.com/gnclmorais'
-    and
     = link_to 'Marion Miclet', 'https://marionmiclet.com'
+    and
+    = link_to 'Gonçalo Morais', 'https://twitter.com/gnclmorais'
+    👋
