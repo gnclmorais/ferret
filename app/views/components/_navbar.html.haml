@@ -6,12 +6,8 @@
       = link_to "/", class: "navbar-item", title: "Home" do
         %span.item-handle.icon
           %i.fas.fa-home
-      .navbar-item
-        - if content_for?(:breadcrumbs)
-          %nav.breadcrumb{ "aria-label": "breadcrumbs" }
-            %ul= content_for(:breadcrumbs)
-        - else
-          -# All the places in a single place.
+      = link_to 'About the Binge Watching collection', '/about',
+        class: "navbar-item"
     .navbar-menu
       .navbar-end
         .navbar-item
