@@ -1,0 +1,16 @@
+:ruby
+  extra_classes ||= ""
+  icon_classes = "social-icon #{extra_classes}"
+
+= link_to Rails.configuration.x.facebook_link, title: "Facebook",
+  class: icon_classes do
+  %i.fab.fa-facebook-square
+= link_to Rails.configuration.x.instagram_link, title: "Instagram",
+  class: icon_classes do
+  %i.fab.fa-instagram
+= link_to Rails.configuration.x.twitter_link, title: "Twitter",
+  class: icon_classes do
+  %i.fab.fa-twitter-square
+= link_to Rails.configuration.x.newsletter_link, title: "Newsletter",
+  class: icon_classes do
+  %i.fas.fa-envelope-square

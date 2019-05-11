@@ -1,11 +1,24 @@
 %footer
   .container
     .columns
-      .column
+      .column.is-one-third
         .has-text-weight-bold
           = Rails.configuration.x.application_name
           project
-        = link_to 'About', '/about'
+        %ul
+          %li
+            by
+            = link_to 'Marion Miclet', 'https://marionmiclet.com'
+            and
+            = link_to 'Gonçalo Morais', 'https://twitter.com/gnclmorais'
+          %li= link_to 'About', '/about'
+      .column.is-one-third
+        .has-text-weight-bold Contacts
+        %ul
+          %li
+            = render "components/lists/social", extra_classes: "is-size-4"
+          %li
+            = mail_to Rails.configuration.x.contact_email
       .column
         .has-text-weight-bold Legal
         %ul
