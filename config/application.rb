@@ -26,6 +26,10 @@ module Ferret
       where you can browse the New York and London locations by chapters,
       series, and tags.
     DESC
+    config.x.facebook_link   = 'https://facebook.com/bingewatchingcollection'
+    config.x.instagram_link  = 'https://instagram.com/marion_en_vo'
+    config.x.twitter_link    = 'https://twitter.com/marion_en_vo'
+    config.x.newsletter_link = 'https://tinyletter.com/bingewatchingcollection'
     config.x.contact_email = 'bingewatchingcollection@gmail.com'
 
     # Initialize configuration defaults for originally generated Rails version.
