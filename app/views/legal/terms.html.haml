@@ -70,4 +70,4 @@
     %p.p
       Questions about the Terms of Service should be sent to us at
       = succeed "." do
-        = mail_to "gnclmorais@gmail.com"
+        = mail_to Rails.configuration.x.contact_email
