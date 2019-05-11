@@ -16,6 +16,7 @@ import {
   faAngleRight,
   faBars,
   faCompressArrowsAlt,
+  faEnvelopeSquare,
   faEye,
   faEyeSlash,
   faHome,
@@ -24,10 +25,16 @@ import {
   faPenSquare,
   faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebookSquare,
+  faInstagram,
+  faTwitterSquare,
+} from "@fortawesome/free-brands-svg-icons";
 
 library.add(faAngleRight);
 library.add(faBars);
 library.add(faCompressArrowsAlt);
+library.add(faEnvelopeSquare);
 library.add(faEye);
 library.add(faEyeSlash);
 library.add(faHome);
@@ -35,6 +42,11 @@ library.add(faMapMarkedAlt);
 library.add(faMinusSquare);
 library.add(faPenSquare);
 library.add(faTimesCircle);
+
+library.add(faFacebookSquare);
+library.add(faInstagram);
+library.add(faTwitterSquare);
+
 dom.watch();
 
 
@@ -49,6 +61,7 @@ import '../../stylesheets/overrides/card.scss';
 import '../../stylesheets/general.scss';
 import '../../stylesheets/structure.scss';
 import '../../stylesheets/utils.scss';
+import '../../stylesheets/icons.scss';
 import '../../stylesheets/pages/maps.scss';
 // Project specific components
 import '../../stylesheets/components/column_panels.scss';

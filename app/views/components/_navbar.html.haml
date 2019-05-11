@@ -15,6 +15,19 @@
     .navbar-menu
       .navbar-end
         .navbar-item
+          = link_to Rails.configuration.x.facebook_link,
+            class: "social-icon is-size-4 has-text-white" do
+            %i.fab.fa-facebook-square
+          = link_to Rails.configuration.x.instagram_link,
+            class: "social-icon is-size-4 has-text-white" do
+            %i.fab.fa-instagram
+          = link_to Rails.configuration.x.twitter_link,
+            class: "social-icon is-size-4 has-text-white" do
+            %i.fab.fa-twitter-square
+          = link_to Rails.configuration.x.newsletter_link,
+            class: "social-icon is-size-4 has-text-white" do
+            %i.fas.fa-envelope-square
+        .navbar-item
           - if signed_in?
             = button_to t(".sign_out"), sign_out_path, method: :delete,
               class: "button is-black"
