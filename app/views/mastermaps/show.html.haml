@@ -1,0 +1,27 @@
+- content_for :title, "Mastermap for #{raw(@book.name)}"
+
+:ruby
+  style = [
+    "background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url(#{url_for(@book.cover)})",
+    "background-size: cover",
+    "background-position: center center"
+  ].join(";") if @book.cover.attached?
+  klass = "has-background-primary" unless @book.cover.attached?
+
+%section.u-fullheight
+  .columns.is-gapless.u-fullheight
+    .column.map__left-column.is-one-third.is-hidden-mobile
+      .column__panel.column__panel--stay{ style: style, class: klass }
+        .hero
+          .hero-body
+            %h1.title.has-text-white= @book.name
+            %h2.subtitle.has-text-white All places features in #{@book.name}
+      #places-panel.column__panel--grow
+        #places-list{ ":map": @book.id,
+                      ":places": @book.pins.to_json }
+    .column.map__right-column.is-two-thirds.is-paddingless.u-fullheight
+      .map-wrapper.u-fullheight
+        #map{ ":places": @book.pins.to_json }
+
+= javascript_pack_tag "maps_show"
+= stylesheet_pack_tag "maps_show"

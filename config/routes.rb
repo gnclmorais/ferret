@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :users, controller: 'users'
 
   resources :maps
-  resources :books, only: %i[index show edit update]
+  resources :books, only: %i[index show edit update] do
+    resource :mastermap, only: %i[show]
+  end
   resources :pins, only: %i[create update destroy]
   resources :search_places, only: %i[create]
   resources :tagged_pins, only: %i[create destroy]

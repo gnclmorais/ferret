@@ -19,3 +19,5 @@
         .column.is-half= render map
       - if @book.maps.blank?
         .column No maps available yet
+      - else
+        .column.is-half= render "mastermaps/mastermap", book: @book
