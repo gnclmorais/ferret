@@ -65,10 +65,13 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'shoulda'
   gem 'shoulda-matchers'
+  # Style & linting
+  gem 'standard'
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  # Access an IRB console on exception pages or by using <%= console %> anywhere
+  # in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
   # Test runners
@@ -83,8 +86,3 @@ gem 'oj', '~> 2.16.1'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-group :development, :test do
-  # Linting
-  gem 'rubocop', require: false
-end
