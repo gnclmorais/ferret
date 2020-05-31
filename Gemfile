@@ -1,4 +1,4 @@
-ruby '2.4.4'
+ruby '2.5.8'
 
 source 'https://rubygems.org'
 
@@ -82,7 +82,7 @@ end
 
 # Reporting
 gem 'rollbar'
-gem 'oj', '~> 2.16.1'
+gem 'oj', '~> 2.18.5'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

@@ -181,7 +181,7 @@ GEM
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    oj (2.16.1)
+    oj (2.18.5)
     parallel (1.19.1)
     parser (2.7.0.2)
       ast (~> 2.4.0)
@@ -343,7 +343,7 @@ DEPENDENCIES
   meta-tags
   minitest-reporters
   newrelic_rpm
-  oj (~> 2.16.1)
+  oj (~> 2.18.5)
   pg (~> 0.18)
   pry-byebug
   puma (~> 3.7)
@@ -361,7 +361,7 @@ DEPENDENCIES
   webpacker
 
 RUBY VERSION
-   ruby 2.4.4p296
+   ruby 2.5.8p224
 
 BUNDLED WITH
-   1.16.5
+   2.1.4
