@@ -11,6 +11,9 @@ sudo: required
 dist: trusty
 addons:
   chrome: stable
+before_install:
+  - yes | gem update --system --force
+  - gem install bundler
 before_script:
   - bundle exec chromedriver-update
   - psql -c 'create database ferret_test;' -U postgres
