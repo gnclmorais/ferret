@@ -54,8 +54,7 @@ group :development, :test do
   gem 'pry-byebug'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 3.10'
-  gem 'chromedriver-helper'
-  gem 'selenium-webdriver'
+  gem 'webdrivers', '~> 4.0'
   # Env config
   gem 'dotenv-rails', '~> 2.5'
   # Testing setup
