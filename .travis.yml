@@ -11,7 +11,11 @@ bundler_args: --without production
 sudo: required
 dist: trusty
 addons:
-  chrome: stable
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
 before_install:
   - yes | gem update --system --force
   - gem install bundler
