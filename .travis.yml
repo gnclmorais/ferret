@@ -4,7 +4,8 @@ rvm:
 cache:
   bundler: true
   directories:
-  - npm_modules
+    - npm_modules
+bundler_args: --without production
 # Workaround for https://github.com/travis-ci/travis-ci/issues/8836
 # sudo: false
 sudo: required
