@@ -9,7 +9,7 @@ bundler_args: --without production
 # Workaround for https://github.com/travis-ci/travis-ci/issues/8836
 # sudo: false
 sudo: required
-dist: trusty
+dist: xenial
 addons:
   chrome: beta
 before_install:
