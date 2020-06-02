@@ -2,7 +2,6 @@ require File.expand_path('../../config/environment', __FILE__)
 
 require 'rails/test_help'
 require 'factory_bot_rails'
-require 'webdrivers/chromedriver'
 
 require 'minitest/reporters'
 Minitest::Reporters.use! Minitest::Reporters::DefaultReporter.new
