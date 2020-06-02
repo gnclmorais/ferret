@@ -1,48 +1,26 @@
 require 'test_helper'
+require 'webdrivers/chromedriver'
 require 'capybara'
 
+chrome_options = Selenium::WebDriver::Chrome::Options.new
+chrome_options.add_argument('--mute-audio')
+chrome_options.add_argument('--window-size=1400,900')
+
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: chrome_options)
+end
+
+Capybara.register_driver :chrome_headless do |app|
+  # chrome_options.add_argument('--disable-dev-shm-usage')
+  chrome_options.add_argument('--disable-gpu')
+  chrome_options.add_argument('--headless')
+  # chrome_options.add_argument('--no-sandbox')
+
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: chrome_options)
+end
+
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  driven_by(
-    :selenium,
-    using: :chrome,
-    screen_size: [1400, 900],
-    options: {
-      desired_capabilities: {
-        chromeOptions: {
-          args: %w[headless disable-dev-shm-usage disable-gpu no-sandbox]
-        }
-      }
-    }
-  )
-
-  # driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
-
-  # Capybara.register_driver :chrome do |app|
-  #   browser_options = ::Selenium::WebDriver::Chrome::Options.new
-  #   browser_options.args << '--headless'
-  #   browser_options.args << '--no-sandbox' if ENV['CONTINUOUS_INTEGRATION']
-  #   browser_options.args << '--disable-gpu'
-  #   # browser_options.args << '--window-size=1920,2000'
-  #   # browser_options.args '--remote-debugging-port=9222'
-  #   Capybara::Selenium::Driver.new(
-  #     app, browser: :chrome, options: browser_options
-  #   )
-  # end
-  # Capybara.javascript_driver = :chrome
-
-  # From https://github.com/rails/rails/issues/29688
-  # Capybara.register_driver(:headless_chrome) do |app|
-  #   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-  #     chromeOptions: { args: %w[headless disable-gpu window-size=1920x1080] }
-  #   )
-
-  #   Capybara::Selenium::Driver.new(
-  #     app,
-  #     browser: :chrome,
-  #     desired_capabilities: capabilities
-  #   )
-  # end
-  # driven_by :headless_chrome
+  driven_by ENV.fetch('CAPYBARA_DRIVER', 'chrome_headless').downcase.to_sym
 
   def refresh
     page.driver.browser.navigate.refresh
