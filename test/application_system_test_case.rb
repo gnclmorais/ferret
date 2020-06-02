@@ -9,7 +9,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     options: {
       desired_capabilities: {
         chromeOptions: {
-          args: %w[headless disable-dev-shm-usage no-sandbox]
+          args: %w[headless disable-dev-shm-usage disable-gpu no-sandbox]
         }
       }
     }
