@@ -58,4 +58,7 @@ Rails.application.configure do
 
   # https://devcenter.heroku.com/articles/active-storage-on-heroku
   config.active_storage.service = :local
+
+  # https://github.com/sass/sassc-rails#inline-source-maps
+  config.sass.inline_source_maps = true
 end
