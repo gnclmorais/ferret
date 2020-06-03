@@ -17,9 +17,7 @@ addons:
 before_install:
   - yes | gem update --system --force
   - gem install bundler
-# https://travis-ci.community/t/how-to-setup-chromedriver-74-with-chrome-74-for-travis/2678/3
 before_script:
-  - RAILS_ENV=test bin/rails webdrivers:chromedriver:update
   - psql -c 'create database ferret_test;' -U postgres
 script:
   - bin/rails assets:precompile
