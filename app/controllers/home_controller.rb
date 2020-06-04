@@ -5,6 +5,8 @@ class HomeController < ApplicationController
 
   def about; end
 
+  def sitemap; end
+
   private
 
   def skip_homepage
