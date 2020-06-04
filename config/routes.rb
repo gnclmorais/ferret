@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root 'books#index'
 
-  get '/'      => 'home#index'
-  get '/about' => 'home#about'
+  get '/'         => 'home#index'
+  get '/about'    => 'home#about'
+  get '/sitemap'  => 'home#sitemap', defaults: { format: 'xml' }
+  get '/sitemaps' => 'home#sitemap', defaults: { format: 'xml' }
 
   resource :session, controller: 'sessions'
   resources :users, controller: 'users'
