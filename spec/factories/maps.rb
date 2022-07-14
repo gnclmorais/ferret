@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :map do
     association :owner, factory: :user
-    name 'Get your caffeine fix'
-    description 'All the best coffee shops in New York'
+    name { 'Get your caffeine fix' }
+    description { 'All the best coffee shops in New York' }
   end
 
   trait :with_one_pin do
@@ -12,6 +12,6 @@ FactoryBot.define do
   end
 
   trait :published do
-    published true
+    published { true }
   end
 end
