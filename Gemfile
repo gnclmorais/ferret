@@ -46,6 +46,12 @@ gem 'newrelic_rpm'
 # SEO
 gem 'meta-tags'
 
+# https://stackoverflow.com/a/70500221/590525
+# Heroku seems to need this to run the app...
+gem 'net-smtp', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
+
 group :development, :test do
   # Place 'binding.pry' in Ruby code to stop execution and get a console
   gem 'pry-byebug'
