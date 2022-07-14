@@ -111,6 +111,7 @@ GEM
     concurrent-ruby (1.1.10)
     crass (1.0.6)
     diff-lcs (1.5.0)
+    digest (3.1.0)
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
@@ -165,6 +166,7 @@ GEM
       ruby_parser (~> 3.5)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
+    io-wait (0.2.1)
     jmespath (1.6.1)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -188,6 +190,21 @@ GEM
       minitest (>= 5.0)
       ruby-progressbar
     nenv (0.3.0)
+    net-imap (0.2.3)
+      digest
+      net-protocol
+      strscan
+    net-pop (0.1.1)
+      digest
+      net-protocol
+      timeout
+    net-protocol (0.1.2)
+      io-wait
+      timeout
+    net-smtp (0.3.1)
+      digest
+      net-protocol
+      timeout
     newrelic_rpm (8.9.0)
     nio4r (2.5.8)
     nokogiri (1.13.7-x86_64-darwin)
@@ -322,9 +339,11 @@ GEM
     standard (1.7.0)
       rubocop (= 1.25.0)
       rubocop-performance (= 1.13.2)
+    strscan (3.0.1)
     temple (0.8.2)
     thor (1.2.1)
     tilt (2.0.10)
+    timeout (0.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     uglifier (4.2.0)
@@ -371,6 +390,9 @@ DEPENDENCIES
   listen (~> 3.7)
   meta-tags
   minitest-reporters
+  net-imap
+  net-pop
+  net-smtp
   newrelic_rpm
   oj (~> 2.18.5)
   pg (~> 1.2)
