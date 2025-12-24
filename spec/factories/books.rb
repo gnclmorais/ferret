@@ -1,5 +1,4 @@
-# https://apidock.com/rails/ActionDispatch/TestProcess/fixture_file_upload
-include ActionDispatch::TestProcess
+# https://github.com/rails/rails/blob/main/activestorage/test/controllers/blob_controller_test.rb
 
 FactoryBot.define do
   factory :book do
@@ -8,8 +7,9 @@ FactoryBot.define do
 
     trait :with_cover do
       cover {
-        fixture_file_upload(
-          Rails.root.join('spec', 'resources', 'book_cover.jpg')
+        Rack::Test::UploadedFile.new(
+          Rails.root.join('spec', 'resources', 'book_cover.jpg'),
+          'image/jpeg'
         )
       }
     end

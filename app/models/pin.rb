@@ -19,7 +19,7 @@ class Pin < ApplicationRecord
   end
 
   def ensure_name
-    self.name ||= self.place.name
+    self.name ||= self.place&.name
   end
 
   def callback_destroy
