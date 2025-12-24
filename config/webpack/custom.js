@@ -34,7 +34,6 @@ module.exports = {
   },
   resolve: {
     alias: {
-      jquery: 'jquery/src/jquery',
     },
   },
   plugins: [
@@ -44,11 +43,7 @@ module.exports = {
       safe: true,
     }),
     new webpack.ProvidePlugin({
-       $: 'jquery',
     }),
     new VueLoaderPlugin(),
   ],
-  entry: {
-    vendor: ['jquery', 'jquery-ujs'],
-  },
 }
