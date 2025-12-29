@@ -41,7 +41,7 @@
     "@storybook/vue": "^3.4.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "sass-loader": "^6.0.7",
-    "webpack-dev-server": "2.11.2"
+    "webpack-dev-server": "5.2.1"
   },
   "scripts": {
     "storybook": "start-storybook -p 9001 -c .storybook"
